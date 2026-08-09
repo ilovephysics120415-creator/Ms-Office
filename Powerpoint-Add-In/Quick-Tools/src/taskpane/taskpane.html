@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Slide Toolkit</title>
+  <link rel="stylesheet" href="taskpane.css" />
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+</head>
+<body>
+  <div id="app-body">
+
+    <section class="group">
+      <h2>Custom Shapes</h2>
+      <div class="grid">
+        <button class="shape-btn" data-shape="rectangle">Rectangle</button>
+        <button class="shape-btn" data-shape="square">Square</button>
+        <button class="shape-btn" data-shape="ellipse">Oval</button>
+        <button class="shape-btn" data-shape="circle">Circle</button>
+        <button class="shape-btn" data-shape="triangle">Triangle</button>
+        <button class="shape-btn" data-shape="rightTriangle">Right Triangle</button>
+        <button class="shape-btn" data-shape="diamond">Diamond</button>
+        <button class="shape-btn" data-shape="parallelogram">Parallelogram</button>
+        <button class="shape-btn" data-shape="trapezoid">Trapezium</button>
+        <button class="shape-btn" data-shape="hexagon">Hexagon</button>
+        <button class="shape-btn" data-shape="can">Cylinder</button>
+        <button class="line-btn" data-line="line">Line</button>
+      </div>
+      <p class="note">Some of your original 15 (e.g. Diamond 2, Generic vs Equilateral vs Isosceles Triangle) don't have distinct API entries — PowerPoint's API only exposes one generic version of each. See notes in taskpane.js.</p>
+    </section>
+
+    <section class="group">
+      <h2>Pictures</h2>
+      <input type="file" id="picture-input" accept="image/*" />
+      <p class="note">Picks a file from your Mac and inserts it onto the current slide.</p>
+    </section>
+
+    <div id="status"></div>
+  </div>
+</body>
+</html>
