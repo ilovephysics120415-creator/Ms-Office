@@ -174,8 +174,8 @@
         cursorRange.select();
 
         // 4. Reset cursor formatting back to the text box's original font and normal style
-        cursorRange.font.name = originalFont;
-        cursorRange.font.italic = false;
+        //cursorRange.font.name = originalFont;
+        //cursorRange.font.italic = false;
             await context.sync();
           }).catch((err) => {
             console.warn("Could not apply font formatting: ", err);
