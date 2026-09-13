@@ -152,32 +152,23 @@ function handlePictureInsert(event) {
   if (!file) return;
 
   const reader = new FileReader();
-  reader.onload = async function (e) {
-    // Strip the 'data:image/...;base64,' prefix to get pure base64 string
+  reader.onload = function (e) {
+    // Strip the Data URL header to leave only the raw base64 string
     const base64Data = e.target.result.split(",")[1];
 
-    try {
-      await PowerPoint.run(async (context) => {
-        const slides = context.presentation.getSelectedSlides();
-        slides.load("items");
-        await context.sync();
-
-        if (slides.items.length === 0) {
-          showStatus("Select a slide first.");
-          return;
+    Office.context.document.setSelectedDataAsync(
+      base64Data,
+      {
+        coercionType: Office.CoercionType.Image
+      },
+      function (asyncResult) {
+        if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+          showStatus("Error: " + asyncResult.error.message);
+        } else {
+          showStatus("Inserted picture: " + file.name);
         }
-        const slide = slides.items[0];
-
-        // slide.shapes.addImage takes raw base64 string
-        slide.shapes.addImage(base64Data);
-
-        await context.sync();
-        showStatus("Inserted picture: " + file.name);
-      });
-    } catch (error) {
-      showStatus("Error: " + error.message);
-      console.error(error);
-    }
+      }
+    );
   };
   reader.readAsDataURL(file);
 }
