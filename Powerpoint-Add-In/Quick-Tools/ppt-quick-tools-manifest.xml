@@ -9,7 +9,7 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Quick Tools"/>
   <Description DefaultValue="PowerPoint Quick Tools Add-in"/>
-  <IconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/ShapesAndPic/icon-32.png"/>
+  <IconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPic//assetsicon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPic/assets/icon-80.png"/>
   <SupportUrl DefaultValue="https://github.com/ilovephysics120415-creator/Ms-Office"/>
   <AppDomains>
