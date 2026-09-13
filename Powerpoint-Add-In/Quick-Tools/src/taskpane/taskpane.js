@@ -1,3 +1,5 @@
+alert("taskpane has loaded");
+
 Office.onReady((info) => {
   if (info.host === Office.HostType.PowerPoint) {
     document.querySelectorAll(".shape-btn").forEach((btn) => {
@@ -161,7 +163,7 @@ function handlePictureInsert(event) {
           return;
         }
         const slide = slides.items[0];
-        slide.shapes.addImage(base64, {
+        slide.shapes.addPicture(base64, {
           left: 100,
           top: 100,
           width: 300,
