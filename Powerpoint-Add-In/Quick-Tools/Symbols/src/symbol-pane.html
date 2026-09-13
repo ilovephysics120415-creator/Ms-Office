@@ -106,7 +106,7 @@
       <span class="symbol-label">Frequency (f)</span>
     </button>
 
-    <button class="symbol-btn" onclick="insertSymbol('γ', 'Cambria Math')">
+    <button class="symbol-btn" onclick="insertSymbol('\u03F3')">
       <span class="symbol-glyph">&gamma;</span>
       <span class="symbol-label">Gamma</span>
     </button>
@@ -140,21 +140,19 @@
     });
 
     /**
-     * Inserts the given text/symbol at the cursor location and positions the cursor
-     * to the right of the inserted symbol without keeping it selected.
+     * Inserts the given text/symbol into the user's active cursor selection in PowerPoint.
      * @param {string} symbol - The symbol string to insert.
      */
     function insertSymbol(symbol) {
-      const options = {
-        coercionType: Office.CoercionType.Text,
-        insertMode: Office.InsertMode.Insert
-      };
-
-      Office.context.document.setSelectedDataAsync(symbol, options, function (asyncResult) {
-        if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-          console.error("Failed to insert symbol: " + asyncResult.error.message);
+      Office.context.document.setSelectedDataAsync(
+        symbol,
+        { coercionType: Office.CoercionType.Text },
+        function (asyncResult) {
+          if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+            console.error("Failed to insert symbol: " + asyncResult.error.message);
+          }
         }
-      });
+      );
     }
   </script>
 </body>
