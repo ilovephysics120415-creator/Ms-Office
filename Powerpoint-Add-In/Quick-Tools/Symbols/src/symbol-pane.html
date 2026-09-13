@@ -64,6 +64,11 @@
       text-align: center;
     }
 
+    .math-font {
+      font-family: 'Cambria Math', 'STIX Two Math', 'Times New Roman', serif;
+      font-style: italic;
+    }
+
     .symbol-label {
       white-space: nowrap;
       overflow: hidden;
@@ -76,58 +81,58 @@
   <h3>Insert Symbol</h3>
 
   <div class="symbol-grid">
-    <button class="symbol-btn" onclick="insertSymbol('\u03B1')">
-      <span class="symbol-glyph">&alpha;</span>
+    <button class="symbol-btn" onclick="insertSymbol('\u03B1', 'Cambria Math', true)">
+      <span class="symbol-glyph math-font">&alpha;</span>
       <span class="symbol-label">Alpha</span>
     </button>
 
-    <button class="symbol-btn" onclick="insertSymbol('\u03B2')">
-      <span class="symbol-glyph">&beta;</span>
+    <button class="symbol-btn" onclick="insertSymbol('\u03B2', 'Cambria Math', true)">
+      <span class="symbol-glyph math-font">&beta;</span>
       <span class="symbol-label">Beta</span>
     </button>
 
-    <button class="symbol-btn" onclick="insertSymbol('\u03BB')">
-      <span class="symbol-glyph">&lambda;</span>
+    <button class="symbol-btn" onclick="insertSymbol('\u03BB', 'Cambria Math', true)">
+      <span class="symbol-glyph math-font">&lambda;</span>
       <span class="symbol-label">Lambda</span>
     </button>
 
-    <button class="symbol-btn" onclick="insertSymbol('\u00B0')">
+    <button class="symbol-btn" onclick="insertSymbol('\u00B0', null, false)">
       <span class="symbol-glyph">&deg;</span>
       <span class="symbol-label">Degree</span>
     </button>
 
-    <button class="symbol-btn" onclick="insertSymbol('\u2103')">
+    <button class="symbol-btn" onclick="insertSymbol('\u2103', null, false)">
       <span class="symbol-glyph">&#8451;</span>
       <span class="symbol-label">Degree Celsius</span>
     </button>
 
-    <button class="symbol-btn" onclick="insertSymbol('\u{1D453}')">
-      <span class="symbol-glyph">&#x1D453;</span>
+    <button class="symbol-btn" onclick="insertSymbol('\u{1D453}', 'Cambria Math', true)">
+      <span class="symbol-glyph math-font">&#x1D453;</span>
       <span class="symbol-label">Frequency (f)</span>
     </button>
 
-<button class="symbol-btn" onclick="insertGamma()">
-  <span class="symbol-glyph">&#x1D6FE;</span>
-  <span class="symbol-label">Gamma</span>
-</button>
+    <button class="symbol-btn" onclick="insertSymbol('\u03B3', 'Cambria Math', true)">
+      <span class="symbol-glyph math-font">&gamma;</span>
+      <span class="symbol-label">Gamma</span>
+    </button>
 
-    <button class="symbol-btn" onclick="insertSymbol('\u0263')">
-      <span class="symbol-glyph">&theta;</span>
+    <button class="symbol-btn" onclick="insertSymbol('\u03B8', 'Cambria Math', true)">
+      <span class="symbol-glyph math-font">&theta;</span>
       <span class="symbol-label">Theta</span>
     </button>
 
-    <button class="symbol-btn" onclick="insertSymbol('\u2126')">
+    <button class="symbol-btn" onclick="insertSymbol('\u2126', 'Cambria Math', false)">
       <span class="symbol-glyph">&#8486;</span>
       <span class="symbol-label">Ohm</span>
     </button>
 
-    <button class="symbol-btn" onclick="insertSymbol('\u03C0')">
-      <span class="symbol-glyph">&pi;</span>
+    <button class="symbol-btn" onclick="insertSymbol('\u03C0', 'Cambria Math', true)">
+      <span class="symbol-glyph math-font">&pi;</span>
       <span class="symbol-label">Pi</span>
     </button>
 
-    <button class="symbol-btn" onclick="insertSymbol('\u03C1')">
-      <span class="symbol-glyph">&rho;</span>
+    <button class="symbol-btn" onclick="insertSymbol('\u03C1', 'Cambria Math', true)">
+      <span class="symbol-glyph math-font">&rho;</span>
       <span class="symbol-label">Rho</span>
     </button>
   </div>
@@ -140,34 +145,37 @@
     });
 
     /**
-     * Inserts the given text/symbol into the user's active cursor selection in PowerPoint.
+     * Inserts the given text/symbol and applies specific font properties to the selection.
      * @param {string} symbol - The symbol string to insert.
+     * @param {string|null} fontName - Font family to apply (e.g. 'Cambria Math'), or null to keep text box default.
+     * @param {boolean} isItalic - Whether to force italic styling on the inserted symbol.
      */
-    function insertSymbol(symbol) {
-      const styledHtml = `<span style="font-family: 'Cambria Math', 'Times New Roman', serif; font-style: italic;">${symbol}</span>`;
+    function insertSymbol(symbol, fontName = 'Cambria Math', isItalic = true) {
       Office.context.document.setSelectedDataAsync(
         symbol,
         { coercionType: Office.CoercionType.Text },
         function (asyncResult) {
           if (asyncResult.status === Office.AsyncResultStatus.Failed) {
             console.error("Failed to insert symbol: " + asyncResult.error.message);
+            return;
           }
+
+          // Format the newly inserted text range using PowerPoint Host API
+          PowerPoint.run(async (context) => {
+            const range = context.presentation.getSelectedTextRange();
+            
+            if (fontName) {
+              range.font.name = fontName;
+            }
+            range.font.italic = isItalic;
+
+            await context.sync();
+          }).catch((err) => {
+            console.warn("Could not apply font formatting: ", err);
+          });
         }
       );
     }
-
-    function insertGamma() {
-  // \uD835\uDEFE is the UTF-16 surrogate pair for U+1D6FE (𝛾)
-  Office.context.document.setSelectedDataAsync(
-    '\uD835\uDEFE',
-    { coercionType: Office.CoercionType.Text },
-    function (asyncResult) {
-      if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-        console.error("Failed to insert symbol: " + asyncResult.error.message);
-      }
-    }
-  );
-}
   </script>
 </body>
 </html>
