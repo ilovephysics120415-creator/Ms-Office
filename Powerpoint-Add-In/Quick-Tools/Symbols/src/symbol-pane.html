@@ -140,20 +140,37 @@
     });
 
     /**
-     * Inserts the given text/symbol at the cursor location and positions the cursor
-     * to the right of the inserted symbol without keeping it selected.
+     * Inserts the given text/symbol at the cursor location and moves the
+     * selection point to the end of the text (unselecting it).
      * @param {string} symbol - The symbol string to insert.
      */
     function insertSymbol(symbol) {
-      const options = {
-        coercionType: Office.CoercionType.Text,
-        insertMode: Office.InsertMode.Insert
-      };
-
-      Office.context.document.setSelectedDataAsync(symbol, options, function (asyncResult) {
-        if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-          console.error("Failed to insert symbol: " + asyncResult.error.message);
+      Office.context.document.setSelectedDataAsync(
+        symbol,
+        { coercionType: Office.CoercionType.Text },
+        function (asyncResult) {
+          if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+            // Unselect the inserted symbol and move cursor to the right
+            collapseSelectionToEnd();
+          } else {
+            console.error("Failed to insert symbol: " + asyncResult.error.message);
+          }
         }
+      );
+    }
+
+    /**
+     * Uses PowerPoint API to clear selection highlight and position
+     * cursor immediately after the inserted character.
+     */
+    function collapseSelectionToEnd() {
+      PowerPoint.run(async (context) => {
+        const selection = context.presentation.getSelectedTextRange();
+        // Collapse the text range selection to the end point (right side)
+        selection.collapse(false); 
+        await context.sync();
+      }).catch((error) => {
+        console.log("Selection collapse error: " + error);
       });
     }
   </script>
