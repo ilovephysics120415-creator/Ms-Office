@@ -154,7 +154,7 @@ function handlePictureInsert(event) {
   const reader = new FileReader();
   reader.onload = async function (e) {
     // result looks like "data:image/png;base64,AAAA..." — we need just the base64 part
-    const base64 = e.target.result.split(",")[1];
+    const base64 = e.target.result;
     try {
       await PowerPoint.run(async (context) => {
         const slides = context.presentation.getSelectedSlides();
@@ -166,7 +166,7 @@ function handlePictureInsert(event) {
           return;
         }
         const slide = slides.items[0];
-        slide.shapes.addPicture(base64, {
+        slide.shapes.addImage(base64, {
           left: 100,
           top: 100,
           width: 300,
