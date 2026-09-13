@@ -30,11 +30,15 @@
 
     <section class="group">
       <h2>Pictures</h2>
-      <input type="file" id="picture-input" accept="image/*" />
+      
+      <!-- Hidden file input -->
+      <input type="file" id="picture-input" accept="image/*" style="display: none;" />
+      
+      <!-- Styled action button -->
+      <button type="button" class="btn" onclick="document.getElementById('picture-input').click()">Insert Image</button>
+
       <p class="note">Picks a file from your Mac and inserts it onto the current slide.</p>
     </section>
-
-
 
     <div id="status"></div>
   </div>
