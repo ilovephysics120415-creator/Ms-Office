@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+  <Id>EE21EDB3-6B1A-49EC-86AC-8E7D061DF82E</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>ilovephysics120415-creator</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Quick Tools"/>
+  <Description DefaultValue="PowerPoint Quick Tools Add-in"/>
+  <IconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-80.png"/>
+  <SupportUrl DefaultValue="https://github.com/ilovephysics120415-creator/Ms-Office"/>
+  <AppDomains>
+    <AppDomain>https://ilovephysics120415-creator.github.io</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Presentation"/>
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPic/taskpane.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Presentation">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            
+            <!-- CUSTOM TAB PLACED BEFORE TRANSITIONS TAB -->
+            <CustomTab id="QuickToolsTab" insertBefore="TabTransitions">
+              <Group id="QuickToolsGroup">
+                <Label resid="CommandsGroup.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16"/>
+                  <bt:Image size="32" resid="Icon.32x32"/>
+                  <bt:Image size="80" resid="Icon.80x80"/>
+                </Icon>
+
+                <!-- Button 1: Shape & Pic -->
+                <Control xsi:type="Button" id="ShapeAndPicButton">
+                  <Label resid="ShapeAndPic.Label"/>
+                  <Supertip>
+                    <Title resid="ShapeAndPic.Label"/>
+                    <Description resid="ShapeAndPic.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ShapeAndPicPaneId</TaskpaneId>
+                    <SourceLocation resid="ShapeAndPic.Url"/>
+                  </Action>
+                </Control>
+
+                <!-- Button 2: Symbols -->
+                <Control xsi:type="Button" id="SymbolButton">
+                  <Label resid="Symbol.Label"/>
+                  <Supertip>
+                    <Title resid="Symbol.Label"/>
+                    <Description resid="Symbol.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>SymbolPaneId</TaskpaneId>
+                    <SourceLocation resid="Symbol.Url"/>
+                  </Action>
+                </Control>
+
+                <!-- Button 3: Small Letters -->
+                <Control xsi:type="Button" id="SmallLetterButton">
+                  <Label resid="SmallLetter.Label"/>
+                  <Supertip>
+                    <Title resid="SmallLetter.Label"/>
+                    <Description resid="SmallLetter.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>SmallLetterPaneId</TaskpaneId>
+                    <SourceLocation resid="SmallLetter.Url"/>
+                  </Action>
+                </Control>
+
+                <!-- Button 4: Big Letters -->
+                <Control xsi:type="Button" id="BigLetterButton">
+                  <Label resid="BigLetter.Label"/>
+                  <Supertip>
+                    <Title resid="BigLetter.Label"/>
+                    <Description resid="BigLetter.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>BigLetterPaneId</TaskpaneId>
+                    <SourceLocation resid="BigLetter.Url"/>
+                  </Action>
+                </Control>
+
+              </Group>
+              <Label resid="CustomTab.Label"/>
+            </CustomTab>
+
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://github.com/ilovephysics120415-creator/Ms-Office"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPic/commands.html"/>
+        <bt:Url id="ShapeAndPic.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPic/taskpane.html"/>
+        <bt:Url id="Symbol.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Symbol/symbol-pane.html"/>
+        <bt:Url id="SmallLetter.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/SmallLetter/taskpane.html"/>
+        <bt:Url id="BigLetter.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/BigLetter/taskpane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="Get started with Quick Tools!" />
+        <bt:String id="CustomTab.Label" DefaultValue="Quick Tools" />
+        <bt:String id="CommandsGroup.Label" DefaultValue="Tools Palette" />
+        <bt:String id="ShapeAndPic.Label" DefaultValue="Shape &amp; Pic" />
+        <bt:String id="Symbol.Label" DefaultValue="Symbols" />
+        <bt:String id="SmallLetter.Label" DefaultValue="Small Letters" />
+        <bt:String id="BigLetter.Label" DefaultValue="Big Letters" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Quick Tools loaded successfully." />
+        <bt:String id="ShapeAndPic.Tooltip" DefaultValue="Insert custom shapes and picture files" />
+        <bt:String id="Symbol.Tooltip" DefaultValue="Insert math and Greek symbols" />
+        <bt:String id="SmallLetter.Tooltip" DefaultValue="Insert small letter icons/formatting" />
+        <bt:String id="BigLetter.Tooltip" DefaultValue="Insert big letter icons/formatting" />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
