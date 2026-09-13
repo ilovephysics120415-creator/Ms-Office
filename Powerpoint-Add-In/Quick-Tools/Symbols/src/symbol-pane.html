@@ -57,18 +57,18 @@
 <body>
     <h3>Common Symbols</h3>
     <div class="symbol-grid">
-        <button class="symbol-btn" onclick="insertSymbol('α', 'Cambria Math')">α<span class="symbol-label">alpha</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('β', 'Cambria Math')">β<span class="symbol-label">beta</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('λ', 'Cambria Math')">λ<span class="symbol-label">lambda</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('°', 'Cambria Math')">°<span class="symbol-label">degree</span></button>
-        <button class="symbol-btn" onclick="insertDegreeCelsius()">°C<span class="symbol-label">deg C</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('\u{1D453}', 'Cambria Math')">&#x1D453;<span class="symbol-label">freq (f)</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('γ', 'Cambria Math')">γ<span class="symbol-label">gamma</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('θ', 'Cambria Math')">θ<span class="symbol-label">theta</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('∣', 'Cambria Math')">∣<span class="symbol-label">mid</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('Ω', 'Cambria Math')">Ω<span class="symbol-label">ohm</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('π', 'Cambria Math')">π<span class="symbol-label">pi</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('ρ', 'Cambria Math')">ρ<span class="symbol-label">rho</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('α')">α<span class="symbol-label">alpha</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('β')">β<span class="symbol-label">beta</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('λ')">λ<span class="symbol-label">lambda</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('°')">°<span class="symbol-label">degree</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('°C')">°C<span class="symbol-label">deg C</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('\u{1D453}')">&#x1D453;<span class="symbol-label">freq (f)</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('γ')">γ<span class="symbol-label">gamma</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('θ')">θ<span class="symbol-label">theta</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('∣')">∣<span class="symbol-label">mid</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('Ω')">Ω<span class="symbol-label">ohm</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('π')">π<span class="symbol-label">pi</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('ρ')">ρ<span class="symbol-label">rho</span></button>
     </div>
 
     <script>
@@ -78,69 +78,19 @@
             }
         });
 
-        async function insertSymbol(symbolText, targetFont) {
-            await PowerPoint.run(async (context) => {
-                const shapes = context.presentation.getSelectedShapes();
-                shapes.load("items");
-                await context.sync();
-
-                if (shapes.items.length === 0) {
-                    console.warn("No text box selected.");
-                    return;
+        function insertSymbol(symbolText) {
+            // Office.CoercionType.Text inserts right at active cursor or selected text
+            Office.context.document.setSelectedDataAsync(
+                symbolText,
+                { coercionType: Office.CoercionType.Text },
+                function (asyncResult) {
+                    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+                        console.error("Failed to insert symbol: " + asyncResult.error.message);
+                    } else {
+                        console.log("Successfully inserted symbol: " + symbolText);
+                    }
                 }
-
-                const textFrame = shapes.items[0].textFrame;
-                const textRange = textFrame.textRange;
-
-                // Load existing font size from the text frame
-                textRange.font.load(["size"]);
-                await context.sync();
-
-                const originalFontSize = textRange.font.size;
-
-                // Append symbol
-                const insertedRange = textRange.insertText(symbolText + " ", PowerPoint.InsertLocation.after);
-                insertedRange.font.name = targetFont;
-                if (originalFontSize) {
-                    insertedRange.font.size = originalFontSize;
-                }
-
-                await context.sync();
-            }).catch(function (error) {
-                console.error("Error inserting symbol: " + error);
-            });
-        }
-
-        async function insertDegreeCelsius() {
-            await PowerPoint.run(async (context) => {
-                const shapes = context.presentation.getSelectedShapes();
-                shapes.load("items");
-                await context.sync();
-
-                if (shapes.items.length === 0) {
-                    console.warn("No text box selected.");
-                    return;
-                }
-
-                const textFrame = shapes.items[0].textFrame;
-                const textRange = textFrame.textRange;
-
-                textRange.font.load(["size"]);
-                await context.sync();
-
-                const originalFontSize = textRange.font.size;
-
-                // Append °C 
-                const degreeRange = textRange.insertText("°C ", PowerPoint.InsertLocation.after);
-                degreeRange.font.name = "Cambria Math";
-                if (originalFontSize) {
-                    degreeRange.font.size = originalFontSize;
-                }
-
-                await context.sync();
-            }).catch(function (error) {
-                console.error("Error inserting Degree Celsius: " + error);
-            });
+            );
         }
     </script>
 </body>
