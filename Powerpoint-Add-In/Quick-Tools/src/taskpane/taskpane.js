@@ -1,5 +1,3 @@
-alert("taskpane has loaded");
-
 Office.onReady((info) => {
   if (info.host === Office.HostType.PowerPoint) {
     document.querySelectorAll(".shape-btn").forEach((btn) => {
@@ -93,8 +91,13 @@ async function insertShape(shapeKey) {
       shape.lineFormat.weight = 1; // 1pt outline
       shape.lineFormat.color = "#000000";
 
+
+      // Configure text frame alignment safely
+      shape.textFrame.verticalAlignment = "MiddleCentered";
+
+
       // set default text formatting for anything typed into this shape
-      shape.textFrame.textRange.font.name = "Comic Sans MS";
+      /*shape.textFrame.textRange.font.name = "Comic Sans MS";
       shape.textFrame.textRange.font.color = "#000000";
 
       //horizontal centering
@@ -102,7 +105,7 @@ async function insertShape(shapeKey) {
 
       //vertical centering
       shape.textFrame.verticalAlignment = PowerPoint.TextVerticalAlignment.middleCentered;
-
+*/
       await context.sync();
       showStatus("Inserted " + shapeKey);
     });
