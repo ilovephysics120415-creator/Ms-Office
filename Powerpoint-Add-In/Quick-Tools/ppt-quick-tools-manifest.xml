@@ -41,6 +41,7 @@
           </GetStarted>
 
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
+          <OfficeTab id="TabInsert">
             <!-- Custom Tab Configuration -->
             <CustomTab id="QuickToolsTab">
               
@@ -150,6 +151,7 @@
 
               <Label resid="Tab.Label" />
             </CustomTab>
+            </OfficeTab>
           </ExtensionPoint>
 
         </DesktopFormFactor>
@@ -167,7 +169,7 @@
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMore" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/" />
         <bt:Url id="Url.ShapesAndPicture" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/src/taskpane.html" />
-        <bt:Url id="Url.Symbols" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/src/taskpane.html" />
+        <bt:Url id="Url.Symbols" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Symbols/src/symbol-pane.html" />
         <bt:Url id="Url.SmallLetters" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/src/taskpane.html" />
         <bt:Url id="Url.BigLetters" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/src/taskpane.html" />
       </bt:Urls>
