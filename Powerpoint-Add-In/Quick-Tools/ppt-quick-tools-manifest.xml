@@ -9,8 +9,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Quick Tools"/>
   <Description DefaultValue="PowerPoint Quick Tools Add-in"/>
-  <IconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-80.png"/>
+  <IconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/assets/icon-80.png"/>
   <SupportUrl DefaultValue="https://github.com/ilovephysics120415-creator/Ms-Office"/>
   <AppDomains>
     <AppDomain>https://ilovephysics120415-creator.github.io</AppDomain>
@@ -125,14 +125,14 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://github.com/ilovephysics120415-creator/Ms-Office"/>
         <bt:Url id="ShapeAndPic.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/src/taskpane.html"/>
-        <bt:Url id="Symbol.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Symbol/src/symbol-pane.html"/>
+        <bt:Url id="Symbol.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Symbol/src/taskpane.html"/>
         <bt:Url id="SmallLetter.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/SmallLetters/src/taskpane.html"/>
         <bt:Url id="BigLetter.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/BigLetters/src/taskpane.html"/>
       </bt:Urls>
