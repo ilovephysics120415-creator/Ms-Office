@@ -51,94 +51,78 @@
                   <bt:Image size="80" resid="Icon.80" />
                 </Icon>
 
-                <!-- Dropdown Menu -->
-                <Control xsi:type="Menu" id="QuickToolsMenu">
-                  <Label resid="Menu.Label" />
+                <!-- Button 1: Shapes and Picture -->
+                <Control xsi:type="Button" id="Button_ShapesAndPicture">
+                  <Label resid="Item1.Label" />
                   <Supertip>
-                    <Title resid="Menu.Title" />
-                    <Description resid="Menu.Description" />
+                    <Title resid="Item1.Title" />
+                    <Description resid="Item1.Description" />
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="Icon.16" />
                     <bt:Image size="32" resid="Icon.32" />
                     <bt:Image size="80" resid="Icon.80" />
                   </Icon>
-
-                  <Items>
-                    <!-- Item 1: Shapes and Picture -->
-                    <Item id="MenuItem_ShapesAndPicture">
-                      <Label resid="Item1.Label" />
-                      <Supertip>
-                        <Title resid="Item1.Title" />
-                        <Description resid="Item1.Description" />
-                      </Supertip>
-                      <Icon>
-                        <bt:Image size="16" resid="Icon.16" />
-                        <bt:Image size="32" resid="Icon.32" />
-                        <bt:Image size="80" resid="Icon.80" />
-                      </Icon>
-                      <Action xsi:type="ShowTaskpane">
-                        <TaskpaneId>Taskpane_ShapesAndPicture</TaskpaneId>
-                        <SourceLocation resid="Url.ShapesAndPicture" />
-                      </Action>
-                    </Item>
-
-                    <!-- Item 2: Symbols -->
-                    <Item id="MenuItem_Symbols">
-                      <Label resid="Item2.Label" />
-                      <Supertip>
-                        <Title resid="Item2.Title" />
-                        <Description resid="Item2.Description" />
-                      </Supertip>
-                      <Icon>
-                        <bt:Image size="16" resid="Icon.16" />
-                        <bt:Image size="32" resid="Icon.32" />
-                        <bt:Image size="80" resid="Icon.80" />
-                      </Icon>
-                      <Action xsi:type="ShowTaskpane">
-                        <TaskpaneId>Taskpane_Symbols</TaskpaneId>
-                        <SourceLocation resid="Url.Symbols" />
-                      </Action>
-                    </Item>
-
-                    <!-- Item 3: Small Letters -->
-                    <Item id="MenuItem_SmallLetters">
-                      <Label resid="Item3.Label" />
-                      <Supertip>
-                        <Title resid="Item3.Title" />
-                        <Description resid="Item3.Description" />
-                      </Supertip>
-                      <Icon>
-                        <bt:Image size="16" resid="Icon.16" />
-                        <bt:Image size="32" resid="Icon.32" />
-                        <bt:Image size="80" resid="Icon.80" />
-                      </Icon>
-                      <Action xsi:type="ShowTaskpane">
-                        <TaskpaneId>Taskpane_SmallLetters</TaskpaneId>
-                        <SourceLocation resid="Url.SmallLetters" />
-                      </Action>
-                    </Item>
-
-                    <!-- Item 4: Big Letters -->
-                    <Item id="MenuItem_BigLetters">
-                      <Label resid="Item4.Label" />
-                      <Supertip>
-                        <Title resid="Item4.Title" />
-                        <Description resid="Item4.Description" />
-                      </Supertip>
-                      <Icon>
-                        <bt:Image size="16" resid="Icon.16" />
-                        <bt:Image size="32" resid="Icon.32" />
-                        <bt:Image size="80" resid="Icon.80" />
-                      </Icon>
-                      <Action xsi:type="ShowTaskpane">
-                        <TaskpaneId>Taskpane_BigLetters</TaskpaneId>
-                        <SourceLocation resid="Url.BigLetters" />
-                      </Action>
-                    </Item>
-                  </Items>
-
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Taskpane_ShapesAndPicture</TaskpaneId>
+                    <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
                 </Control>
+
+                <!-- Button 2: Symbols -->
+                <Control xsi:type="Button" id="Button_Symbols">
+                  <Label resid="Item2.Label" />
+                  <Supertip>
+                    <Title resid="Item2.Title" />
+                    <Description resid="Item2.Description" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Taskpane_Symbols</TaskpaneId>
+                    <SourceLocation resid="Url.Symbols" />
+                  </Action>
+                </Control>
+
+                <!-- Button 3: Small Letters -->
+                <Control xsi:type="Button" id="Button_SmallLetters">
+                  <Label resid="Item3.Label" />
+                  <Supertip>
+                    <Title resid="Item3.Title" />
+                    <Description resid="Item3.Description" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Taskpane_SmallLetters</TaskpaneId>
+                    <SourceLocation resid="Url.SmallLetters" />
+                  </Action>
+                </Control>
+
+                <!-- Button 4: Big Letters -->
+                <Control xsi:type="Button" id="Button_BigLetters">
+                  <Label resid="Item4.Label" />
+                  <Supertip>
+                    <Title resid="Item4.Title" />
+                    <Description resid="Item4.Description" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Taskpane_BigLetters</TaskpaneId>
+                    <SourceLocation resid="Url.BigLetters" />
+                  </Action>
+                </Control>
+
               </Group>
               <Label resid="Tab.Label" />
             </CustomTab>
@@ -168,8 +152,6 @@
         <bt:String id="GetStarted.Title" DefaultValue="Quick Tools" />
         <bt:String id="Tab.Label" DefaultValue="Quick Tools" />
         <bt:String id="Group.Label" DefaultValue="Tools" />
-        <bt:String id="Menu.Label" DefaultValue="Quick Tools" />
-        <bt:String id="Menu.Title" DefaultValue="Quick Tools" />
         <bt:String id="Item1.Label" DefaultValue="Shapes and Picture" />
         <bt:String id="Item1.Title" DefaultValue="Shapes and Picture" />
         <bt:String id="Item2.Label" DefaultValue="Symbols" />
@@ -181,8 +163,7 @@
       </bt:ShortStrings>
 
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Open the Quick Tools menu from the ribbon tab." />
-        <bt:String id="Menu.Description" DefaultValue="Select a tool to open its dedicated task pane." />
+        <bt:String id="GetStarted.Description" DefaultValue="Open the Quick Tools task panes from the ribbon tab." />
         <bt:String id="Item1.Description" DefaultValue="Open Shapes and Picture task pane." />
         <bt:String id="Item2.Description" DefaultValue="Open Symbols task pane." />
         <bt:String id="Item3.Description" DefaultValue="Open Small Letters task pane." />
