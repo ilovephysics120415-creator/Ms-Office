@@ -132,7 +132,7 @@
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://github.com/ilovephysics120415-creator/Ms-Office"/>
         <bt:Url id="ShapeAndPic.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/src/taskpane.html"/>
-        <bt:Url id="Symbol.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Symbol/src/taskpane.html"/>
+        <bt:Url id="Symbol.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Symbols/src/taskpane.html"/>
         <bt:Url id="SmallLetter.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/SmallLetters/src/taskpane.html"/>
         <bt:Url id="BigLetter.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/BigLetters/src/taskpane.html"/>
       </bt:Urls>
