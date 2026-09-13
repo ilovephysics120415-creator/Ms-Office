@@ -144,7 +144,7 @@
      * @param {string} symbol - The symbol string to insert.
      */
     function insertSymbol(symbol) {
-      const styledHtml = `<span style="font-family: 'Cambria Math', 'Arial', serif; font-style: italic;">${symbol}</span>`;
+      const styledHtml = `<span style="font-family: 'Cambria Math', 'Times New Roman', serif; font-style: italic;">${symbol}</span>`;
       Office.context.document.setSelectedDataAsync(
         symbol,
         { coercionType: Office.CoercionType.Text },
