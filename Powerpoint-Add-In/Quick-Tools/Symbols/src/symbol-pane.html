@@ -140,8 +140,7 @@
     });
 
     /**
-     * Inserts the given text/symbol at the cursor location and moves the
-     * selection point to the end of the text (unselecting it).
+     * Inserts the given text/symbol and moves the cursor to the right edge.
      * @param {string} symbol - The symbol string to insert.
      */
     function insertSymbol(symbol) {
@@ -150,8 +149,7 @@
         { coercionType: Office.CoercionType.Text },
         function (asyncResult) {
           if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-            // Unselect the inserted symbol and move cursor to the right
-            collapseSelectionToEnd();
+            moveCursorToEndOfSelection();
           } else {
             console.error("Failed to insert symbol: " + asyncResult.error.message);
           }
@@ -160,17 +158,26 @@
     }
 
     /**
-     * Uses PowerPoint API to clear selection highlight and position
-     * cursor immediately after the inserted character.
+     * Finds the current highlighted range, shifts the starting index past the inserted text,
+     * sets length to 0, and updates selection to unselect the text.
      */
-    function collapseSelectionToEnd() {
+    function moveCursorToEndOfSelection() {
       PowerPoint.run(async (context) => {
-        const selection = context.presentation.getSelectedTextRange();
-        // Collapse the text range selection to the end point (right side)
-        selection.collapse(false); 
+        // 1. Get the range of text currently highlighted by the insert operation
+        const textRange = context.presentation.getSelectedTextRange();
+        textRange.load(["start", "length"]);
+        await context.sync();
+
+        // 2. Shift starting index to the right side of the symbol and set selection length to 0
+        const newStart = textRange.start + textRange.length;
+        textRange.start = newStart;
+        textRange.length = 0;
+
+        // 3. Apply the 0-length selection to position the caret (blinking cursor)
+        textRange.setSelected();
         await context.sync();
       }).catch((error) => {
-        console.log("Selection collapse error: " + error);
+        console.error("Selection update error: " + error);
       });
     }
   </script>
