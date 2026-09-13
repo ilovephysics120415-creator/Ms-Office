@@ -41,8 +41,7 @@
           </GetStarted>
 
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
-          <OfficeTab id="TabInsert">
-            <!-- Custom Tab Configuration -->
+            <!-- 1. Define the Custom Tab -->
             <CustomTab id="QuickToolsTab">
               
               <!-- Group 1: Shapes and Picture -->
@@ -151,7 +150,13 @@
 
               <Label resid="Tab.Label" />
             </CustomTab>
-            </OfficeTab>
+
+            <!-- 2. Position the Custom Tab right after Insert -->
+            <Overlays>
+              <OfficeTab id="TabInsert">
+                <CustomTab id="QuickToolsTab" />
+              </OfficeTab>
+            </Overlays>
           </ExtensionPoint>
 
         </DesktopFormFactor>
