@@ -106,8 +106,8 @@
       <span class="symbol-label">Frequency (f)</span>
     </button>
 
-<button class="symbol-btn" onclick="insertSymbol('\u03B3')">
-  <span class="symbol-glyph" style="font-family: 'Cambria Math', 'Times New Roman', 'STIX Two Math', serif; font-style: italic;">&gamma;</span>
+<button class="symbol-btn" onclick="insertGamma()">
+  <span class="symbol-glyph">&#x1D6FE;</span>
   <span class="symbol-label">Gamma</span>
 </button>
 
@@ -155,6 +155,19 @@
         }
       );
     }
+
+    function insertGamma() {
+  // \uD835\uDEFE is the UTF-16 surrogate pair for U+1D6FE (𝛾)
+  Office.context.document.setSelectedDataAsync(
+    '\uD835\uDEFE',
+    { coercionType: Office.CoercionType.Text },
+    function (asyncResult) {
+      if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+        console.error("Failed to insert symbol: " + asyncResult.error.message);
+      }
+    }
+  );
+}
   </script>
 </body>
 </html>
