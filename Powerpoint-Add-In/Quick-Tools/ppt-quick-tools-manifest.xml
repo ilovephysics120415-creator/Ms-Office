@@ -14,9 +14,9 @@
   <DisplayName DefaultValue="Quick Tools Add-in" />
   <Description DefaultValue="Custom utility tools for PowerPoint presentations." />
   
-  <!-- Root App Icons mapped to Quick-Tools/Shapes-And-Picture/assets/ -->
+  <!-- App List & Store Icons (Updated based on screenshot) -->
   <IconUrl DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/icon-80.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://localhost:3000/help"/>
 
   <Hosts>
@@ -41,7 +41,7 @@
           </GetStarted>
 
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
-            <!-- Custom Tab placed before the Transitions tab -->
+            <!-- Custom Tab placed before standard Transitions Tab -->
             <CustomTab id="QuickToolsTab" insertBefore="tabTransition">
               <Label DefaultValue="Quick Tools" />
               
@@ -61,9 +61,9 @@
                     <Description DefaultValue="Select a tool to open its dedicated task pane." />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="MenuIcon.16" />
-                    <bt:Image size="32" resid="MenuIcon.32" />
-                    <bt:Image size="80" resid="MenuIcon.80" />
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
                   </Icon>
 
                   <Items>
@@ -75,9 +75,9 @@
                         <Description DefaultValue="Open Shapes and Picture task pane." />
                       </Supertip>
                       <Icon>
-                        <bt:Image size="16" resid="MenuIcon.16" />
-                        <bt:Image size="32" resid="MenuIcon.32" />
-                        <bt:Image size="80" resid="MenuIcon.80" />
+                        <bt:Image size="16" resid="Icon.16" />
+                        <bt:Image size="32" resid="Icon.32" />
+                        <bt:Image size="80" resid="Icon.80" />
                       </Icon>
                       <Action xsi:type="ShowTaskpane">
                         <TaskpaneId>Taskpane_ShapesAndPicture</TaskpaneId>
@@ -93,9 +93,9 @@
                         <Description DefaultValue="Open Symbols task pane." />
                       </Supertip>
                       <Icon>
-                        <bt:Image size="16" resid="MenuIcon.16" />
-                        <bt:Image size="32" resid="MenuIcon.32" />
-                        <bt:Image size="80" resid="MenuIcon.80" />
+                        <bt:Image size="16" resid="Icon.16" />
+                        <bt:Image size="32" resid="Icon.32" />
+                        <bt:Image size="80" resid="Icon.80" />
                       </Icon>
                       <Action xsi:type="ShowTaskpane">
                         <TaskpaneId>Taskpane_Symbols</TaskpaneId>
@@ -111,9 +111,9 @@
                         <Description DefaultValue="Open Small Letters task pane." />
                       </Supertip>
                       <Icon>
-                        <bt:Image size="16" resid="MenuIcon.16" />
-                        <bt:Image size="32" resid="MenuIcon.32" />
-                        <bt:Image size="80" resid="MenuIcon.80" />
+                        <bt:Image size="16" resid="Icon.16" />
+                        <bt:Image size="32" resid="Icon.32" />
+                        <bt:Image size="80" resid="Icon.80" />
                       </Icon>
                       <Action xsi:type="ShowTaskpane">
                         <TaskpaneId>Taskpane_SmallLetters</TaskpaneId>
@@ -129,9 +129,9 @@
                         <Description DefaultValue="Open Big Letters task pane." />
                       </Supertip>
                       <Icon>
-                        <bt:Image size="16" resid="MenuIcon.16" />
-                        <bt:Image size="32" resid="MenuIcon.32" />
-                        <bt:Image size="80" resid="MenuIcon.80" />
+                        <bt:Image size="16" resid="Icon.16" />
+                        <bt:Image size="32" resid="Icon.32" />
+                        <bt:Image size="80" resid="Icon.80" />
                       </Icon>
                       <Action xsi:type="ShowTaskpane">
                         <TaskpaneId>Taskpane_BigLetters</TaskpaneId>
@@ -152,15 +152,9 @@
     <!-- Resource Mapping -->
     <Resources>
       <bt:Images>
-        <!-- Standard App Icons -->
         <bt:Image id="Icon.16" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/icon-16.png"/>
         <bt:Image id="Icon.32" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/icon-32.png"/>
         <bt:Image id="Icon.80" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/icon-80.png"/>
-        
-        <!-- Dropdown Menu Icons -->
-        <bt:Image id="MenuIcon.16" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/menu-icon-16.png"/>
-        <bt:Image id="MenuIcon.32" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/menu-icon-32.png"/>
-        <bt:Image id="MenuIcon.80" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/menu-icon-80.png"/>
       </bt:Images>
       
       <bt:Urls>
