@@ -1,4 +1,4 @@
-console.log("taskpane has loaded");
+alert("taskpane has loaded");
 
 Office.onReady((info) => {
   if (info.host === Office.HostType.PowerPoint) {
