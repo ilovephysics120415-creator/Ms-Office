@@ -1,5 +1,3 @@
-alert("taskpane has loaded");
-
 Office.onReady((info) => {
   if (info.host === Office.HostType.PowerPoint) {
     document.querySelectorAll(".shape-btn").forEach((btn) => {
