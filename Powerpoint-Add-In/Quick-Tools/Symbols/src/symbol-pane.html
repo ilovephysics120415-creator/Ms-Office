@@ -80,27 +80,29 @@
 
         async function insertSymbol(symbolText, targetFont) {
             await PowerPoint.run(async (context) => {
-                // 1. Get current text selection in PowerPoint
-                const textRange = context.presentation.getSelectedTextRange();
+                const shapes = context.presentation.getSelectedShapes();
+                shapes.load("items");
+                await context.sync();
+
+                if (shapes.items.length === 0) {
+                    console.warn("No text box selected.");
+                    return;
+                }
+
+                const textFrame = shapes.items[0].textFrame;
+                const textRange = textFrame.textRange;
+
+                // Load existing font size from the text frame
                 textRange.font.load(["size"]);
                 await context.sync();
 
                 const originalFontSize = textRange.font.size;
 
-                // 2. Insert symbol text replacing selection
-                const insertedRange = textRange.insertText(symbolText, PowerPoint.InsertLocation.replace);
+                // Append symbol
+                const insertedRange = textRange.insertText(symbolText + " ", PowerPoint.InsertLocation.after);
                 insertedRange.font.name = targetFont;
                 if (originalFontSize) {
                     insertedRange.font.size = originalFontSize;
-                }
-
-                // 3. Append trailing space
-                const spaceRange = insertedRange.insertText(" ", PowerPoint.InsertLocation.after);
-                spaceRange.font.name = "Arial";
-                if (originalFontSize) {
-                    spaceRange.font.size = originalFontSize;
-                } else {
-                    spaceRange.font.size = 12;
                 }
 
                 await context.sync();
@@ -111,36 +113,28 @@
 
         async function insertDegreeCelsius() {
             await PowerPoint.run(async (context) => {
-                // 1. Get current text selection in PowerPoint
-                const textRange = context.presentation.getSelectedTextRange();
+                const shapes = context.presentation.getSelectedShapes();
+                shapes.load("items");
+                await context.sync();
+
+                if (shapes.items.length === 0) {
+                    console.warn("No text box selected.");
+                    return;
+                }
+
+                const textFrame = shapes.items[0].textFrame;
+                const textRange = textFrame.textRange;
+
                 textRange.font.load(["size"]);
                 await context.sync();
 
                 const originalFontSize = textRange.font.size;
 
-                // 2. Insert degree symbol in Cambria Math
-                const degreeRange = textRange.insertText("°", PowerPoint.InsertLocation.replace);
+                // Append °C 
+                const degreeRange = textRange.insertText("°C ", PowerPoint.InsertLocation.after);
                 degreeRange.font.name = "Cambria Math";
                 if (originalFontSize) {
                     degreeRange.font.size = originalFontSize;
-                }
-
-                // 3. Insert 'C' in Arial directly after degree symbol
-                const cRange = degreeRange.insertText("C", PowerPoint.InsertLocation.after);
-                cRange.font.name = "Arial";
-                if (originalFontSize) {
-                    cRange.font.size = originalFontSize;
-                } else {
-                    cRange.font.size = 12;
-                }
-
-                // 4. Insert trailing space in Arial
-                const spaceRange = cRange.insertText(" ", PowerPoint.InsertLocation.after);
-                spaceRange.font.name = "Arial";
-                if (originalFontSize) {
-                    spaceRange.font.size = originalFontSize;
-                } else {
-                    spaceRange.font.size = 12;
                 }
 
                 await context.sync();
