@@ -15,16 +15,16 @@
   <Description DefaultValue="Custom utility tools for PowerPoint presentations." />
   
   <!-- App List & Store Icons -->
-  <IconUrl DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://localhost:3000/help"/>
+  <IconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Shapes-And-Picture/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Shapes-And-Picture/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/"/>
 
   <Hosts>
     <Host Name="Presentation" />
   </Hosts>
 
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
+    <SourceLocation DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
   </DefaultSettings>
 
   <Permissions>ReadWriteDocument</Permissions>
@@ -159,17 +159,17 @@
     <!-- Resource Mapping -->
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/icon-16.png"/>
-        <bt:Image id="Icon.32" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/icon-32.png"/>
-        <bt:Image id="Icon.80" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/icon-80.png"/>
+        <bt:Image id="Icon.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Shapes-And-Picture/assets/icon-16.png"/>
+        <bt:Image id="Icon.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Shapes-And-Picture/assets/icon-32.png"/>
+        <bt:Image id="Icon.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Shapes-And-Picture/assets/icon-80.png"/>
       </bt:Images>
       
       <bt:Urls>
-        <bt:Url id="GetStarted.LearnMore" DefaultValue="https://localhost:3000/help" />
-        <bt:Url id="Url.ShapesAndPicture" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
-        <bt:Url id="Url.Symbols" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
-        <bt:Url id="Url.SmallLetters" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
-        <bt:Url id="Url.BigLetters" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
+        <bt:Url id="GetStarted.LearnMore" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/" />
+        <bt:Url id="Url.ShapesAndPicture" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
+        <bt:Url id="Url.Symbols" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
+        <bt:Url id="Url.SmallLetters" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
+        <bt:Url id="Url.BigLetters" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
       </bt:Urls>
 
       <bt:ShortStrings>
