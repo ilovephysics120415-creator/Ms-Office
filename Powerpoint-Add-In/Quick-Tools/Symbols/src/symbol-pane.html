@@ -12,6 +12,7 @@
             padding: 12px;
             margin: 0;
             background-color: #f8f9fa;
+            user-select: none;
         }
         h3 {
             font-size: 14px;
@@ -52,42 +53,47 @@
             font-family: sans-serif;
             margin-top: 2px;
         }
+        #status {
+            margin-top: 10px;
+            font-size: 11px;
+            color: #d9534f;
+        }
     </style>
 </head>
 <body>
     <h3>Common Symbols</h3>
+    <!-- event.preventDefault() on mousedown stops PowerPoint from losing text selection focus -->
     <div class="symbol-grid">
-        <button class="symbol-btn" onclick="insertSymbol('α')">α<span class="symbol-label">alpha</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('β')">β<span class="symbol-label">beta</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('λ')">λ<span class="symbol-label">lambda</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('°')">°<span class="symbol-label">degree</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('°C')">°C<span class="symbol-label">deg C</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('\u{1D453}')">&#x1D453;<span class="symbol-label">freq (f)</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('γ')">γ<span class="symbol-label">gamma</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('θ')">θ<span class="symbol-label">theta</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('∣')">∣<span class="symbol-label">mid</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('Ω')">Ω<span class="symbol-label">ohm</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('π')">π<span class="symbol-label">pi</span></button>
-        <button class="symbol-btn" onclick="insertSymbol('ρ')">ρ<span class="symbol-label">rho</span></button>
+        <button class="symbol-btn" onmousedown="event.preventDefault()" onclick="insertSymbol('α')">α<span class="symbol-label">alpha</span></button>
+        <button class="symbol-btn" onmousedown="event.preventDefault()" onclick="insertSymbol('β')">β<span class="symbol-label">beta</span></button>
+        <button class="symbol-btn" onmousedown="event.preventDefault()" onclick="insertSymbol('λ')">λ<span class="symbol-label">lambda</span></button>
+        <button class="symbol-btn" onmousedown="event.preventDefault()" onclick="insertSymbol('°')">°<span class="symbol-label">degree</span></button>
+        <button class="symbol-btn" onmousedown="event.preventDefault()" onclick="insertSymbol('°C')">°C<span class="symbol-label">deg C</span></button>
+        <button class="symbol-btn" onmousedown="event.preventDefault()" onclick="insertSymbol('\u{1D453}')">&#x1D453;<span class="symbol-label">freq (f)</span></button>
+        <button class="symbol-btn" onmousedown="event.preventDefault()" onclick="insertSymbol('γ')">γ<span class="symbol-label">gamma</span></button>
+        <button class="symbol-btn" onmousedown="event.preventDefault()" onclick="insertSymbol('θ')">θ<span class="symbol-label">theta</span></button>
+        <button class="symbol-btn" onmousedown="event.preventDefault()" onclick="insertSymbol('∣')">∣<span class="symbol-label">mid</span></button>
+        <button class="symbol-btn" onmousedown="event.preventDefault()" onclick="insertSymbol('Ω')">Ω<span class="symbol-label">ohm</span></button>
+        <button class="symbol-btn" onmousedown="event.preventDefault()" onclick="insertSymbol('π')">π<span class="symbol-label">pi</span></button>
+        <button class="symbol-btn" onmousedown="event.preventDefault()" onclick="insertSymbol('ρ')">ρ<span class="symbol-label">rho</span></button>
     </div>
+    
+    <div id="status"></div>
 
     <script>
-        Office.onReady((info) => {
-            if (info.host === Office.HostType.PowerPoint) {
-                console.log("PowerPoint Add-in loaded successfully.");
-            }
-        });
+        Office.onReady();
 
         function insertSymbol(symbolText) {
-            // Office.CoercionType.Text inserts right at active cursor or selected text
+            const statusDiv = document.getElementById("status");
+            statusDiv.innerText = "";
+
             Office.context.document.setSelectedDataAsync(
                 symbolText,
                 { coercionType: Office.CoercionType.Text },
                 function (asyncResult) {
                     if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                        console.error("Failed to insert symbol: " + asyncResult.error.message);
-                    } else {
-                        console.log("Successfully inserted symbol: " + symbolText);
+                        statusDiv.innerText = "Please click inside a text box first.";
+                        console.error("Error: " + asyncResult.error.message);
                     }
                 }
             );
