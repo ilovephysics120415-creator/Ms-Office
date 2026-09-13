@@ -43,15 +43,15 @@
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <!-- Custom Tab Configuration -->
             <CustomTab id="QuickToolsTab">
-              <Group id="QuickToolsGroup">
-                <Label resid="Group.Label" />
+              
+              <!-- Group 1: Shapes and Picture -->
+              <Group id="Group_ShapesAndPicture">
+                <Label resid="Group1.Label" />
                 <Icon>
                   <bt:Image size="16" resid="Icon.16" />
                   <bt:Image size="32" resid="Icon.32" />
                   <bt:Image size="80" resid="Icon.80" />
                 </Icon>
-
-                <!-- Button 1: Shapes and Picture -->
                 <Control xsi:type="Button" id="Button_ShapesAndPicture">
                   <Label resid="Item1.Label" />
                   <Supertip>
@@ -68,8 +68,16 @@
                     <SourceLocation resid="Url.ShapesAndPicture" />
                   </Action>
                 </Control>
+              </Group>
 
-                <!-- Button 2: Symbols -->
+              <!-- Group 2: Symbols -->
+              <Group id="Group_Symbols">
+                <Label resid="Group2.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16" />
+                  <bt:Image size="32" resid="Icon.32" />
+                  <bt:Image size="80" resid="Icon.80" />
+                </Icon>
                 <Control xsi:type="Button" id="Button_Symbols">
                   <Label resid="Item2.Label" />
                   <Supertip>
@@ -86,8 +94,16 @@
                     <SourceLocation resid="Url.Symbols" />
                   </Action>
                 </Control>
+              </Group>
 
-                <!-- Button 3: Small Letters -->
+              <!-- Group 3: Small Letters -->
+              <Group id="Group_SmallLetters">
+                <Label resid="Group3.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16" />
+                  <bt:Image size="32" resid="Icon.32" />
+                  <bt:Image size="80" resid="Icon.80" />
+                </Icon>
                 <Control xsi:type="Button" id="Button_SmallLetters">
                   <Label resid="Item3.Label" />
                   <Supertip>
@@ -104,8 +120,16 @@
                     <SourceLocation resid="Url.SmallLetters" />
                   </Action>
                 </Control>
+              </Group>
 
-                <!-- Button 4: Big Letters -->
+              <!-- Group 4: Big Letters -->
+              <Group id="Group_BigLetters">
+                <Label resid="Group4.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16" />
+                  <bt:Image size="32" resid="Icon.32" />
+                  <bt:Image size="80" resid="Icon.80" />
+                </Icon>
                 <Control xsi:type="Button" id="Button_BigLetters">
                   <Label resid="Item4.Label" />
                   <Supertip>
@@ -122,8 +146,8 @@
                     <SourceLocation resid="Url.BigLetters" />
                   </Action>
                 </Control>
-
               </Group>
+
               <Label resid="Tab.Label" />
             </CustomTab>
           </ExtensionPoint>
@@ -151,7 +175,10 @@
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Quick Tools" />
         <bt:String id="Tab.Label" DefaultValue="Quick Tools" />
-        <bt:String id="Group.Label" DefaultValue="Tools" />
+        <bt:String id="Group1.Label" DefaultValue="Shapes" />
+        <bt:String id="Group2.Label" DefaultValue="Symbols" />
+        <bt:String id="Group3.Label" DefaultValue="Small Letters" />
+        <bt:String id="Group4.Label" DefaultValue="Big Letters" />
         <bt:String id="Item1.Label" DefaultValue="Shapes and Picture" />
         <bt:String id="Item1.Title" DefaultValue="Shapes and Picture" />
         <bt:String id="Item2.Label" DefaultValue="Symbols" />
