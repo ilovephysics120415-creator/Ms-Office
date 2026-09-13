@@ -140,19 +140,21 @@
     });
 
     /**
-     * Inserts the given text/symbol into the user's active cursor selection in PowerPoint.
+     * Inserts the given text/symbol at the cursor location and positions the cursor
+     * to the right of the inserted symbol without keeping it selected.
      * @param {string} symbol - The symbol string to insert.
      */
     function insertSymbol(symbol) {
-      Office.context.document.setSelectedDataAsync(
-        symbol,
-        { coercionType: Office.CoercionType.Text },
-        function (asyncResult) {
-          if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-            console.error("Failed to insert symbol: " + asyncResult.error.message);
-          }
+      const options = {
+        coercionType: Office.CoercionType.Text,
+        insertMode: Office.InsertMode.Insert
+      };
+
+      Office.context.document.setSelectedDataAsync(symbol, options, function (asyncResult) {
+        if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+          console.error("Failed to insert symbol: " + asyncResult.error.message);
         }
-      );
+      });
     }
   </script>
 </body>
