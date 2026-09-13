@@ -106,10 +106,10 @@
       <span class="symbol-label">Frequency (f)</span>
     </button>
 
-<button class="symbol-btn" onclick="insertSymbol(String.fromCodePoint(0x1D6C4))">
-      <span class="symbol-glyph">&#x1D6C4;</span>
-      <span class="symbol-label">Gamma</span>
-    </button>
+<button class="symbol-btn" onclick="insertSymbol('\u03B3')">
+  <span class="symbol-glyph" style="font-family: 'Cambria Math', 'Times New Roman', 'STIX Two Math', serif; font-style: italic;">&gamma;</span>
+  <span class="symbol-label">Gamma</span>
+</button>
 
     <button class="symbol-btn" onclick="insertSymbol('\u0263')">
       <span class="symbol-glyph">&theta;</span>
@@ -144,6 +144,7 @@
      * @param {string} symbol - The symbol string to insert.
      */
     function insertSymbol(symbol) {
+      const styledHtml = `<span style="font-family: 'Cambria Math', 'Times New Roman', serif; font-style: italic;">${symbol}</span>`;
       Office.context.document.setSelectedDataAsync(
         symbol,
         { coercionType: Office.CoercionType.Text },
