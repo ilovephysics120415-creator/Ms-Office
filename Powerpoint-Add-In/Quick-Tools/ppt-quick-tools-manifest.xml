@@ -2,19 +2,19 @@
 <OfficeApp 
   xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.1" 
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
   xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" 
   xsi:type="TaskPaneApp">
 
   <!-- Core Add-in Metadata -->
-  <Id>YOUR-GUID-HERE</Id>
+  <Id>e2a9b3c4-7d8e-4f1a-9b2c-3d4e5f6a7b8c</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>My Company</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Quick Tools Add-in" />
   <Description DefaultValue="Custom utility tools for PowerPoint presentations." />
   
-  <!-- App List & Store Icons (Updated based on screenshot) -->
+  <!-- App List & Store Icons -->
   <IconUrl DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://localhost:3000/help"/>
@@ -35,18 +35,16 @@
         <DesktopFormFactor>
           
           <GetStarted>
-            <Title DefaultValue="Quick Tools" />
-            <Desc DefaultValue="Open the Quick Tools menu from the ribbon tab." />
-            <LearnMoreUrl DefaultValue="https://localhost:3000/help" />
+            <Title resid="GetStarted.Title" />
+            <Description resid="GetStarted.Description" />
+            <LearnMoreUrl resid="GetStarted.LearnMore" />
           </GetStarted>
 
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
-            <!-- Custom Tab placed before standard Transitions Tab -->
-            <CustomTab id="QuickToolsTab" insertBefore="tabTransition">
-              <Label DefaultValue="Quick Tools" />
-              
+            <!-- Custom Tab Configuration -->
+            <CustomTab id="QuickToolsTab">
               <Group id="QuickToolsGroup">
-                <Label DefaultValue="Tools" />
+                <Label resid="Group.Label" />
                 <Icon>
                   <bt:Image size="16" resid="Icon.16" />
                   <bt:Image size="32" resid="Icon.32" />
@@ -55,10 +53,10 @@
 
                 <!-- Dropdown Menu -->
                 <Control xsi:type="Menu" id="QuickToolsMenu">
-                  <Label DefaultValue="Quick Tools" />
+                  <Label resid="Menu.Label" />
                   <Supertip>
-                    <Title DefaultValue="Quick Tools" />
-                    <Description DefaultValue="Select a tool to open its dedicated task pane." />
+                    <Title resid="Menu.Title" />
+                    <Description resid="Menu.Description" />
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="Icon.16" />
@@ -69,10 +67,10 @@
                   <Items>
                     <!-- Item 1: Shapes and Picture -->
                     <Item id="MenuItem_ShapesAndPicture">
-                      <Label DefaultValue="Shapes and Picture" />
+                      <Label resid="Item1.Label" />
                       <Supertip>
-                        <Title DefaultValue="Shapes and Picture" />
-                        <Description DefaultValue="Open Shapes and Picture task pane." />
+                        <Title resid="Item1.Title" />
+                        <Description resid="Item1.Description" />
                       </Supertip>
                       <Icon>
                         <bt:Image size="16" resid="Icon.16" />
@@ -87,10 +85,10 @@
 
                     <!-- Item 2: Symbols -->
                     <Item id="MenuItem_Symbols">
-                      <Label DefaultValue="Symbols" />
+                      <Label resid="Item2.Label" />
                       <Supertip>
-                        <Title DefaultValue="Symbols" />
-                        <Description DefaultValue="Open Symbols task pane." />
+                        <Title resid="Item2.Title" />
+                        <Description resid="Item2.Description" />
                       </Supertip>
                       <Icon>
                         <bt:Image size="16" resid="Icon.16" />
@@ -105,10 +103,10 @@
 
                     <!-- Item 3: Small Letters -->
                     <Item id="MenuItem_SmallLetters">
-                      <Label DefaultValue="Small Letters" />
+                      <Label resid="Item3.Label" />
                       <Supertip>
-                        <Title DefaultValue="Small Letters" />
-                        <Description DefaultValue="Open Small Letters task pane." />
+                        <Title resid="Item3.Title" />
+                        <Description resid="Item3.Description" />
                       </Supertip>
                       <Icon>
                         <bt:Image size="16" resid="Icon.16" />
@@ -123,10 +121,10 @@
 
                     <!-- Item 4: Big Letters -->
                     <Item id="MenuItem_BigLetters">
-                      <Label DefaultValue="Big Letters" />
+                      <Label resid="Item4.Label" />
                       <Supertip>
-                        <Title DefaultValue="Big Letters" />
-                        <Description DefaultValue="Open Big Letters task pane." />
+                        <Title resid="Item4.Title" />
+                        <Description resid="Item4.Description" />
                       </Supertip>
                       <Icon>
                         <bt:Image size="16" resid="Icon.16" />
@@ -142,6 +140,7 @@
 
                 </Control>
               </Group>
+              <Label resid="Tab.Label" />
             </CustomTab>
           </ExtensionPoint>
 
@@ -158,11 +157,37 @@
       </bt:Images>
       
       <bt:Urls>
+        <bt:Url id="GetStarted.LearnMore" DefaultValue="https://localhost:3000/help" />
         <bt:Url id="Url.ShapesAndPicture" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
-        <bt:Url id="Url.Symbols" DefaultValue="https://localhost:3000/Quick-Tools/Symbols/src/taskpane.html" />
-        <bt:Url id="Url.SmallLetters" DefaultValue="https://localhost:3000/Quick-Tools/SmallLetters/src/taskpane.html" />
-        <bt:Url id="Url.BigLetters" DefaultValue="https://localhost:3000/Quick-Tools/BigLetters/src/taskpane.html" />
+        <bt:Url id="Url.Symbols" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
+        <bt:Url id="Url.SmallLetters" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
+        <bt:Url id="Url.BigLetters" DefaultValue="https://localhost:3000/Quick-Tools/Shapes-And-Picture/src/taskpane.html" />
       </bt:Urls>
+
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="Quick Tools" />
+        <bt:String id="Tab.Label" DefaultValue="Quick Tools" />
+        <bt:String id="Group.Label" DefaultValue="Tools" />
+        <bt:String id="Menu.Label" DefaultValue="Quick Tools" />
+        <bt:String id="Menu.Title" DefaultValue="Quick Tools" />
+        <bt:String id="Item1.Label" DefaultValue="Shapes and Picture" />
+        <bt:String id="Item1.Title" DefaultValue="Shapes and Picture" />
+        <bt:String id="Item2.Label" DefaultValue="Symbols" />
+        <bt:String id="Item2.Title" DefaultValue="Symbols" />
+        <bt:String id="Item3.Label" DefaultValue="Small Letters" />
+        <bt:String id="Item3.Title" DefaultValue="Small Letters" />
+        <bt:String id="Item4.Label" DefaultValue="Big Letters" />
+        <bt:String id="Item4.Title" DefaultValue="Big Letters" />
+      </bt:ShortStrings>
+
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Open the Quick Tools menu from the ribbon tab." />
+        <bt:String id="Menu.Description" DefaultValue="Select a tool to open its dedicated task pane." />
+        <bt:String id="Item1.Description" DefaultValue="Open Shapes and Picture task pane." />
+        <bt:String id="Item2.Description" DefaultValue="Open Symbols task pane." />
+        <bt:String id="Item3.Description" DefaultValue="Open Small Letters task pane." />
+        <bt:String id="Item4.Description" DefaultValue="Open Big Letters task pane." />
+      </bt:LongStrings>
     </Resources>
   </VersionOverrides>
 </OfficeApp>
