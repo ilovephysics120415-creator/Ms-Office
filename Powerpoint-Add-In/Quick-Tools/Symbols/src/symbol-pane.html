@@ -101,7 +101,7 @@
       <span class="symbol-label">Degree</span>
     </button>
 
-    <!-- Updated Degree Celsius to use standalone degree sign + text C -->
+    <!-- Degree Celsius (passes null so °C inherits slide font) -->
     <button class="symbol-btn" onclick="insertSymbol('\u00B0C', null, false)">
       <span class="symbol-glyph">&deg;C</span>
       <span class="symbol-label">Degree Celsius</span>
@@ -161,7 +161,7 @@
             return;
           }
 
-          // Format the newly inserted text range using PowerPoint Host API
+          // Format selection only when explicit font properties are specified
           PowerPoint.run(async (context) => {
             const range = context.presentation.getSelectedTextRange();
             
@@ -169,13 +169,7 @@
               range.font.name = fontName;
             }
             range.font.italic = isItalic;
-// 3. Move selection cursor to the very END of the inserted character (0-length range)
-        //const cursorRange = insertedRange.getSubstring(symbol.length, 0);
-        //cursorRange.select();
 
-        // 4. Reset cursor formatting back to the text box's original font and normal style
-        //cursorRange.font.name = originalFont;
-        //cursorRange.font.italic = false;
             await context.sync();
           }).catch((err) => {
             console.warn("Could not apply font formatting: ", err);
