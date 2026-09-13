@@ -166,7 +166,7 @@ function handlePictureInsert(event) {
           return;
         }
         const slide = slides.items[0];
-        slide.shapes.addImage(base64, {
+        slide.addImage(base64, {
           left: 100,
           top: 100,
           width: 300,
