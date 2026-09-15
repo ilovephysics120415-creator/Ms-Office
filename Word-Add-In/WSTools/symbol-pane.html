@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Symbols Pane</title>
+    <!-- Office.js SDK -->
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 12px;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        h3 {
+            font-size: 14px;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 6px;
+        }
+        .symbol-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .symbol-btn {
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            padding: 10px 4px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.15s ease;
+            font-family: 'Cambria Math', 'Segoe UI Symbol', sans-serif;
+        }
+        .symbol-btn:hover {
+            background-color: #e9ecef;
+            border-color: #0078d4;
+            color: #0078d4;
+        }
+        .symbol-btn:active {
+            background-color: #c8e1ff;
+        }
+        .symbol-label {
+            display: block;
+            font-size: 10px;
+            color: #666;
+            font-family: sans-serif;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Common Symbols</h3>
+    <div class="symbol-grid">
+        <button class="symbol-btn" onclick="insertSymbol('α', 'Cambria Math')">α<span class="symbol-label">alpha</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('β', 'Cambria Math')">β<span class="symbol-label">beta</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('λ', 'Cambria Math')">λ<span class="symbol-label">lambda</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('°', 'Cambria Math')">°<span class="symbol-label">degree</span></button>
+        <button class="symbol-btn" onclick="insertDegreeCelsius()">°C<span class="symbol-label">deg C</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('\u{1D453}', 'Cambria Math')">&#x1D453;<span class="symbol-label">freq (f)</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('γ', 'Cambria Math')">γ<span class="symbol-label">gamma</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('θ', 'Cambria Math')">θ<span class="symbol-label">theta</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('∣', 'Cambria Math')">∣<span class="symbol-label">mid</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('Ω', 'Cambria Math')">Ω<span class="symbol-label">ohm</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('π', 'Cambria Math')">π<span class="symbol-label">pi</span></button>
+        <button class="symbol-btn" onclick="insertSymbol('ρ', 'Cambria Math')">ρ<span class="symbol-label">rho</span></button>
+    </div>
+
+    <script>
+        Office.onReady((info) => {
+            if (info.host === Office.HostType.Word) {
+                console.log("Word Add-in loaded successfully.");
+            }
+        });
+
+        async function insertSymbol(symbolText, targetFont) {
+            await Word.run(async (context) => {
+                // 1. Get current selection and read original font details
+                const selection = context.document.getSelection();
+                selection.font.load(["name", "size"]);
+                await context.sync();
+
+                const originalFontName = selection.font.name;
+                const originalFontSize = selection.font.size;
+
+                // 2. Insert symbol text
+                const insertedRange = selection.insertText(symbolText, Word.InsertLocation.replace);
+
+                // 3. Set custom font for inserted symbol
+                insertedRange.font.name = targetFont;
+                if (originalFontSize) {
+                    insertedRange.font.size = originalFontSize;
+                }
+
+                // 4. Move selection cursor to the end
+                insertedRange.select("End");
+                await context.sync();
+
+                // 5. Insert a space with font Arial, size 12
+                const spaceRange = insertedRange.insertText(" ", Word.InsertLocation.after);
+                spaceRange.font.name = "Arial";
+                spaceRange.font.size = 12;
+                spaceRange.select("End");
+
+                await context.sync();
+            }).catch(function (error) {
+                console.error("Error inserting symbol: " + error);
+            });
+        }
+
+        async function insertDegreeCelsius() {
+            await Word.run(async (context) => {
+                // 1. Get current selection and read original font details
+                const selection = context.document.getSelection();
+                selection.font.load(["name", "size"]);
+                await context.sync();
+
+                const originalFontSize = selection.font.size;
+
+                // 2. Insert degree symbol in Cambria Math
+                const degreeRange = selection.insertText("°", Word.InsertLocation.replace);
+                degreeRange.font.name = "Cambria Math";
+                if (originalFontSize) {
+                    degreeRange.font.size = originalFontSize;
+                }
+
+                // 3. Insert 'C' in Arial size 12 directly after degree symbol
+                const cRange = degreeRange.insertText("C", Word.InsertLocation.after);
+                cRange.font.name = "Arial";
+                cRange.font.size = 12;
+
+                // 4. Move cursor to the end of 'C'
+                cRange.select("End");
+                await context.sync();
+
+                // 5. Insert trailing space in Arial size 12
+                const spaceRange = cRange.insertText(" ", Word.InsertLocation.after);
+                spaceRange.font.name = "Arial";
+                spaceRange.font.size = 12;
+                spaceRange.select("End");
+
+                await context.sync();
+            }).catch(function (error) {
+                console.error("Error inserting Degree Celsius: " + error);
+            });
+        }
+    </script>
+</body>
+</html>

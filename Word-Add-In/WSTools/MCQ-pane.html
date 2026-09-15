@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MCQ Pane</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+  <style>
+    body { 
+      background-color: #f8f9fa; 
+      color: #333333; 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+      padding: 16px; 
+    }
+
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .group-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #5f6368;
+      margin-bottom: 2px;
+    }
+
+    .group-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .btn-square { 
+      width: 64px;
+      height: 64px;
+      background: #ffffff; 
+      color: #333333; 
+      border: 1.5px solid #d0d5dd; 
+      border-radius: 6px; 
+      cursor: pointer; 
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      transition: all 0.15s ease-in-out;
+    }
+
+    .btn-square .btn-symbol {
+      font-size: 16px;
+      font-weight: 600;
+      font-style: italic;
+      color: #1a73e8;
+      line-height: 1;
+    }
+
+    .btn-square .btn-label {
+      font-size: 10px;
+      font-weight: 500;
+      color: #666666;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .btn-square:hover {
+      background: #f4f8ff;
+      border-color: #1a73e8;
+    }
+
+    .btn-square:active { 
+      background: #e8f0fe;
+      transform: scale(0.97); 
+    }
+
+    #status {
+      margin-top: 16px;
+      padding: 10px;
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #555555;
+      white-space: pre-wrap;
+      min-height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="btn-container">
+    <!-- SHORT OPTION GROUP -->
+    <div class="btn-group">
+      <div class="group-title">Short Option</div>
+      <div class="group-row">
+
+        <button id="btn-mcq-qn-short-option" class="btn-square" title="Qn Short Option">
+          <span class="btn-symbol">Qn</span>
+          <span class="btn-label">Short Option</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-short-option" class="btn-square" title="Qn Pic Short Option">
+          <span class="btn-symbol">Qn Pic</span>
+          <span class="btn-label">Short Option</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-qn-short-option" class="btn-square" title="Qn Pic Qn Short Option">
+          <span class="btn-symbol">Qn Pic Qn</span>
+          <span class="btn-label">Short Option</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- MEDIUM OPTION GROUP -->
+    <div class="btn-group">
+      <div class="group-title">Medium Option</div>
+      <div class="group-row">
+
+        <button id="btn-mcq-qn-medium-option" class="btn-square" title="Qn Medium Option">
+          <span class="btn-symbol">Qn</span>
+          <span class="btn-label">Medium Option</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-medium-option" class="btn-square" title="Qn Pic Medium Option">
+          <span class="btn-symbol">Qn Pic</span>
+          <span class="btn-label">Medium Option</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-qn-medium-option" class="btn-square" title="Qn Pic Qn Medium Option">
+          <span class="btn-symbol">Qn Pic Qn</span>
+          <span class="btn-label">Medium Option</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- LONG OPTION GROUP -->
+    <div class="btn-group">
+      <div class="group-title">Long Option</div>
+      <div class="group-row">
+
+        <button id="btn-mcq-qn-long-option" class="btn-square" title="Qn Long Option">
+          <span class="btn-symbol">Qn</span>
+          <span class="btn-label">Long Option</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-long-option" class="btn-square" title="Qn Pic Long Option">
+          <span class="btn-symbol">Qn Pic</span>
+          <span class="btn-label">Long Option</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-qn-long-option" class="btn-square" title="Qn Pic Qn Long Option">
+          <span class="btn-symbol">Qn Pic Qn</span>
+          <span class="btn-label">Long Option</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- TABLE TWO OPTION GROUP -->
+    <div class="btn-group">
+      <div class="group-title">Table Two Option</div>
+      <div class="group-row">
+
+        <button id="btn-mcq-qn-table-two-option" class="btn-square" title="Qn Table Two Option">
+          <span class="btn-symbol">Qn</span>
+          <span class="btn-label">Tbl 2 Option</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-table-two-option" class="btn-square" title="Qn Pic Table Two Option">
+          <span class="btn-symbol">Qn Pic</span>
+          <span class="btn-label">Tbl 2 Option</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-qn-table-two-option" class="btn-square" title="Qn Pic Qn Table Two Option">
+          <span class="btn-symbol">Qn Pic Qn</span>
+          <span class="btn-label">Tbl 2 Option</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- TABLE THREE OPTION GROUP -->
+    <div class="btn-group">
+      <div class="group-title">Table Three Option</div>
+      <div class="group-row">
+
+        <button id="btn-mcq-qn-table-three-option" class="btn-square" title="Qn Table Three Option">
+          <span class="btn-symbol">Qn</span>
+          <span class="btn-label">Tbl 3 Option</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-table-three-option" class="btn-square" title="Qn Pic Table Three Option">
+          <span class="btn-symbol">Qn Pic</span>
+          <span class="btn-label">Tbl 3 Option</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-qn-table-three-option" class="btn-square" title="Qn Pic Qn Table Three Option">
+          <span class="btn-symbol">Qn Pic Qn</span>
+          <span class="btn-label">Tbl 3 Option</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- MULTI SHORT OPTION GROUP -->
+    <div class="btn-group">
+      <div class="group-title">Multi Short Option</div>
+      <div class="group-row">
+
+        <button id="btn-mcq-qn-multi-short-option" class="btn-square" title="Qn Multi Short Option">
+          <span class="btn-symbol">Qn</span>
+          <span class="btn-label">Multi Short</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-multi-short-option" class="btn-square" title="Qn Pic Multi Short Option">
+          <span class="btn-symbol">Qn Pic</span>
+          <span class="btn-label">Multi Short</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-qn-multi-short-option" class="btn-square" title="Qn Pic Qn Multi Short Option">
+          <span class="btn-symbol">Qn Pic Qn</span>
+          <span class="btn-label">Multi Short</span>
+        </button>
+
+      </div>
+    </div>
+  
+    <!-- MULTI MEDIUM OPTION GROUP -->
+    <div class="btn-group">
+      <div class="group-title">Multi Medium Option</div>
+      <div class="group-row">
+
+        <button id="btn-mcq-qn-multi-medium-option" class="btn-square" title="Qn Multi Medium Option">
+          <span class="btn-symbol">Qn</span>
+          <span class="btn-label">Multi Medium</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-multi-medium-option" class="btn-square" title="Qn Pic Multi Medium Option">
+          <span class="btn-symbol">Qn Pic</span>
+          <span class="btn-label">Multi Medium</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-qn-multi-medium-option" class="btn-square" title="Qn Pic Qn Multi Medium Option">
+          <span class="btn-symbol">Qn Pic Qn</span>
+          <span class="btn-label">Multi Medium</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- MULTI LONG OPTION GROUP -->
+    <div class="btn-group">
+      <div class="group-title">Multi Long Option</div>
+      <div class="group-row">
+
+        <button id="btn-mcq-qn-multi-long-option" class="btn-square" title="Qn Multi Long Option">
+          <span class="btn-symbol">Qn</span>
+          <span class="btn-label">Multi Long</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-multi-long-option" class="btn-square" title="Qn Pic Multi Long Option">
+          <span class="btn-symbol">Qn Pic</span>
+          <span class="btn-label">Multi Long</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-qn-multi-long-option" class="btn-square" title="Qn Pic Qn Multi Long Option">
+          <span class="btn-symbol">Qn Pic Qn</span>
+          <span class="btn-label">Multi Long</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- PICTURE OPTION GROUP -->
+    <div class="btn-group">
+      <div class="group-title">Picture Option</div>
+      <div class="group-row">
+
+        <button id="btn-mcq-qn-pic-option" class="btn-square" title="Qn Pic Option">
+          <span class="btn-symbol">Qn Pic</span>
+          <span class="btn-label">Pic Option</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic-qn-option" class="btn-square" title="Qn Pic Qn Option">
+          <span class="btn-symbol">Qn Pic Qn</span>
+          <span class="btn-label">Pic Option</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- QUESTIONS GROUP -->
+    <div class="btn-group">
+      <div class="group-title">Questions</div>
+      <div class="group-row">
+        <button id="btn-mcq-qn-no" class="btn-square" title="Question Number">
+          <span class="btn-symbol">Qn No</span>
+          <span class="btn-label">Insert</span>
+        </button>
+
+        <button id="btn-mcq-qn-pic" class="btn-square" title="Question Picture">
+          <span class="btn-symbol">Qn Pic</span>
+          <span class="btn-label">Insert</span>
+        </button>
+
+        <button id="btn-mcq-short-option" class="btn-square" title="Short Option">
+          <span class="btn-symbol">Short</span>
+          <span class="btn-label">Option</span>
+        </button>
+
+        <button id="btn-mcq-medium-option" class="btn-square" title="Medium Option">
+          <span class="btn-symbol">Medium</span>
+          <span class="btn-label">Option</span>
+        </button>
+
+        <button id="btn-mcq-long-option" class="btn-square" title="Long Option">
+          <span class="btn-symbol">Long</span>
+          <span class="btn-label">Option</span>
+        </button>
+
+        <button id="btn-mcq-table-two-option" class="btn-square" title="Table Two Option">
+          <span class="btn-symbol">Tbl 2</span>
+          <span class="btn-label">Option</span>
+        </button>
+
+        <button id="btn-mcq-table-three-option" class="btn-square" title="Table Three Option">
+          <span class="btn-symbol">Tbl 3</span>
+          <span class="btn-label">Option</span>
+        </button>
+
+        <button id="btn-mcq-multi-option" class="btn-square" title="Multi Option">
+          <span class="btn-symbol">Multi</span>
+          <span class="btn-label">Option</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- OTHERS GROUP -->
+    <div class="btn-group">
+      <div class="group-title">Others</div>
+      <div class="group-row">
+        <button id="btn-merge-tables" class="btn-square" title="Merge All Tables">
+          <span class="btn-symbol">Merge All</span>
+          <span class="btn-label">Tables</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- TEST RUN GROUP -->
+    <div class="btn-group">
+      <div class="group-title">Test Run</div>
+      <div class="group-row">
+        <button id="btn-test" class="btn-square" title="Test Run">
+          <span class="btn-symbol">Test</span>
+          <span class="btn-label">Run</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="status">Ready.</div>
+
+  <!-- Shared Initialization Scripts -->
+  <script src="MCQ_Default_Format.js"></script>
+
+  <script src="MCQ_Qn_No.js"></script>
+  <script src="MCQ_Qn_Pic.js"></script>
+  <script src="MCQ_Short_Option.js"></script>
+  <script src="MCQ_Medium_Option.js"></script>
+  <script src="MCQ_Long_Option.js"></script>
+  <script src="MCQ_Table_Two_Option.js"></script>
+  <script src="MCQ_Table_Three_Option.js"></script>
+  <script src="MCQ_Multi_Option.js"></script>
+  <script src="MCQ_Qn_Pic.js"></script>
+
+  <script src="MCQ_Short_Option_Tbl.js"></script>
+  <script src="MCQ_Long_Option_Tbl.js"></script>
+  <script src="MCQ_Medium_Option_Tbl.js"></script>
+  <script src="MCQ_Table_Two_Option_Tbl.js"></script>
+  <script src="MCQ_Table_Three_Option_Tbl.js"></script>
+  <script src="MCQ_Multi_Short_Option_Tbl.js"></script>
+  <script src="MCQ_Multi_Medium_Option_Tbl.js"></script>
+  <script src="MCQ_Multi_Long_Option_Tbl.js"></script>
+  <script src="MCQ_Pic_Option.js"></script>
+
+  <script src="MergeAllTable.js"></script>
+  <script src="test.js"></script>
+
+</body>
+</html>

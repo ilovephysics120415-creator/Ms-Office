@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp 
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" 
+  xsi:type="TaskPaneApp">
+
+  <Id>d3b07384-d113-40a2-a719-0268f7002026</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Custom Addin Provider</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Math &amp; Symbols Tool"/>
+  <Description DefaultValue="Custom task panes for insertable symbols and math formatting."/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-symbol-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-symbol-80.png"/>
+  <SupportUrl DefaultValue="https://localhost:3000/help.html"/>
+  
+  <AppDomains>
+    <AppDomain>https://localhost:3000</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Document"/>
+  </Hosts>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:3000/symbol-pane.html"/>
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <CustomTab id="MathToolsTab">
+              <Group id="MathToolsGroup">
+                <Label resid="GroupMathTools.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.Symbol.16"/>
+                  <bt:Image size="32" resid="Icon.Symbol.32"/>
+                  <bt:Image size="80" resid="Icon.Symbol.80"/>
+                </Icon>
+
+                <Control xsi:type="Button" id="BtnSymbol">
+                  <Label resid="BtnSymbol.Label"/>
+                  <Supertip>
+                    <Title resid="BtnSymbol.Label"/>
+                    <Description resid="BtnSymbol.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Symbol.16"/>
+                    <bt:Image size="32" resid="Icon.Symbol.32"/>
+                    <bt:Image size="80" resid="Icon.Symbol.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>MainPane</TaskpaneId>
+                    <SourceLocation resid="TaskpaneSymbol.Url"/>
+                    <Title resid="TaskpaneSymbol.Title"/>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="BtnOperators">
+                  <Label resid="BtnOperators.Label"/>
+                  <Supertip>
+                    <Title resid="BtnOperators.Label"/>
+                    <Description resid="BtnOperators.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Operators.16"/>
+                    <bt:Image size="32" resid="Icon.Operators.32"/>
+                    <bt:Image size="80" resid="Icon.Operators.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>MainPane</TaskpaneId>
+                    <SourceLocation resid="TaskpaneOperators.Url"/>
+                    <Title resid="TaskpaneOperators.Title"/>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="BtnSmallLetters">
+                  <Label resid="BtnSmallLetters.Label"/>
+                  <Supertip>
+                    <Title resid="BtnSmallLetters.Label"/>
+                    <Description resid="BtnSmallLetters.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.SmallLetters.16"/>
+                    <bt:Image size="32" resid="Icon.SmallLetters.32"/>
+                    <bt:Image size="80" resid="Icon.SmallLetters.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>MainPane</TaskpaneId>
+                    <SourceLocation resid="TaskpaneSmallLetters.Url"/>
+                    <Title resid="TaskpaneSmallLetters.Title"/>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="BtnBigLetters">
+                  <Label resid="BtnBigLetters.Label"/>
+                  <Supertip>
+                    <Title resid="BtnBigLetters.Label"/>
+                    <Description resid="BtnBigLetters.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigLetters.16"/>
+                    <bt:Image size="32" resid="Icon.BigLetters.32"/>
+                    <bt:Image size="80" resid="Icon.BigLetters.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>MainPane</TaskpaneId>
+                    <SourceLocation resid="TaskpaneBigLetters.Url"/>
+                    <Title resid="TaskpaneBigLetters.Title"/>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="BtnMCQ">
+                  <Label resid="BtnMCQ.Label"/>
+                  <Supertip>
+                    <Title resid="BtnMCQ.Label"/>
+                    <Description resid="BtnMCQ.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.MCQ.16"/>
+                    <bt:Image size="32" resid="Icon.MCQ.32"/>
+                    <bt:Image size="80" resid="Icon.MCQ.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>MainPane</TaskpaneId>
+                    <SourceLocation resid="TaskpaneMCQ.Url"/>
+                    <Title resid="TaskpaneMCQ.Title"/>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="BtnSQ">
+                  <Label resid="BtnSQ.Label"/>
+                  <Supertip>
+                    <Title resid="BtnSQ.Label"/>
+                    <Description resid="BtnSQ.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.SQ.16"/>
+                    <bt:Image size="32" resid="Icon.SQ.32"/>
+                    <bt:Image size="80" resid="Icon.SQ.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>MainPane</TaskpaneId>
+                    <SourceLocation resid="TaskpaneSQ.Url"/>
+                    <Title resid="TaskpaneSQ.Title"/>
+                  </Action>
+                </Control>
+
+              </Group>
+              <Label resid="TabMathTools.Label"/>
+            </CustomTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.Symbol.16" DefaultValue="https://localhost:3000/assets/icon-symbol-16.png"/>
+        <bt:Image id="Icon.Symbol.32" DefaultValue="https://localhost:3000/assets/icon-symbol-32.png"/>
+        <bt:Image id="Icon.Symbol.80" DefaultValue="https://localhost:3000/assets/icon-symbol-80.png"/>
+        <bt:Image id="Icon.Operators.16" DefaultValue="https://localhost:3000/assets/icon-operators-16.png"/>
+        <bt:Image id="Icon.Operators.32" DefaultValue="https://localhost:3000/assets/icon-operators-32.png"/>
+        <bt:Image id="Icon.Operators.80" DefaultValue="https://localhost:3000/assets/icon-operators-80.png"/>
+        <bt:Image id="Icon.SmallLetters.16" DefaultValue="https://localhost:3000/assets/icon-smallletters-16.png"/>
+        <bt:Image id="Icon.SmallLetters.32" DefaultValue="https://localhost:3000/assets/icon-smallletters-32.png"/>
+        <bt:Image id="Icon.SmallLetters.80" DefaultValue="https://localhost:3000/assets/icon-smallletters-80.png"/>
+        <bt:Image id="Icon.BigLetters.16" DefaultValue="https://localhost:3000/assets/icon-bigletters-16.png"/>
+        <bt:Image id="Icon.BigLetters.32" DefaultValue="https://localhost:3000/assets/icon-bigletters-32.png"/>
+        <bt:Image id="Icon.BigLetters.80" DefaultValue="https://localhost:3000/assets/icon-bigletters-80.png"/>
+        <bt:Image id="Icon.MCQ.16" DefaultValue="https://localhost:3000/assets/icon-symbol-16.png"/>
+        <bt:Image id="Icon.MCQ.32" DefaultValue="https://localhost:3000/assets/icon-symbol-32.png"/>
+        <bt:Image id="Icon.MCQ.80" DefaultValue="https://localhost:3000/assets/icon-symbol-80.png"/>
+        <bt:Image id="Icon.SQ.16" DefaultValue="https://localhost:3000/assets/icon-symbol-16.png"/>
+        <bt:Image id="Icon.SQ.32" DefaultValue="https://localhost:3000/assets/icon-symbol-32.png"/>
+        <bt:Image id="Icon.SQ.80" DefaultValue="https://localhost:3000/assets/icon-symbol-80.png"/>
+      </bt:Images>
+      
+      <bt:Urls>
+        <bt:Url id="TaskpaneSymbol.Url" DefaultValue="https://localhost:3000/symbol-pane.html"/>
+        <bt:Url id="TaskpaneOperators.Url" DefaultValue="https://localhost:3000/operators-pane.html"/>
+        <bt:Url id="TaskpaneSmallLetters.Url" DefaultValue="https://localhost:3000/small-letters-pane.html"/>
+        <bt:Url id="TaskpaneBigLetters.Url" DefaultValue="https://localhost:3000/big-letters-pane.html"/>
+        <bt:Url id="TaskpaneMCQ.Url" DefaultValue="https://localhost:3000/mcq-pane.html"/>
+        <bt:Url id="TaskpaneSQ.Url" DefaultValue="https://localhost:3000/sq-pane.html"/>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://localhost:3000"/>
+      </bt:Urls>
+      
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="Math Tools Loaded"/>
+        <bt:String id="TabMathTools.Label" DefaultValue="WS Tools"/>
+        <bt:String id="GroupMathTools.Label" DefaultValue="Symbol Panels"/>
+        <bt:String id="BtnSymbol.Label" DefaultValue="Symbol"/>
+        <bt:String id="BtnOperators.Label" DefaultValue="Operators"/>
+        <bt:String id="BtnSmallLetters.Label" DefaultValue="Small Letters"/>
+        <bt:String id="BtnBigLetters.Label" DefaultValue="Big Letters"/>
+        <bt:String id="BtnMCQ.Label" DefaultValue="MCQ"/>
+        <bt:String id="BtnSQ.Label" DefaultValue="SQ"/>
+        <bt:String id="GetStarted.Description" DefaultValue="Click the WS Tools tab to open custom panels."/>
+        
+        <!-- Individual Taskpane Header Titles -->
+        <bt:String id="TaskpaneSymbol.Title" DefaultValue="WS Tool"/>
+        <bt:String id="TaskpaneOperators.Title" DefaultValue="WS Tool"/>
+        <bt:String id="TaskpaneSmallLetters.Title" DefaultValue="WS Tool"/>
+        <bt:String id="TaskpaneBigLetters.Title" DefaultValue="WS Tool"/>
+        <bt:String id="TaskpaneMCQ.Title" DefaultValue="WS Tool"/>
+        <bt:String id="TaskpaneSQ.Title" DefaultValue="WS Tool"/>
+      </bt:ShortStrings>
+      
+      <bt:LongStrings>
+        <bt:String id="BtnSymbol.Tooltip" DefaultValue="Opens the commonly used symbols pane."/>
+        <bt:String id="BtnOperators.Tooltip" DefaultValue="Opens the math operators pane."/>
+        <bt:String id="BtnSmallLetters.Tooltip" DefaultValue="Opens small math letters pane."/>
+        <bt:String id="BtnBigLetters.Tooltip" DefaultValue="Opens big math letters pane."/>
+        <bt:String id="BtnMCQ.Tooltip" DefaultValue="Opens the MCQ task pane."/>
+        <bt:String id="BtnSQ.Tooltip" DefaultValue="Opens the SQ task pane."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

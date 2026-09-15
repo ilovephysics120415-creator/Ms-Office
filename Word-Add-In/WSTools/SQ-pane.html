@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>SQ Taskpane</title>
+    <!-- Office.js SDK -->
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            padding: 16px 12px;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        
+        .section-header {
+            font-size: 11px;
+            font-weight: 700;
+            color: #5f6368;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .group-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .sq-btn {
+            width: 64px;
+            height: 64px;
+            background-color: #ffffff;
+            border: 1.5px solid #d0d5dd;
+            border-radius: 6px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            cursor: pointer;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            transition: all 0.15s ease-in-out;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .sq-btn:hover {
+            border-color: #1a73e8;
+            background-color: #f4f8ff;
+        }
+
+        .sq-btn:active {
+            transform: scale(0.97);
+            background-color: #e8f0fe;
+        }
+
+        .sq-btn .title {
+            font-size: 16px;
+            font-weight: 600;
+            font-style: italic;
+            color: #1a73e8;
+            line-height: 1;
+            text-align: center;
+        }
+
+        /*.sq-btn .subtitle {
+            font-size: 10px;
+            font-weight: 500;
+            color: #666666;
+            line-height: 1;
+            text-align: center;
+        }*/
+
+    </style>
+</head>
+<body>
+    <div class="section-header">QUESTION</div>
+    
+    <div class="group-row">
+
+        <button id="btn-sq-qn-1" class="sq-btn" title="Qn 1">
+            <span class="title">Q1</span>
+        </button>
+
+        <button id="btn-sq-qn-1a" class="sq-btn" title="Qn 1a">
+            <span class="title">Q1a</span>
+        </button>
+
+        <button id="btn-sq-qn-1ai" class="sq-btn" title="Qn 1ai">
+            <span class="title">Q1ai</span>
+        </button>
+
+        <button id="btn-sq-qn-1ai1" class="sq-btn" title="Qn 1ai1">
+            <span class="title">Q1ai1</span>
+        </button>
+
+    </div>
+
+    <div class = "section-header">LINED ANSWERS</div>
+    <div class="group-row">
+        
+        <button id="btn-sq-ans-1" class="sq-btn" title="Ans 1">
+            <span class="title">Ans 1</span>
+        </button>
+
+        <button id="btn-sq-ans-1a" class="sq-btn" title="Ans 1a">
+            <span class="title">Ans 1a</span>
+        </button>
+
+        <button id="btn-sq-ans-1ai" class="sq-btn" title="Ans 1ai">
+            <span class="title">Ans 1ai</span>
+        </button>
+
+        <button id="btn-sq-ans-1ai1" class="sq-btn" title="Ans 1ai1">
+            <span class="title">Ans 1ai1</span>
+        </button>
+
+    </div>
+
+    <div class = "section-header">LINED ANSWERS MARKS</div>
+    <div class="group-row">
+        
+        <button id="btn-sq-ans-1-marks" class="sq-btn" title="Ans 1 Marks">
+            <span class="title">Ans 1 Marks</span>
+        </button>
+
+        <button id="btn-sq-ans-1a-marks" class="sq-btn" title="Ans 1a Marks">
+            <span class="title">Ans 1a Marks</span>
+        </button>
+
+        <button id="btn-sq-ans-1ai-marks" class="sq-btn" title="Ans 1ai Marks">
+            <span class="title">Ans 1ai Marks</span>
+        </button>
+
+        <button id="btn-sq-ans-1ai1-marks" class="sq-btn" title="Ans 1ai1 Marks">
+            <span class="title">Ans 1ai1 Marks</span>
+        </button>
+
+    </div>
+
+    <div class = "section-header">LINED ANSWERS MARKS</div>
+    <div class="group-row">
+        
+        <button id="btn-sq-qn-1-marks" class="sq-btn" title="Qn 1 Marks">
+            <span class="title">Qn 1 Marks</span>
+        </button>
+
+        <button id="btn-sq-qn-1a-marks" class="sq-btn" title="Qn 1a Marks">
+            <span class="title">Qn 1a Marks</span>
+        </button>
+
+        <button id="btn-sq-qn-1ai-marks" class="sq-btn" title="Qn 1ai Marks">
+            <span class="title">Qn 1ai Marks</span>
+        </button>
+
+        <button id="btn-sq-qn-1ai1-marks" class="sq-btn" title="Qn 1ai1 Marks">
+            <span class="title">Qn 1ai1 Marks</span>
+        </button>
+
+    </div>
+
+    <div class = "section-header">CAL ANS</div>
+    <div class="group-row">
+        
+        <button id="btn-cal-ans" class="sq-btn" title="Cal Ans">
+            <span class="title">Cal Ans</span>
+        </button>
+
+        <button id="btn-cal-ans-unit" class="sq-btn" title="Cal Ans Unit">
+            <span class="title">Cal Ans Unit</span>
+        </button>
+
+    </div>
+
+    <div class = "section-header">FILL IN BLANKS</div>
+    <div class ="group-row">
+
+        <button class="sq-btn" data-dots="8" title="Insert 8 Dots">
+            <span class="title">I</span>
+            <span class="subtitle">8 Dots</span>
+        </button>
+
+        <button class="sq-btn" data-dots="12" title="Insert 12 Dots">
+            <span class="title">II</span>
+            <span class="subtitle">12 Dots</span>
+        </button>
+
+        <button class="sq-btn" data-dots="16" title="Insert 16 Dots">
+            <span class="title">III</span>
+            <span class="subtitle">16 Dots</span>
+        </button>
+
+        <button class="sq-btn" data-dots="20" title="Insert 20 Dots">
+            <span class="title">IV</span>
+            <span class="subtitle">20 Dots</span>
+        </button>
+
+    </div>
+    
+    <!-- OTHERS GROUP -->
+    <div class = "section-header">OTHERS</div>
+    <div class="group-row">
+
+        <button id="btn-merge-tables" class="sq-btn" title="Merge All Tables">
+          <span class="title">Merge All</span>
+        </button>
+
+        <button id="btn-sum-bracket" class="sq-btn" title="Sum Marks">
+          <span class="title">Sum Marks</span>
+        </button>
+
+    </div>
+
+    <!-- SQ Custom Scripts -->
+    <script src="SQ_Default_Format.js" type="text/javascript"></script>
+    <script src="SQ_Qn.js" type="text/javascript"></script>
+    <script src="SQ_Lined_Ans.js" type="text/javascript"></script>
+    <script src="SQ_Lined_Ans_Marks.js" type="text/javascript"></script>
+    <script src="SQ_Qn_Marks.js" type="text/javascript"></script>
+    <script src="SQ_Cal_Ans.js" type="text/javascript"></script>
+    <script src="SQ_Fill_In_The_Blanks.js" type="text/javascript"></script>
+    <script src="MergeAllTable.js"></script>
+    <script src="Sum_Bracketed_Numbers.js"></script>
+
+</body>
+</html>
