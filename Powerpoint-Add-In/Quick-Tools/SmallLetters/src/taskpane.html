@@ -17,13 +17,44 @@
       color: #333;
     }
 
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
     h3 {
       font-size: 14px;
-      margin-top: 0;
-      margin-bottom: 12px;
+      margin: 0;
       color: #555;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      background-color: #6c6c70;
+      color: #ffffff;
+      border-radius: 6px;
+      font-family: "Georgia", serif;
+      font-style: italic;
+      font-weight: bold;
+      font-size: 13px;
+      user-select: none;
+    }
+
+    /* Subtitle / Description text placed between header and buttons */
+    .section-description {
+      font-size: 12px;
+      color: #666666;
+      margin: 0 0 12px 0;
+      line-height: 1.4;
     }
 
     .symbol-grid {
@@ -74,8 +105,18 @@
 </head>
 <body>
 
-  <h3>Small mathematical letters</h3>
+  <!-- Header Row with Title and Info Icon -->
+  <div class="header-container">
+    <h3>Small Mathematical Letters</h3>
+    <span class="info-icon" title="Click a button to insert the symbol into your active selection">i</span>
+  </div>
 
+  <!-- Text inserted between header and buttons -->
+  <p class="section-description">
+    Click any letter below to insert it into your slide at the current selection point using Cambria Math font.
+  </p>
+
+  <!-- Button Grid -->
   <div class="symbol-grid">
     <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D44E}')">
       <span class="symbol-glyph">&#x1D44E;</span>
@@ -104,6 +145,10 @@
     <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D454}')">
       <span class="symbol-glyph">&#x1D454;</span>
       <span class="symbol-label">Letter (g)</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D455}')">
+      <span class="symbol-glyph">&#x1D455;</span>
+      <span class="symbol-label">Letter (h)</span>
     </button>
     <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D456}')">
       <span class="symbol-glyph">&#x1D456;</span>
@@ -186,35 +231,24 @@
       }
     });
 
-    /**
-     * Inserts the letter with Cambria Math font into active PowerPoint selection,
-     * maintaining current font size, then reverts font back for subsequent typing.
-     */
     async function insertFormattedLetter(letter) {
       try {
         await PowerPoint.run(async (context) => {
-          // Get selection range in text box
           const selection = context.presentation.getSelectedTextRange();
           selection.load("font/name, font/size");
           await context.sync();
 
-          // Store current slide text box font name
           const originalFontName = selection.font.name || "Calibri";
 
-          // Insert symbol into selection
           const insertedRange = selection.insertText(letter, PowerPoint.InsertLocation.replace);
-          
-          // Apply Cambria Math font specifically to inserted letter
           insertedRange.font.name = "Cambria Math";
           await context.sync();
 
-          // Insert empty space/cursor after letter and revert font name to original slide font
           const trailingRange = insertedRange.insertText("", PowerPoint.InsertLocation.after);
           trailingRange.font.name = originalFontName;
           await context.sync();
         });
       } catch (error) {
-        // Fallback for basic Office JS insertion if PowerPoint API requirement set isn't fully supported
         Office.context.document.setSelectedDataAsync(
           letter,
           { coercionType: Office.CoercionType.Text },
