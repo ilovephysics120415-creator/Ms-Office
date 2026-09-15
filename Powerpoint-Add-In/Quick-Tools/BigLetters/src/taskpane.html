@@ -2,47 +2,257 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>Slide Toolkit</title>
-  <link rel="stylesheet" href="taskpane.css" />
-  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <title>Small Letters Pane</title>
+
+  <!-- Office JavaScript API -->
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 12px;
+      margin: 0;
+      background-color: #f5f5f7;
+      color: #333;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    h3 {
+      font-size: 14px;
+      margin: 0;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      background-color: #6c6c70;
+      color: #ffffff;
+      border-radius: 6px;
+      font-family: "Georgia", serif;
+      font-style: italic;
+      font-weight: bold;
+      font-size: 13px;
+      user-select: none;
+    }
+
+    /* Subtitle / Description text placed between header and buttons */
+    .section-description {
+      font-size: 12px;
+      color: #666666;
+      margin: 0 0 12px 0;
+      line-height: 1.4;
+    }
+
+    .symbol-grid {
+      display: grid;
+      /*grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));*/
+      grid-template-columns: repeat(4, 1fr); /* Forces exactly 4 equal columns */
+      gap: 8px;
+    }
+
+    .symbol-btn {
+      /*display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+      background-color: #ffffff;
+      border: 1px solid #d1d1d6;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s ease-in-out;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);*/
+
+      --btn-size: 45px; /* Adjust this single number to control size */
+  
+      width: var(--btn-size);
+      height: var(--btn-size);
+      
+      aspect-ratio: 1; /* Keeps the button perfectly square */
+      display: flex;
+      align-items: center;
+      justify-content: center; /* Center the letter in the middle */
+      padding: 0; /* Clear extra padding */
+      
+      background-color: #ffffff;
+      border: 1px solid #d1d1d6;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease-in-out;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+
+      
+    }
+
+    .symbol-btn:hover {
+      background-color: #007aff;
+      color: #ffffff;
+      border-color: #007aff;
+    }
+
+    .symbol-btn:active {
+      transform: scale(0.97);
+    }
+
+    .symbol-glyph {
+      font-family: "Cambria Math", serif;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 1;
+      /*min-width: 20px;
+      text-align: center;*/
+    }
+
+    .symbol-label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
 </head>
 <body>
-  <div id="app-body">
 
-    <section class="group">
-      <h2>Custom Shapes</h2>
-      <div class="grid">
-        <button class="shape-btn" data-shape="rectangle">Rectangle</button>
-        <button class="shape-btn" data-shape="square">Square</button>
-        <button class="shape-btn" data-shape="ellipse">Oval</button>
-        <button class="shape-btn" data-shape="circle">Circle</button>
-        <button class="shape-btn" data-shape="triangle">Triangle</button>
-        <button class="shape-btn" data-shape="rightTriangle">Right Triangle</button>
-        <button class="shape-btn" data-shape="diamond">Diamond</button>
-        <button class="shape-btn" data-shape="parallelogram">Parallelogram</button>
-        <button class="shape-btn" data-shape="trapezoid">Trapezium</button>
-        <button class="shape-btn" data-shape="hexagon">Hexagon</button>
-        <button class="shape-btn" data-shape="can">Cylinder</button>
-        <button class="line-btn" data-line="line">Line</button>
-      </div>
-      <p class="note">Some of your original 15 (e.g. Diamond 2, Generic vs Equilateral vs Isosceles Triangle) don't have distinct API entries — PowerPoint's API only exposes one generic version of each. See notes in taskpane.js.</p>
-    </section>
-
-    <section class="group">
-      <h2>Pictures</h2>
-      
-      <!-- Hidden file input -->
-      <input type="file" id="picture-input" accept="image/*" style="display: none;" />
-      
-      <!-- Styled action button -->
-      <button type="button" class="btn" onclick="document.getElementById('picture-input').click()">Insert Image</button>
-
-      <p class="note">Picks a file from your Mac and inserts it onto the current slide.</p>
-    </section>
-
-    <div id="status"></div>
+  <!-- Header Row with Title and Info Icon -->
+  <div class="header-container">
+    <h3>Small Mathematical Letters</h3>
+    <span class="info-icon" title="Click a button to insert the symbol into your active selection">i</span>
   </div>
-    <script src="taskpane.js"></script>
 
+  <!-- Text inserted between header and buttons -->
+  <p class="section-description">
+    Small mathematical h font does not exist as unicode. Small mathematical h has to be inserted as an equation.
+  </p>
+
+  <!-- Button Grid -->
+<div class="symbol-grid">
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D44E}')">
+      <span class="symbol-glyph">&#x1D44E;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D44F}')">
+      <span class="symbol-glyph">&#x1D44F;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D450}')">
+      <span class="symbol-glyph">&#x1D450;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D451}')">
+      <span class="symbol-glyph">&#x1D451;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D452}')">
+      <span class="symbol-glyph">&#x1D452;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D453}')">
+      <span class="symbol-glyph">&#x1D453;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D454}')">
+      <span class="symbol-glyph">&#x1D454;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D456}')">
+      <span class="symbol-glyph">&#x1D456;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D457}')">
+      <span class="symbol-glyph">&#x1D457;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D458}')">
+      <span class="symbol-glyph">&#x1D458;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D459}')">
+      <span class="symbol-glyph">&#x1D459;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D45A}')">
+      <span class="symbol-glyph">&#x1D45A;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D45B}')">
+      <span class="symbol-glyph">&#x1D45B;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D45C}')">
+      <span class="symbol-glyph">&#x1D45C;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D45D}')">
+      <span class="symbol-glyph">&#x1D45D;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D45E}')">
+      <span class="symbol-glyph">&#x1D45E;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D45F}')">
+      <span class="symbol-glyph">&#x1D45F;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D460}')">
+      <span class="symbol-glyph">&#x1D460;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D461}')">
+      <span class="symbol-glyph">&#x1D461;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D462}')">
+      <span class="symbol-glyph">&#x1D462;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D463}')">
+      <span class="symbol-glyph">&#x1D463;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D464}')">
+      <span class="symbol-glyph">&#x1D464;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D465}')">
+      <span class="symbol-glyph">&#x1D465;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D466}')">
+      <span class="symbol-glyph">&#x1D466;</span>
+    </button>
+    <button class="symbol-btn" onclick="insertFormattedLetter('\u{1D467}')">
+      <span class="symbol-glyph">&#x1D467;</span>
+    </button>
+  </div>
+  
+  <script type="text/javascript">
+    Office.onReady((info) => {
+      if (info.host === Office.HostType.PowerPoint) {
+        console.log("Small Letters Task Pane loaded in PowerPoint.");
+      }
+    });
+
+    async function insertFormattedLetter(letter) {
+      try {
+        await PowerPoint.run(async (context) => {
+          const selection = context.presentation.getSelectedTextRange();
+          selection.load("font/name, font/size");
+          await context.sync();
+
+          const originalFontName = selection.font.name || "Calibri";
+
+          const insertedRange = selection.insertText(letter, PowerPoint.InsertLocation.replace);
+          insertedRange.font.name = "Cambria Math";
+          await context.sync();
+
+          const trailingRange = insertedRange.insertText("", PowerPoint.InsertLocation.after);
+          trailingRange.font.name = originalFontName;
+          await context.sync();
+        });
+      } catch (error) {
+        Office.context.document.setSelectedDataAsync(
+          letter,
+          { coercionType: Office.CoercionType.Text },
+          (result) => {
+            if (result.status === Office.AsyncResultStatus.Failed) {
+              console.error("Failed to insert letter: " + result.error.message);
+            }
+          }
+        );
+      }
+    }
+  </script>
 </body>
 </html>
