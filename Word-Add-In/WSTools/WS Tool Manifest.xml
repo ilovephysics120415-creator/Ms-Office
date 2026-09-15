@@ -193,8 +193,8 @@
         <bt:Url id="TaskpaneOperators.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/operators-pane.html"/>
         <bt:Url id="TaskpaneSmallLetters.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/small-letters-pane.html"/>
         <bt:Url id="TaskpaneBigLetters.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/big-letters-pane.html"/>
-        <bt:Url id="TaskpaneMCQ.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/mcq-pane.html"/>
-        <bt:Url id="TaskpaneSQ.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/sq-pane.html"/>
+        <bt:Url id="TaskpaneMCQ.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/MCQ-pane.html"/>
+        <bt:Url id="TaskpaneSQ.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/SQ-pane.html"/>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/"/>
       </bt:Urls>
       
