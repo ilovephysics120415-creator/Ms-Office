@@ -15,8 +15,8 @@
   <Description DefaultValue="Custom utility tools for PowerPoint presentations." />
   
   <!-- App List & Store Icons -->
-  <IconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/assets/icon-64.png"/>
+  <IconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/"/>
 
   <Hosts>
@@ -64,7 +64,7 @@
                     <bt:Image size="80" resid="Icon.80" />
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
-                    <TaskpaneId>Taskpane_ShapesAndPicture</TaskpaneId>
+                    <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
                     <SourceLocation resid="Url.ShapesAndPicture" />
                   </Action>
                 </Control>
@@ -90,7 +90,7 @@
                     <bt:Image size="80" resid="Icon.80" />
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
-                    <TaskpaneId>Taskpane_Symbols</TaskpaneId>
+                    <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
                     <SourceLocation resid="Url.Symbols" />
                   </Action>
                 </Control>
@@ -116,7 +116,7 @@
                     <bt:Image size="80" resid="Icon.80" />
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
-                    <TaskpaneId>Taskpane_SmallLetters</TaskpaneId>
+                    <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
                     <SourceLocation resid="Url.SmallLetters" />
                   </Action>
                 </Control>
@@ -142,7 +142,7 @@
                     <bt:Image size="80" resid="Icon.80" />
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
-                    <TaskpaneId>Taskpane_BigLetters</TaskpaneId>
+                    <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
                     <SourceLocation resid="Url.BigLetters" />
                   </Action>
                 </Control>
@@ -162,17 +162,17 @@
     <!-- Resource Mapping -->
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/assets/icon-16.png"/>
-        <bt:Image id="Icon.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/assets/icon-32.png"/>
-        <bt:Image id="Icon.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/assets/icon-80.png"/>
+        <bt:Image id="Icon.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-16.png"/>
+        <bt:Image id="Icon.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-32.png"/>
+        <bt:Image id="Icon.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-80.png"/>
       </bt:Images>
       
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMore" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/" />
         <bt:Url id="Url.ShapesAndPicture" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/src/taskpane.html" />
         <bt:Url id="Url.Symbols" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Symbols/src/symbol-pane.html" />
-        <bt:Url id="Url.SmallLetters" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/src/taskpane.html" />
-        <bt:Url id="Url.BigLetters" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/src/taskpane.html" />
+        <bt:Url id="Url.SmallLetters" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/SmallLetters/src/taskpane.html" />
+        <bt:Url id="Url.BigLetters" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/BigLetters/src/taskpane.html" />
       </bt:Urls>
 
       <bt:ShortStrings>
