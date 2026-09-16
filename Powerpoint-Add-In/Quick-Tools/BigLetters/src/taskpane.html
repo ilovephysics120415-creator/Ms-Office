@@ -240,7 +240,7 @@
           insertedRange.font.name = "Cambria Math";
           await context.sync();
 
-          const trailingRange = insertedRange.insertText("", PowerPoint.InsertLocation.after);
+          const trailingRange = insertedRange.insertText(" ", PowerPoint.InsertLocation.after);
           trailingRange.font.name = originalFontName;
           await context.sync();
         });
