@@ -146,36 +146,47 @@
     });
 
     /**
-     * Inserts the given text/symbol and applies specific font properties to the selection.
+     * Inserts the given text/symbol, restores original font settings, and appends a trailing space.
      * @param {string} symbol - The symbol string to insert.
      * @param {string|null} fontName - Font family to apply (e.g. 'Cambria Math'), or null to keep text box default.
      * @param {boolean} isItalic - Whether to force italic styling on the inserted symbol.
      */
-    function insertSymbol(symbol, fontName = 'Cambria Math', isItalic = true) {
-      Office.context.document.setSelectedDataAsync(
-        symbol,
-        { coercionType: Office.CoercionType.Text },
-        function (asyncResult) {
-          if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-            console.error("Failed to insert symbol: " + asyncResult.error.message);
-            return;
+    async function insertSymbol(symbol, fontName = 'Cambria Math', isItalic = true) {
+      try {
+        await PowerPoint.run(async (context) => {
+          const selection = context.presentation.getSelectedTextRange();
+          selection.load("font/name, font/italic");
+          await context.sync();
+
+          const originalFontName = selection.font.name || "Calibri";
+          const originalItalic = selection.font.italic;
+
+          // Insert the requested symbol
+          const insertedRange = selection.insertText(symbol, PowerPoint.InsertLocation.replace);
+          if (fontName) {
+            insertedRange.font.name = fontName;
           }
+          insertedRange.font.italic = isItalic;
+          await context.sync();
 
-          // Format selection only when explicit font properties are specified
-          PowerPoint.run(async (context) => {
-            const range = context.presentation.getSelectedTextRange();
-            
-            if (fontName) {
-              range.font.name = fontName;
+          // Append a spacebar after the symbol and restore original font properties
+          const trailingRange = insertedRange.insertText(" ", PowerPoint.InsertLocation.after);
+          trailingRange.font.name = originalFontName;
+          trailingRange.font.italic = originalItalic;
+          await context.sync();
+        });
+      } catch (error) {
+        // Fallback using Common API
+        Office.context.document.setSelectedDataAsync(
+          symbol + " ",
+          { coercionType: Office.CoercionType.Text },
+          (result) => {
+            if (result.status === Office.AsyncResultStatus.Failed) {
+              console.error("Failed to insert symbol: " + result.error.message);
             }
-            range.font.italic = isItalic;
-
-            await context.sync();
-          }).catch((err) => {
-            console.warn("Could not apply font formatting: ", err);
-          });
-        }
-      );
+          }
+        );
+      }
     }
   </script>
 </body>
