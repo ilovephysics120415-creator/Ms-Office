@@ -151,7 +151,7 @@
      * @param {string|null} fontName - Font family to apply (e.g. 'Cambria Math'), or null to keep text box default.
      * @param {boolean} isItalic - Whether to force italic styling on the inserted symbol.
      */
-    async function insertSymbol(symbol, fontName = 'Cambria Math', isItalic = true) {
+async function insertSymbol(symbol, fontName = 'Cambria Math', isItalic = true) {
       try {
         await PowerPoint.run(async (context) => {
           const selection = context.presentation.getSelectedTextRange();
@@ -161,7 +161,7 @@
           const originalFontName = selection.font.name || "Calibri";
           const originalItalic = selection.font.italic;
 
-          // Insert the requested symbol
+          // 1. Insert the symbol
           const insertedRange = selection.insertText(symbol, PowerPoint.InsertLocation.replace);
           if (fontName) {
             insertedRange.font.name = fontName;
@@ -169,10 +169,17 @@
           insertedRange.font.italic = isItalic;
           await context.sync();
 
-          // Append a spacebar after the symbol and restore original font properties
+          // 2. Insert trailing space
           const trailingRange = insertedRange.insertText(" ", PowerPoint.InsertLocation.after);
           trailingRange.font.name = originalFontName;
           trailingRange.font.italic = originalItalic;
+          await context.sync();
+
+          // 3. Move active selection/cursor to the space character and apply original styles
+          trailingRange.select(PowerPoint.SelectionPosition.end);
+          const activeSelection = context.presentation.getSelectedTextRange();
+          activeSelection.font.name = originalFontName;
+          activeSelection.font.italic = originalItalic;
           await context.sync();
         });
       } catch (error) {
