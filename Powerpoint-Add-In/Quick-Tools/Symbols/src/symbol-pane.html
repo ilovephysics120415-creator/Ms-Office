@@ -158,28 +158,31 @@ async function insertSymbol(symbol, fontName = 'Cambria Math', isItalic = true) 
           selection.load("font/name, font/italic");
           await context.sync();
 
+          // Save original formatting (fallback to slide default if empty)
           const originalFontName = selection.font.name || "Calibri";
-          const originalItalic = selection.font.italic;
+          const originalItalic = selection.font.italic ?? false;
 
-          // 1. Insert the symbol
-          const insertedRange = selection.insertText(symbol, PowerPoint.InsertLocation.replace);
+          // 1. Insert the symbol and apply requested symbol font
+          const insertedSymbol = selection.insertText(symbol, PowerPoint.InsertLocation.replace);
           if (fontName) {
-            insertedRange.font.name = fontName;
+            insertedSymbol.font.name = fontName;
           }
-          insertedRange.font.italic = isItalic;
+          insertedSymbol.font.italic = isItalic;
           await context.sync();
 
-          // 2. Insert trailing space
-          const trailingRange = insertedRange.insertText(" ", PowerPoint.InsertLocation.after);
-          trailingRange.font.name = originalFontName;
-          trailingRange.font.italic = originalItalic;
+          // 2. Insert trailing space character after the symbol
+          const spaceRange = insertedSymbol.insertText(" ", PowerPoint.InsertLocation.after);
           await context.sync();
 
-          // 3. Move active selection/cursor to the space character and apply original styles
-          trailingRange.select(PowerPoint.SelectionPosition.end);
-          const activeSelection = context.presentation.getSelectedTextRange();
-          activeSelection.font.name = originalFontName;
-          activeSelection.font.italic = originalItalic;
+          // 3. Highlight/Select the space character specifically and apply original font properties
+          spaceRange.select(PowerPoint.SelectionPosition.all);
+          const activeSpace = context.presentation.getSelectedTextRange();
+          activeSpace.font.name = originalFontName;
+          activeSpace.font.italic = originalItalic;
+          await context.sync();
+
+          // 4. Move the cursor after the formatted space character
+          activeSpace.select(PowerPoint.SelectionPosition.end);
           await context.sync();
         });
       } catch (error) {
