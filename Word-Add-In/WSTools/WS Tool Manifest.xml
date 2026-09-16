@@ -50,7 +50,7 @@
                   <bt:Image size="80" resid="Icon.Symbol.80"/>
                 </Icon>
 
-                <Control xsi:type="Button" id="BtnSymbol">
+                <Control xsi:type="Button" id="BtnSymbol" size="Large">
                   <Label resid="BtnSymbol.Label"/>
                   <Supertip>
                     <Title resid="BtnSymbol.Label"/>
@@ -68,7 +68,7 @@
                   </Action>
                 </Control>
 
-                <Control xsi:type="Button" id="BtnOperators">
+                <Control xsi:type="Button" id="BtnOperators" size="Large">
                   <Label resid="BtnOperators.Label"/>
                   <Supertip>
                     <Title resid="BtnOperators.Label"/>
@@ -86,7 +86,7 @@
                   </Action>
                 </Control>
 
-                <Control xsi:type="Button" id="BtnSmallLetters">
+                <Control xsi:type="Button" id="BtnSmallLetters" size="Large">
                   <Label resid="BtnSmallLetters.Label"/>
                   <Supertip>
                     <Title resid="BtnSmallLetters.Label"/>
@@ -104,7 +104,7 @@
                   </Action>
                 </Control>
 
-                <Control xsi:type="Button" id="BtnBigLetters">
+                <Control xsi:type="Button" id="BtnBigLetters" size="Large">
                   <Label resid="BtnBigLetters.Label"/>
                   <Supertip>
                     <Title resid="BtnBigLetters.Label"/>
@@ -122,7 +122,7 @@
                   </Action>
                 </Control>
 
-                <Control xsi:type="Button" id="BtnMCQ">
+                <Control xsi:type="Button" id="BtnMCQ" size="Large">
                   <Label resid="BtnMCQ.Label"/>
                   <Supertip>
                     <Title resid="BtnMCQ.Label"/>
@@ -140,7 +140,7 @@
                   </Action>
                 </Control>
 
-                <Control xsi:type="Button" id="BtnSQ">
+                <Control xsi:type="Button" id="BtnSQ" size="Large">
                   <Label resid="BtnSQ.Label"/>
                   <Supertip>
                     <Title resid="BtnSQ.Label"/>
