@@ -42,15 +42,17 @@
           
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <CustomTab id="MathToolsTab">
-              <Group id="MathToolsGroup">
-                <Label resid="GroupMathTools.Label"/>
+              
+              <!-- Group 1: Phy Symbols -->
+              <Group id="GroupPhySymbols">
+                <Label resid="GroupPhySymbols.Label"/>
                 <Icon>
                   <bt:Image size="16" resid="Icon.Symbol.16"/>
                   <bt:Image size="32" resid="Icon.Symbol.32"/>
                   <bt:Image size="80" resid="Icon.Symbol.80"/>
                 </Icon>
 
-                <Control xsi:type="Button" id="BtnSymbol" size="Large">
+                <Control xsi:type="Button" id="BtnSymbol">
                   <Label resid="BtnSymbol.Label"/>
                   <Supertip>
                     <Title resid="BtnSymbol.Label"/>
@@ -68,7 +70,7 @@
                   </Action>
                 </Control>
 
-                <Control xsi:type="Button" id="BtnOperators" size="Large">
+                <Control xsi:type="Button" id="BtnOperators">
                   <Label resid="BtnOperators.Label"/>
                   <Supertip>
                     <Title resid="BtnOperators.Label"/>
@@ -85,8 +87,18 @@
                     <Title resid="TaskpaneOperators.Title"/>
                   </Action>
                 </Control>
+              </Group>
 
-                <Control xsi:type="Button" id="BtnSmallLetters" size="Large">
+              <!-- Group 2: Variables -->
+              <Group id="GroupVariables">
+                <Label resid="GroupVariables.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.SmallLetters.16"/>
+                  <bt:Image size="32" resid="Icon.SmallLetters.32"/>
+                  <bt:Image size="80" resid="Icon.SmallLetters.80"/>
+                </Icon>
+
+                <Control xsi:type="Button" id="BtnSmallLetters">
                   <Label resid="BtnSmallLetters.Label"/>
                   <Supertip>
                     <Title resid="BtnSmallLetters.Label"/>
@@ -104,7 +116,7 @@
                   </Action>
                 </Control>
 
-                <Control xsi:type="Button" id="BtnBigLetters" size="Large">
+                <Control xsi:type="Button" id="BtnBigLetters">
                   <Label resid="BtnBigLetters.Label"/>
                   <Supertip>
                     <Title resid="BtnBigLetters.Label"/>
@@ -121,8 +133,18 @@
                     <Title resid="TaskpaneBigLetters.Title"/>
                   </Action>
                 </Control>
+              </Group>
 
-                <Control xsi:type="Button" id="BtnMCQ" size="Large">
+              <!-- Group 3: Qn Layout -->
+              <Group id="GroupQnLayout">
+                <Label resid="GroupQnLayout.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.MCQ.16"/>
+                  <bt:Image size="32" resid="Icon.MCQ.32"/>
+                  <bt:Image size="80" resid="Icon.MCQ.80"/>
+                </Icon>
+
+                <Control xsi:type="Button" id="BtnMCQ">
                   <Label resid="BtnMCQ.Label"/>
                   <Supertip>
                     <Title resid="BtnMCQ.Label"/>
@@ -140,7 +162,7 @@
                   </Action>
                 </Control>
 
-                <Control xsi:type="Button" id="BtnSQ" size="Large">
+                <Control xsi:type="Button" id="BtnSQ">
                   <Label resid="BtnSQ.Label"/>
                   <Supertip>
                     <Title resid="BtnSQ.Label"/>
@@ -157,8 +179,8 @@
                     <Title resid="TaskpaneSQ.Title"/>
                   </Action>
                 </Control>
-
               </Group>
+
               <Label resid="TabMathTools.Label"/>
             </CustomTab>
           </ExtensionPoint>
@@ -168,24 +190,24 @@
 
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.Symbol.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-symbol-16.png"/>
-        <bt:Image id="Icon.Symbol.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-symbol-32.png"/>
-        <bt:Image id="Icon.Symbol.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-symbol-80.png"/>
-        <bt:Image id="Icon.Operators.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-operators-16.png"/>
-        <bt:Image id="Icon.Operators.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-operators-32.png"/>
-        <bt:Image id="Icon.Operators.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-operators-80.png"/>
-        <bt:Image id="Icon.SmallLetters.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-smallletters-16.png"/>
-        <bt:Image id="Icon.SmallLetters.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-smallletters-32.png"/>
-        <bt:Image id="Icon.SmallLetters.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-smallletters-80.png"/>
-        <bt:Image id="Icon.BigLetters.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-bigletters-16.png"/>
-        <bt:Image id="Icon.BigLetters.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-bigletters-32.png"/>
-        <bt:Image id="Icon.BigLetters.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-bigletters-80.png"/>
-        <bt:Image id="Icon.MCQ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-symbol-16.png"/>
-        <bt:Image id="Icon.MCQ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-symbol-32.png"/>
-        <bt:Image id="Icon.MCQ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-symbol-80.png"/>
-        <bt:Image id="Icon.SQ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-symbol-16.png"/>
-        <bt:Image id="Icon.SQ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-symbol-32.png"/>
-        <bt:Image id="Icon.SQ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-symbol-80.png"/>
+        <bt:Image id="Icon.Symbol.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-lambda-16.png"/>
+        <bt:Image id="Icon.Symbol.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-lambda-32.png"/>
+        <bt:Image id="Icon.Symbol.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-lambda-80.png"/>
+        <bt:Image id="Icon.Operators.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-operator-16.png"/>
+        <bt:Image id="Icon.Operators.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-operator-32.png"/>
+        <bt:Image id="Icon.Operators.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-operator-80.png"/>
+        <bt:Image id="Icon.SmallLetters.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-smallletter-16.png"/>
+        <bt:Image id="Icon.SmallLetters.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-smallletter-32.png"/>
+        <bt:Image id="Icon.SmallLetters.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-smallletter-80.png"/>
+        <bt:Image id="Icon.BigLetters.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-bigletter-16.png"/>
+        <bt:Image id="Icon.BigLetters.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-bigletter-32.png"/>
+        <bt:Image id="Icon.BigLetters.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-bigletter-80.png"/>
+        <bt:Image id="Icon.MCQ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-MCQ-16.png"/>
+        <bt:Image id="Icon.MCQ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-MCQ-32.png"/>
+        <bt:Image id="Icon.MCQ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-MCQ-80.png"/>
+        <bt:Image id="Icon.SQ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-SQ-16.png"/>
+        <bt:Image id="Icon.SQ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-SQ-32.png"/>
+        <bt:Image id="Icon.SQ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-SQ-80.png"/>
       </bt:Images>
       
       <bt:Urls>
@@ -201,7 +223,9 @@
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Math Tools Loaded"/>
         <bt:String id="TabMathTools.Label" DefaultValue="WS Tools"/>
-        <bt:String id="GroupMathTools.Label" DefaultValue="Symbol Panels"/>
+        <bt:String id="GroupPhySymbols.Label" DefaultValue="Phy Symbols"/>
+        <bt:String id="GroupVariables.Label" DefaultValue="Variables"/>
+        <bt:String id="GroupQnLayout.Label" DefaultValue="Qn Layout"/>
         <bt:String id="BtnSymbol.Label" DefaultValue="Symbol"/>
         <bt:String id="BtnOperators.Label" DefaultValue="Operators"/>
         <bt:String id="BtnSmallLetters.Label" DefaultValue="Small Letters"/>
