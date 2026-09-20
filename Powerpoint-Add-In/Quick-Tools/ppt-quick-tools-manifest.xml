@@ -43,14 +43,494 @@
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <!-- Custom Tab Configuration -->
             <CustomTab id="QuickToolsTab">
+
+              <!-- Group 0: Letter Controls -->
+              <Group id="Group_Big_Letters">
+                <Label resid="Big_Letters.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.BigA.16" />
+                  <bt:Image size="32" resid="Icon.BigA.32" />
+                  <bt:Image size="80" resid="Icon.BigA.80" />
+                </Icon>
+
+                <!-- Button Letter A -->
+                <Control xsi:type="Button" id="Btn_BigA">
+                  <Label resid="Label_BigA" />
+                  <Supertip>
+                    <Title resid="Label_BigA" />
+                    <Description resid="Desc_BigA" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigA.16" />
+                    <bt:Image size="32" resid="Icon.BigA.32" />
+                    <bt:Image size="80" resid="Icon.BigA.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.Symbols" />
+                  </Action>
+                </Control>
+
+                <!-- Button Letter B -->
+                <Control xsi:type="Button" id="Btn_BigB">
+                  <Label resid="Label_BigB" />
+                  <Supertip>
+                    <Title resid="Label_BigB" />
+                    <Description resid="Desc_BigB" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigB.16" />
+                    <bt:Image size="32" resid="Icon.BigB.32" />
+                    <bt:Image size="80" resid="Icon.BigB.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+
+                <!-- Button Letter C -->
+                <Control xsi:type="Button" id="Btn_BigC">
+                  <Label resid="Label_BigC" />
+                  <Supertip>
+                    <Title resid="Label_BigC" />
+                    <Description resid="Desc_BigC" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigC.16" />
+                    <bt:Image size="32" resid="Icon.BigC.32" />
+                    <bt:Image size="80" resid="Icon.BigC.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+
+                <!-- Button Letter D -->
+                <Control xsi:type="Button" id="Btn_BigD">
+                  <Label resid="Label_BigD" />
+                  <Supertip>
+                    <Title resid="Label_BigD" />
+                    <Description resid="Desc_BigD" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigD.16" />
+                    <bt:Image size="32" resid="Icon.BigD.32" />
+                    <bt:Image size="80" resid="Icon.BigD.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+
+                <!-- Button Letter E -->
+                <Control xsi:type="Button" id="Btn_BigE">
+                  <Label resid="Label_BigE" />
+                  <Supertip>
+                    <Title resid="Label_BigE" />
+                    <Description resid="Desc_BigE" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigE.16" />
+                    <bt:Image size="32" resid="Icon.BigE.32" />
+                    <bt:Image size="80" resid="Icon.BigE.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+
+                <!-- Button Letter F -->
+                <Control xsi:type="Button" id="Btn_BigF">
+                  <Label resid="Label_BigF" />
+                  <Supertip>
+                    <Title resid="Label_BigF" />
+                    <Description resid="Desc_BigF" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigF.16" />
+                    <bt:Image size="32" resid="Icon.BigF.32" />
+                    <bt:Image size="80" resid="Icon.BigF.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+
+                <!-- Button Letter G -->
+                <Control xsi:type="Button" id="Btn_BigG">
+                  <Label resid="Label_BigG" />
+                  <Supertip>
+                    <Title resid="Label_BigG" />
+                    <Description resid="Desc_BigG" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigG.16" />
+                    <bt:Image size="32" resid="Icon.BigG.32" />
+                    <bt:Image size="80" resid="Icon.BigG.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
               
+                <!-- Button Letter H -->
+                <Control xsi:type="Button" id="Btn_BigH">
+                  <Label resid="Label_BigH" />
+                  <Supertip>
+                    <Title resid="Label_BigH" />
+                    <Description resid="Desc_BigH" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigH.16" />
+                    <bt:Image size="32" resid="Icon.BigH.32" />
+                    <bt:Image size="80" resid="Icon.BigH.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+
+                <!-- Button Letter I -->
+                <Control xsi:type="Button" id="Btn_BigI">
+                  <Label resid="Label_BigI" />
+                  <Supertip>
+                    <Title resid="Label_BigI" />
+                    <Description resid="Desc_BigI" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigI.16" />
+                    <bt:Image size="32" resid="Icon.BigI.32" />
+                    <bt:Image size="80" resid="Icon.BigI.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter J -->
+                <Control xsi:type="Button" id="Btn_BigJ">
+                  <Label resid="Label_BigJ" />
+                  <Supertip>
+                    <Title resid="Label_BigJ" />
+                    <Description resid="Desc_BigJ" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigJ.16" />
+                    <bt:Image size="32" resid="Icon.BigJ.32" />
+                    <bt:Image size="80" resid="Icon.BigJ.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter K -->
+                <Control xsi:type="Button" id="Btn_BigK">
+                  <Label resid="Label_BigK" />
+                  <Supertip>
+                    <Title resid="Label_BigK" />
+                    <Description resid="Desc_BigK" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigK.16" />
+                    <bt:Image size="32" resid="Icon.BigK.32" />
+                    <bt:Image size="80" resid="Icon.BigK.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter L -->
+                <Control xsi:type="Button" id="Btn_BigL">
+                  <Label resid="Label_BigL" />
+                  <Supertip>
+                    <Title resid="Label_BigL" />
+                    <Description resid="Desc_BigL" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigL.16" />
+                    <bt:Image size="32" resid="Icon.BigL.32" />
+                    <bt:Image size="80" resid="Icon.BigL.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter M -->
+                <Control xsi:type="Button" id="Btn_BigM">
+                  <Label resid="Label_BigM" />
+                  <Supertip>
+                    <Title resid="Label_BigM" />
+                    <Description resid="Desc_BigM" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigM.16" />
+                    <bt:Image size="32" resid="Icon.BigM.32" />
+                    <bt:Image size="80" resid="Icon.BigM.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter  -->
+                <Control xsi:type="Button" id="Btn_BigN">
+                  <Label resid="Label_BigN" />
+                  <Supertip>
+                    <Title resid="Label_BigN" />
+                    <Description resid="Desc_BigN" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigN.16" />
+                    <bt:Image size="32" resid="Icon.BigN.32" />
+                    <bt:Image size="80" resid="Icon.BigN.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter O -->
+                <Control xsi:type="Button" id="Btn_BigO">
+                  <Label resid="Label_BigO" />
+                  <Supertip>
+                    <Title resid="Label_BigO" />
+                    <Description resid="Desc_BigO" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigO.16" />
+                    <bt:Image size="32" resid="Icon.BigO.32" />
+                    <bt:Image size="80" resid="Icon.BigO.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter P -->
+                <Control xsi:type="Button" id="Btn_BigP">
+                  <Label resid="Label_BigP" />
+                  <Supertip>
+                    <Title resid="Label_BigP" />
+                    <Description resid="Desc_BigP" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigP.16" />
+                    <bt:Image size="32" resid="Icon.BigP.32" />
+                    <bt:Image size="80" resid="Icon.BigP.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter Q -->
+                <Control xsi:type="Button" id="Btn_BigQ">
+                  <Label resid="Label_BigQ" />
+                  <Supertip>
+                    <Title resid="Label_BigQ" />
+                    <Description resid="Desc_BigQ" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigQ.16" />
+                    <bt:Image size="32" resid="Icon.BigQ.32" />
+                    <bt:Image size="80" resid="Icon.BigQ.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter R -->
+                <Control xsi:type="Button" id="Btn_BigR">
+                  <Label resid="Label_BigR" />
+                  <Supertip>
+                    <Title resid="Label_BigR" />
+                    <Description resid="Desc_BigR" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigR.16" />
+                    <bt:Image size="32" resid="Icon.BigR.32" />
+                    <bt:Image size="80" resid="Icon.BigR.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter S -->
+                <Control xsi:type="Button" id="Btn_BigS">
+                  <Label resid="Label_BigS" />
+                  <Supertip>
+                    <Title resid="Label_BigS" />
+                    <Description resid="Desc_BigS" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigS.16" />
+                    <bt:Image size="32" resid="Icon.BigS.32" />
+                    <bt:Image size="80" resid="Icon.BigS.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter T -->
+                <Control xsi:type="Button" id="Btn_BigT">
+                  <Label resid="Label_BigT" />
+                  <Supertip>
+                    <Title resid="Label_BigT" />
+                    <Description resid="Desc_BigT" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigT.16" />
+                    <bt:Image size="32" resid="Icon.BigT.32" />
+                    <bt:Image size="80" resid="Icon.BigT.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter U -->
+                <Control xsi:type="Button" id="Btn_BigU">
+                  <Label resid="Label_BigU" />
+                  <Supertip>
+                    <Title resid="Label_BigU" />
+                    <Description resid="Desc_BigU" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigU.16" />
+                    <bt:Image size="32" resid="Icon.BigU.32" />
+                    <bt:Image size="80" resid="Icon.BigU.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter V -->
+                <Control xsi:type="Button" id="Btn_BigV">
+                  <Label resid="Label_BigV" />
+                  <Supertip>
+                    <Title resid="Label_BigV" />
+                    <Description resid="Desc_BigV" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigV.16" />
+                    <bt:Image size="32" resid="Icon.BigV.32" />
+                    <bt:Image size="80" resid="Icon.BigV.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter W -->
+                <Control xsi:type="Button" id="Btn_BigW">
+                  <Label resid="Label_BigW" />
+                  <Supertip>
+                    <Title resid="Label_BigW" />
+                    <Description resid="Desc_BigW" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigW.16" />
+                    <bt:Image size="32" resid="Icon.BigW.32" />
+                    <bt:Image size="80" resid="Icon.BigW.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter X -->
+                <Control xsi:type="Button" id="Btn_BigX">
+                  <Label resid="Label_BigX" />
+                  <Supertip>
+                    <Title resid="Label_BigX" />
+                    <Description resid="Desc_BigX" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigX.16" />
+                    <bt:Image size="32" resid="Icon.BigX.32" />
+                    <bt:Image size="80" resid="Icon.BigX.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter Y -->
+                <Control xsi:type="Button" id="Btn_BigY">
+                  <Label resid="Label_BigY" />
+                  <Supertip>
+                    <Title resid="Label_BigY" />
+                    <Description resid="Desc_BigY" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigY.16" />
+                    <bt:Image size="32" resid="Icon.BigY.32" />
+                    <bt:Image size="80" resid="Icon.BigY.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              
+                <!-- Button Letter Z -->
+                <Control xsi:type="Button" id="Btn_BigZ">
+                  <Label resid="Label_BigZ" />
+                  <Supertip>
+                    <Title resid="Label_BigZ" />
+                    <Description resid="Desc_BigZ" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BigZ.16" />
+                    <bt:Image size="32" resid="Icon.BigZ.32" />
+                    <bt:Image size="80" resid="Icon.BigZ.80" />
+                  </Icon>                  
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Action>
+                </Control>
+              </Group>
+              
+
+
               <!-- Group 1: Shapes and Picture -->
               <Group id="Group_ShapesAndPicture">
                 <Label resid="Group1.Label" />
                 <Icon>
-                  <bt:Image size="16" resid="Icon.16" />
-                  <bt:Image size="32" resid="Icon.32" />
-                  <bt:Image size="80" resid="Icon.80" />
+                  <bt:Image size="16" resid="Icon.Shape.16" />
+                  <bt:Image size="32" resid="Icon.Shape.32" />
+                  <bt:Image size="80" resid="Icon.Shape.80" />
                 </Icon>
                 <Control xsi:type="Button" id="Button_ShapesAndPicture">
                   <Label resid="Item1.Label" />
@@ -59,9 +539,9 @@
                     <Description resid="Item1.Description" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Icon.16" />
-                    <bt:Image size="32" resid="Icon.32" />
-                    <bt:Image size="80" resid="Icon.80" />
+                    <bt:Image size="16" resid="Icon.Shape.16" />
+                    <bt:Image size="32" resid="Icon.Shape.32" />
+                    <bt:Image size="80" resid="Icon.Shape.80" />
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
@@ -74,9 +554,9 @@
               <Group id="Group_Symbols">
                 <Label resid="Group2.Label" />
                 <Icon>
-                  <bt:Image size="16" resid="Icon.16" />
-                  <bt:Image size="32" resid="Icon.32" />
-                  <bt:Image size="80" resid="Icon.80" />
+                  <bt:Image size="16" resid="Icon.Symbol.16" />
+                  <bt:Image size="32" resid="Icon.Symbol.32" />
+                  <bt:Image size="80" resid="Icon.Symbol.80" />
                 </Icon>
                 <Control xsi:type="Button" id="Button_Symbols">
                   <Label resid="Item2.Label" />
@@ -85,9 +565,9 @@
                     <Description resid="Item2.Description" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Icon.16" />
-                    <bt:Image size="32" resid="Icon.32" />
-                    <bt:Image size="80" resid="Icon.80" />
+                    <bt:Image size="16" resid="Icon.Symbol.16" />
+                    <bt:Image size="32" resid="Icon.Symbol.32" />
+                    <bt:Image size="80" resid="Icon.Symbol.80" />
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
@@ -97,60 +577,58 @@
               </Group>
 
               <!-- Group 3: Small Letters -->
-              <Group id="Group_SmallLetters">
+              <Group id="Group_SmallLetter">
                 <Label resid="Group3.Label" />
                 <Icon>
-                  <bt:Image size="16" resid="Icon.16" />
-                  <bt:Image size="32" resid="Icon.32" />
-                  <bt:Image size="80" resid="Icon.80" />
+                  <bt:Image size="16" resid="Icon.SmallLetter.16" />
+                  <bt:Image size="32" resid="Icon.SmallLetter.32" />
+                  <bt:Image size="80" resid="Icon.SmallLetter.80" />
                 </Icon>
-                <Control xsi:type="Button" id="Button_SmallLetters">
+                <Control xsi:type="Button" id="Button_SmallLetter">
                   <Label resid="Item3.Label" />
                   <Supertip>
                     <Title resid="Item3.Title" />
                     <Description resid="Item3.Description" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Icon.16" />
-                    <bt:Image size="32" resid="Icon.32" />
-                    <bt:Image size="80" resid="Icon.80" />
+                    <bt:Image size="16" resid="Icon.SmallLetter.16" />
+                    <bt:Image size="32" resid="Icon.SmallLetter.32" />
+                    <bt:Image size="80" resid="Icon.SmallLetter.80" />
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                    <SourceLocation resid="Url.SmallLetters" />
+                    <SourceLocation resid="Url.SmallLetter" />
                   </Action>
                 </Control>
               </Group>
 
               <!-- Group 4: Big Letters -->
-              <Group id="Group_BigLetters">
+              <Group id="Group_BigLetter">
                 <Label resid="Group4.Label" />
                 <Icon>
-                  <bt:Image size="16" resid="Icon.16" />
-                  <bt:Image size="32" resid="Icon.32" />
-                  <bt:Image size="80" resid="Icon.80" />
+                  <bt:Image size="16" resid="Icon.BigLetter.16" />
+                  <bt:Image size="32" resid="Icon.BigLetter.32" />
+                  <bt:Image size="80" resid="Icon.BigLetter.80" />
                 </Icon>
-                <Control xsi:type="Button" id="Button_BigLetters">
+                <Control xsi:type="Button" id="Button_BigLetter">
                   <Label resid="Item4.Label" />
                   <Supertip>
                     <Title resid="Item4.Title" />
                     <Description resid="Item4.Description" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Icon.16" />
-                    <bt:Image size="32" resid="Icon.32" />
-                    <bt:Image size="80" resid="Icon.80" />
+                    <bt:Image size="16" resid="Icon.BigLetter.16" />
+                    <bt:Image size="32" resid="Icon.BigLetter.32" />
+                    <bt:Image size="80" resid="Icon.BigLetter.80" />
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                    <SourceLocation resid="Url.BigLetters" />
+                    <SourceLocation resid="Url.BigLetter" />
                   </Action>
                 </Control>
               </Group>
 
               <Label resid="Tab.Label" />
-              
-              <!-- Positions the tab immediately after Insert -->
               <InsertAfter>TabInsert</InsertAfter>
             </CustomTab>
           </ExtensionPoint>
@@ -165,39 +643,214 @@
         <bt:Image id="Icon.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-16.png"/>
         <bt:Image id="Icon.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-32.png"/>
         <bt:Image id="Icon.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-80.png"/>
+
+        <bt:Image id="Icon.BigA.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-a-16.png"/>
+        <bt:Image id="Icon.BigA.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-a-32.png"/>
+        <bt:Image id="Icon.BigA.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-a-80.png"/>
+
+        <bt:Image id="Icon.BigB.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-b-16.png"/>
+        <bt:Image id="Icon.BigB.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-b-32.png"/>
+        <bt:Image id="Icon.BigB.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-b-80.png"/>
+
+        <bt:Image id="Icon.BigC.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-c-16.png"/>
+        <bt:Image id="Icon.BigC.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-c-32.png"/>
+        <bt:Image id="Icon.BigC.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-c-80.png"/>
+
+        <bt:Image id="Icon.BigD.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-d-16.png"/>
+        <bt:Image id="Icon.BigD.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-d-32.png"/>
+        <bt:Image id="Icon.BigD.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-d-80.png"/>
+
+        <bt:Image id="Icon.BigE.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-e-16.png"/>
+        <bt:Image id="Icon.BigE.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-e-32.png"/>
+        <bt:Image id="Icon.BigE.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-e-80.png"/>
+
+        <bt:Image id="Icon.BigF.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-f-16.png"/>
+        <bt:Image id="Icon.BigF.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-f-32.png"/>
+        <bt:Image id="Icon.BigF.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-f-80.png"/>
+
+        <bt:Image id="Icon.BigG.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-g-16.png"/>
+        <bt:Image id="Icon.BigG.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-g-32.png"/>
+        <bt:Image id="Icon.BigG.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-g-80.png"/>
+
+        <bt:Image id="Icon.BigH.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-h-16.png"/>
+        <bt:Image id="Icon.BigH.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-h-32.png"/>
+        <bt:Image id="Icon.BigH.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-h-80.png"/>
+
+        <bt:Image id="Icon.BigI.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-i-16.png"/>
+        <bt:Image id="Icon.BigI.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-i-32.png"/>
+        <bt:Image id="Icon.BigI.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-i-80.png"/>
+
+        <bt:Image id="Icon.BigJ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-j-16.png"/>
+        <bt:Image id="Icon.BigJ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-j-32.png"/>
+        <bt:Image id="Icon.BigJ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-j-80.png"/>
+
+        <bt:Image id="Icon.BigK.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-k-16.png"/>
+        <bt:Image id="Icon.BigK.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-k-32.png"/>
+        <bt:Image id="Icon.BigK.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-k-80.png"/>
+
+        <bt:Image id="Icon.BigL.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-l-16.png"/>
+        <bt:Image id="Icon.BigL.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-l-32.png"/>
+        <bt:Image id="Icon.BigL.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-l-80.png"/>
+
+        <bt:Image id="Icon.BigM.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-m-16.png"/>
+        <bt:Image id="Icon.BigM.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-m-32.png"/>
+        <bt:Image id="Icon.BigM.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-m-80.png"/>
+
+        <bt:Image id="Icon.BigN.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-n-16.png"/>
+        <bt:Image id="Icon.BigN.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-n-32.png"/>
+        <bt:Image id="Icon.BigN.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-n-80.png"/>
+
+        <bt:Image id="Icon.BigO.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-o-16.png"/>
+        <bt:Image id="Icon.BigO.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-o-32.png"/>
+        <bt:Image id="Icon.BigO.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-o-80.png"/>
+
+        <bt:Image id="Icon.BigP.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-p-16.png"/>
+        <bt:Image id="Icon.BigP.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-p-32.png"/>
+        <bt:Image id="Icon.BigP.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-p-80.png"/>
+
+        <bt:Image id="Icon.BigQ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-q-16.png"/>
+        <bt:Image id="Icon.BigQ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-q-32.png"/>
+        <bt:Image id="Icon.BigQ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-q-80.png"/>
+
+        <bt:Image id="Icon.BigR.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-r-16.png"/>
+        <bt:Image id="Icon.BigR.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-r-32.png"/>
+        <bt:Image id="Icon.BigR.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-r-80.png"/>
+
+        <bt:Image id="Icon.BigS.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-s-16.png"/>
+        <bt:Image id="Icon.BigS.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-s-32.png"/>
+        <bt:Image id="Icon.BigS.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-s-80.png"/>
+
+        <bt:Image id="Icon.BigT.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-t-16.png"/>
+        <bt:Image id="Icon.BigT.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-t-32.png"/>
+        <bt:Image id="Icon.BigT.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-t-80.png"/>
+
+        <bt:Image id="Icon.BigU.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-u-16.png"/>
+        <bt:Image id="Icon.BigU.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-u-32.png"/>
+        <bt:Image id="Icon.BigU.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-u-80.png"/>
+
+        <bt:Image id="Icon.BigV.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-v-16.png"/>
+        <bt:Image id="Icon.BigV.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-v-32.png"/>
+        <bt:Image id="Icon.BigV.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-v-80.png"/>
+
+        <bt:Image id="Icon.BigW.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-w-16.png"/>
+        <bt:Image id="Icon.BigW.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-w-32.png"/>
+        <bt:Image id="Icon.BigW.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-w-80.png"/>
+
+        <bt:Image id="Icon.BigX.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-x-16.png"/>
+        <bt:Image id="Icon.BigX.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-x-32.png"/>
+        <bt:Image id="Icon.BigX.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-x-80.png"/>
+
+        <bt:Image id="Icon.BigY.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-y-16.png"/>
+        <bt:Image id="Icon.BigY.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-y-32.png"/>
+        <bt:Image id="Icon.BigY.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-y-80.png"/>
+
+        <bt:Image id="Icon.BigZ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-z-16.png"/>
+        <bt:Image id="Icon.BigZ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-z-32.png"/>
+        <bt:Image id="Icon.BigZ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-z-80.png"/>
+
+        <bt:Image id="Icon.Shape.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-16.png"/>
+        <bt:Image id="Icon.Shape.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-32.png"/>
+        <bt:Image id="Icon.Shape.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-80.png"/>
+        <bt:Image id="Icon.Symbol.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-lambda-16.png"/>
+        <bt:Image id="Icon.Symbol.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-lambda-32.png"/>
+        <bt:Image id="Icon.Symbol.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-lambda-80.png"/>
+        <bt:Image id="Icon.SmallLetter.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-smallletter-16.png"/>
+        <bt:Image id="Icon.SmallLetter.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-smallletter-32.png"/>
+        <bt:Image id="Icon.SmallLetter.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-smallletter-80.png"/>
+        <bt:Image id="Icon.BigLetter.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-bigletter-16.png"/>
+        <bt:Image id="Icon.BigLetter.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-bigletter-32.png"/>
+        <bt:Image id="Icon.BigLetter.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-bigletter-80.png"/>
       </bt:Images>
       
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMore" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/" />
         <bt:Url id="Url.ShapesAndPicture" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/src/taskpane.html" />
         <bt:Url id="Url.Symbols" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Symbols/src/symbol-pane.html" />
-        <bt:Url id="Url.SmallLetters" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/SmallLetters/src/taskpane.html" />
-        <bt:Url id="Url.BigLetters" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/BigLetters/src/taskpane.html" />
+        <bt:Url id="Url.SmallLetter" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/SmallLetters/src/taskpane.html" />
+        <bt:Url id="Url.BigLetter" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/BigLetters/src/taskpane.html" />
       </bt:Urls>
 
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Quick Tools" />
         <bt:String id="Tab.Label" DefaultValue="Quick Tools" />
+        <bt:String id="Big_Letters.Label" DefaultValue="Big Maths Letters" />
+
+        <bt:String id="Label_BigA" DefaultValue=" " />
+        <bt:String id="Label_BigB" DefaultValue=" " />
+        <bt:String id="Label_BigC" DefaultValue=" " />
+        <bt:String id="Label_BigD" DefaultValue=" " />
+        <bt:String id="Label_BigE" DefaultValue=" " />
+        <bt:String id="Label_BigF" DefaultValue=" " />
+        <bt:String id="Label_BigG" DefaultValue=" " />
+        <bt:String id="Label_BigH" DefaultValue=" " />
+        <bt:String id="Label_BigI" DefaultValue=" " />
+        <bt:String id="Label_BigJ" DefaultValue=" " />
+        <bt:String id="Label_BigK" DefaultValue=" " />
+        <bt:String id="Label_BigL" DefaultValue=" " />
+        <bt:String id="Label_BigM" DefaultValue=" " />
+        <bt:String id="Label_BigN" DefaultValue=" " />
+        <bt:String id="Label_BigO" DefaultValue=" " />
+        <bt:String id="Label_BigP" DefaultValue=" " />
+        <bt:String id="Label_BigQ" DefaultValue=" " />
+        <bt:String id="Label_BigR" DefaultValue=" " />
+        <bt:String id="Label_BigS" DefaultValue=" " />
+        <bt:String id="Label_BigT" DefaultValue=" " />
+        <bt:String id="Label_BigU" DefaultValue=" " />
+        <bt:String id="Label_BigV" DefaultValue=" " />
+        <bt:String id="Label_BigW" DefaultValue=" " />
+        <bt:String id="Label_BigX" DefaultValue=" " />
+        <bt:String id="Label_BigY" DefaultValue=" " />
+        <bt:String id="Label_BigZ" DefaultValue=" " />
+
+
         <bt:String id="Group1.Label" DefaultValue="Shapes" />
         <bt:String id="Group2.Label" DefaultValue="Symbols" />
-        <bt:String id="Group3.Label" DefaultValue="Small Letters" />
-        <bt:String id="Group4.Label" DefaultValue="Big Letters" />
+        <bt:String id="Group3.Label" DefaultValue="Small Letter" />
+        <bt:String id="Group4.Label" DefaultValue="Big Letter" />
         <bt:String id="Item1.Label" DefaultValue="Shapes and Picture" />
         <bt:String id="Item1.Title" DefaultValue="Shapes and Picture" />
         <bt:String id="Item2.Label" DefaultValue="Symbols" />
         <bt:String id="Item2.Title" DefaultValue="Symbols" />
-        <bt:String id="Item3.Label" DefaultValue="Small Letters" />
-        <bt:String id="Item3.Title" DefaultValue="Small Letters" />
-        <bt:String id="Item4.Label" DefaultValue="Big Letters" />
-        <bt:String id="Item4.Title" DefaultValue="Big Letters" />
+        <bt:String id="Item3.Label" DefaultValue="Small Letter" />
+        <bt:String id="Item3.Title" DefaultValue="Small Letter" />
+        <bt:String id="Item4.Label" DefaultValue="Big Letter" />
+        <bt:String id="Item4.Title" DefaultValue="Big Letter" />
       </bt:ShortStrings>
 
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Open the Quick Tools task panes from the ribbon tab." />
+
+        <bt:String id="Desc_BigA" DefaultValue="Letter A Button" />
+        <bt:String id="Desc_BigB" DefaultValue="Letter B Button" />
+        <bt:String id="Desc_BigC" DefaultValue="Letter C Button" />
+        <bt:String id="Desc_BigD" DefaultValue="Letter D Button" />
+        <bt:String id="Desc_BigE" DefaultValue="Letter E Button" />
+        <bt:String id="Desc_BigF" DefaultValue="Letter F Button" />
+        <bt:String id="Desc_BigG" DefaultValue="Letter G Button" />
+        <bt:String id="Desc_BigH" DefaultValue="Letter H Button" />
+        <bt:String id="Desc_BigI" DefaultValue="Letter I Button" />
+        <bt:String id="Desc_BigJ" DefaultValue="Letter J Button" />
+        <bt:String id="Desc_BigK" DefaultValue="Letter K Button" />
+        <bt:String id="Desc_BigL" DefaultValue="Letter L Button" />
+        <bt:String id="Desc_BigM" DefaultValue="Letter M Button" />
+        <bt:String id="Desc_BigN" DefaultValue="Letter N Button" />
+        <bt:String id="Desc_BigO" DefaultValue="Letter O Button" />
+        <bt:String id="Desc_BigP" DefaultValue="Letter P Button" />
+        <bt:String id="Desc_BigQ" DefaultValue="Letter Q Button" />
+        <bt:String id="Desc_BigR" DefaultValue="Letter R Button" />
+        <bt:String id="Desc_BigS" DefaultValue="Letter S Button" />
+        <bt:String id="Desc_BigT" DefaultValue="Letter T Button" />
+        <bt:String id="Desc_BigU" DefaultValue="Letter U Button" />
+        <bt:String id="Desc_BigV" DefaultValue="Letter V Button" />
+        <bt:String id="Desc_BigW" DefaultValue="Letter W Button" />
+        <bt:String id="Desc_BigX" DefaultValue="Letter X Button" />
+        <bt:String id="Desc_BigY" DefaultValue="Letter Y Button" />
+        <bt:String id="Desc_BigZ" DefaultValue="Letter Z Button" />
+
         <bt:String id="Item1.Description" DefaultValue="Open Shapes and Picture task pane." />
         <bt:String id="Item2.Description" DefaultValue="Open Symbols task pane." />
-        <bt:String id="Item3.Description" DefaultValue="Open Small Letters task pane." />
-        <bt:String id="Item4.Description" DefaultValue="Open Big Letters task pane." />
+        <bt:String id="Item3.Description" DefaultValue="Open Small Letter task pane." />
+        <bt:String id="Item4.Description" DefaultValue="Open Big Letter task pane." />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
