@@ -44,32 +44,21 @@
         };
 
         /**
-         * Inserts a character at the current text cursor position in PowerPoint.
-         * Only inserts when a real text cursor/selection exists inside a text box;
-         * otherwise does nothing (no destructive fallback), to avoid overwriting
-         * a text frame's contents when only the shape itself is selected.
-         *
-         * Note: PowerPoint can report the "selected range" as spanning the last
-         * word typed (not just a blinking cursor) when a ribbon button is clicked
-         * right after typing. To avoid ever overwriting that word, we don't set
-         * .text on the reported range directly - we collapse it to a zero-length
-         * range at its own end point first, then insert only into that.
+         * Inserts a character at the end of the current selection point
+         * without overwriting existing text.
          */
         function insertFormattedLetter(char) {
             return PowerPoint.run(async (context) => {
                 const range = context.presentation.getSelectedTextRangeOrNullObject();
-                range.load("length");
                 await context.sync();
 
                 if (range.isNullObject) {
-                    console.warn("No text cursor found. Click inside a text box first, then try again.");
+                    console.warn("No active text selection found.");
                     return;
                 }
 
-                // Zero-length range positioned right after whatever PowerPoint
-                // reported as selected - guarantees a pure insert, never a replace.
-                const insertionPoint = range.getSubstring(range.length, 0);
-                insertionPoint.text = char;
+                // "End" inserts the text right after the selection point, preserving existing text
+                range.insertText(char, "End");
                 await context.sync();
             }).catch((error) => {
                 console.error("Could not insert character:", error);
