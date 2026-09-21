@@ -44,32 +44,31 @@
         };
 
         /**
-         * Inserts a character into the PowerPoint selection.
-         * Tries PowerPoint JS API first; falls back to setSelectedDataAsync if it fails.
+         * Inserts a character at the current text cursor position in PowerPoint.
+         * Only inserts when a real text cursor/selection exists inside a text box;
+         * otherwise does nothing (no destructive fallback), to avoid overwriting
+         * a text frame's contents when only the shape itself is selected.
          */
         function insertFormattedLetter(char) {
             return PowerPoint.run(async (context) => {
-                // PowerPoint.TextRange has no insertText() method (that's a Word-only API).
-                // Insert at the cursor / replace the selection by setting the text property.
-                const range = context.presentation.getSelectedTextRange();
+                // getSelectedTextRangeOrNullObject() does not throw when there's no
+                // text cursor active (e.g. the shape is selected but not in text-edit
+                // mode) - it returns a null object we can safely check for instead.
+                const range = context.presentation.getSelectedTextRangeOrNullObject();
+                await context.sync();
+
+                if (range.isNullObject) {
+                    console.warn("No text cursor found. Click inside a text box first, then try again.");
+                    return;
+                }
+
+                // Setting .text on the current range replaces only what's selected.
+                // With nothing highlighted, the range is zero-length at the cursor,
+                // so this inserts the character without touching the rest of the text.
                 range.text = char;
                 await context.sync();
             }).catch((error) => {
-                console.warn("PowerPoint.run failed, attempting fallback insertion:", error);
-                
-                // Fallback mechanism using Common Office API
-                return new Promise((resolve) => {
-                    Office.context.document.setSelectedDataAsync(
-                        char,
-                        { coercionType: Office.CoercionType.Text },
-                        (asyncResult) => {
-                            if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                                console.error("Fallback insertion failed:", asyncResult.error.message);
-                            }
-                            resolve();
-                        }
-                    );
-                });
+                console.error("Could not insert character:", error);
             });
         }
 
