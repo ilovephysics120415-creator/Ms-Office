@@ -1,0 +1,55 @@
+/* global Office, PowerPoint */
+
+Office.onReady(() => {
+  // Office JS runtime is ready
+});
+
+/**
+ * Inserts any character/symbol into the active PowerPoint selection.
+ * @param {string} char - The string or symbol to insert (e.g., 'α', 'λ', 'f')
+ */
+async function insertFormattedLetter(char) {
+  try {
+    await PowerPoint.run(async (context) => {
+      const selection = context.presentation.getSelectedTextRanges();
+      selection.insertText(char, PowerPoint.InsertLocation.after);
+      await context.sync();
+    });
+  } catch (error) {
+    console.error("Error inserting character:", error);
+  }
+}
+
+// 1. Map function names to their corresponding Unicode characters
+const specialSymbols = {
+  actionInsertAlpha: "α",      // Alpha
+  actionInsertLambda: "λ",     // Lambda
+  actionInsertFrequency: "ƒ",  // Frequency (Florin / Italic f)
+  actionInsertOmega: "ω",      // Omega
+  actionInsertTheta: "θ",      // Theta
+  actionInsertPi: "π"          // Pi
+};
+
+// 2. Register special character handlers
+Object.entries(specialSymbols).forEach(([functionName, symbol]) => {
+  window[functionName] = function (event) {
+    insertFormattedLetter(symbol).finally(() => {
+      event.completed(); // Required for ExecuteFunction buttons
+    });
+  };
+
+  Office.actions.associate(functionName, window[functionName]);
+});
+
+// 3. Register standard A-Z handlers (if still needed in the same file)
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach((letter) => {
+  const functionName = `actionInsert${letter}`;
+
+  window[functionName] = function (event) {
+    insertFormattedLetter(letter).finally(() => {
+      event.completed();
+    });
+  };
+
+  Office.actions.associate(functionName, window[functionName]);
+});
