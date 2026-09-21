@@ -49,9 +49,10 @@
          */
         function insertFormattedLetter(char) {
             return PowerPoint.run(async (context) => {
-                // Corrected method call (singular)
+                // PowerPoint.TextRange has no insertText() method (that's a Word-only API).
+                // Insert at the cursor / replace the selection by setting the text property.
                 const range = context.presentation.getSelectedTextRange();
-                range.insertText(char, PowerPoint.InsertLocation.after);
+                range.text = char;
                 await context.sync();
             }).catch((error) => {
                 console.warn("PowerPoint.run failed, attempting fallback insertion:", error);
