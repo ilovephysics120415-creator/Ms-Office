@@ -48,13 +48,17 @@
          * Only inserts when a real text cursor/selection exists inside a text box;
          * otherwise does nothing (no destructive fallback), to avoid overwriting
          * a text frame's contents when only the shape itself is selected.
+         *
+         * Note: PowerPoint can report the "selected range" as spanning the last
+         * word typed (not just a blinking cursor) when a ribbon button is clicked
+         * right after typing. To avoid ever overwriting that word, we don't set
+         * .text on the reported range directly - we collapse it to a zero-length
+         * range at its own end point first, then insert only into that.
          */
         function insertFormattedLetter(char) {
             return PowerPoint.run(async (context) => {
-                // getSelectedTextRangeOrNullObject() does not throw when there's no
-                // text cursor active (e.g. the shape is selected but not in text-edit
-                // mode) - it returns a null object we can safely check for instead.
                 const range = context.presentation.getSelectedTextRangeOrNullObject();
+                range.load("length");
                 await context.sync();
 
                 if (range.isNullObject) {
@@ -62,10 +66,10 @@
                     return;
                 }
 
-                // Setting .text on the current range replaces only what's selected.
-                // With nothing highlighted, the range is zero-length at the cursor,
-                // so this inserts the character without touching the rest of the text.
-                range.text = char;
+                // Zero-length range positioned right after whatever PowerPoint
+                // reported as selected - guarantees a pure insert, never a replace.
+                const insertionPoint = range.getSubstring(range.length, 0);
+                insertionPoint.text = char;
                 await context.sync();
             }).catch((error) => {
                 console.error("Could not insert character:", error);
