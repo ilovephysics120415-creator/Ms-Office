@@ -3,64 +3,93 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <!-- Load Office JS Library -->
-    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
-
-    <!-- Inline JavaScript -->
-    <script type="text/javascript">
-      /* global Office, PowerPoint */
-
-      Office.onReady(() => {
-        // Office JS runtime is ready
-      });
-
-      async function insertFormattedLetter(char) {
-        try {
-          await PowerPoint.run(async (context) => {
-            const selection = context.presentation.getSelectedTextRanges();
-            selection.insertText(char, PowerPoint.InsertLocation.after);
-            await context.sync();
-          });
-        } catch (error) {
-          console.error("Error inserting character:", error);
-        }
-      }
-
-      // 1. Map function names to their corresponding Unicode characters
-      const specialSymbols = {
-        actionInsertAlpha: "α",      // Alpha
-        actionInsertLambda: "λ",     // Lambda
-        actionInsertFrequency: "ƒ",  // Frequency (Florin / Italic f)
-        actionInsertOmega: "ω",      // Omega
-        actionInsertTheta: "θ",      // Theta
-        actionInsertPi: "π"          // Pi
-      };
-
-      // 2. Register special character handlers
-      Object.entries(specialSymbols).forEach(([functionName, symbol]) => {
-        window[functionName] = function (event) {
-          insertFormattedLetter(symbol).finally(() => {
-            event.completed(); // Required for ExecuteFunction buttons
-          });
-        };
-
-        Office.actions.associate(functionName, window[functionName]);
-      });
-
-      // 3. Register standard A-Z handlers
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach((letter) => {
-        const functionName = `actionInsert${letter}`;
-
-        window[functionName] = function (event) {
-          insertFormattedLetter(letter).finally(() => {
-            event.completed();
-          });
-        };
-
-        Office.actions.associate(functionName, window[functionName]);
-      });
-    </script>
+    <title>Insert Character Commands</title>
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 </head>
 <body>
+    <script type="text/javascript">
+        Office.onReady(() => {
+            // Office is ready. Functions registered on window are accessible via ExecuteFunction in manifest.
+        });
+
+        // Unicode mathematical italic letters mapping (\u{1D434} for 'A' through \u{1D44D} for 'Z')
+        const charMap = {
+            'actionInsertA': '\u{1D434}',
+            'actionInsertB': '\u{1D435}',
+            'actionInsertC': '\u{1D436}',
+            'actionInsertD': '\u{1D437}',
+            'actionInsertE': '\u{1D438}',
+            'actionInsertF': '\u{1D439}',
+            'actionInsertG': '\u{1D43A}',
+            'actionInsertH': '\u{1D43B}',
+            'actionInsertI': '\u{1D43C}',
+            'actionInsertJ': '\u{1D43D}',
+            'actionInsertK': '\u{1D43E}',
+            'actionInsertL': '\u{1D43F}',
+            'actionInsertM': '\u{1D440}',
+            'actionInsertN': '\u{1D441}',
+            'actionInsertO': '\u{1D442}',
+            'actionInsertP': '\u{1D443}',
+            'actionInsertQ': '\u{1D444}',
+            'actionInsertR': '\u{1D445}',
+            'actionInsertS': '\u{1D446}',
+            'actionInsertT': '\u{1D447}',
+            'actionInsertU': '\u{1D448}',
+            'actionInsertV': '\u{1D449}',
+            'actionInsertW': '\u{1D44A}',
+            'actionInsertX': '\u{1D44B}',
+            'actionInsertY': '\u{1D44C}',
+            'actionInsertZ': '\u{1D44D}'
+        };
+
+        /**
+         * Inserts a character into the PowerPoint selection.
+         * Tries PowerPoint JS API first; falls back to setSelectedDataAsync if it fails.
+         */
+        function insertFormattedLetter(char) {
+            return PowerPoint.run(async (context) => {
+                // Corrected method call (singular)
+                const range = context.presentation.getSelectedTextRange();
+                range.insertText(char, PowerPoint.InsertLocation.after);
+                await context.sync();
+            }).catch((error) => {
+                console.warn("PowerPoint.run failed, attempting fallback insertion:", error);
+                
+                // Fallback mechanism using Common Office API
+                return new Promise((resolve) => {
+                    Office.context.document.setSelectedDataAsync(
+                        char,
+                        { coercionType: Office.CoercionType.Text },
+                        (asyncResult) => {
+                            if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+                                console.error("Fallback insertion failed:", asyncResult.error.message);
+                            }
+                            resolve();
+                        }
+                    );
+                });
+            });
+        }
+
+        /**
+         * Dynamically generates action handlers (actionInsertA - actionInsertZ)
+         * exposed globally to the window object for manifest ExecuteFunction actions.
+         */
+        Object.keys(charMap).forEach((functionName) => {
+            window[functionName] = function (event) {
+                const characterToInsert = charMap[functionName];
+
+                insertFormattedLetter(characterToInsert)
+                    .catch((err) => console.error("Execution error:", err))
+                    .finally(() => {
+                        // Signal to PowerPoint that the ribbon command execution is complete
+                        if (event && typeof event.completed === "function") {
+                            event.completed();
+                        }
+                    });
+            };
+        });
+    </script>
 </body>
 </html>
