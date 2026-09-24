@@ -57,7 +57,7 @@
                   <Label resid="Label_Small_a" />
                   <Supertip>
                     <Title resid="Label_Small_a" />
-                    <Description resid="Desc_SmallA" />
+                    <Description resid="Desc_Small_a" />
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="Icon.SmallA.16" />
