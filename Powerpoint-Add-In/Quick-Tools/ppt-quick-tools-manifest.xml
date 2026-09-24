@@ -33,7 +33,7 @@
     <Hosts>
       <Host xsi:type="Presentation">
         <DesktopFormFactor>
-          
+          <FunctionFile resid="Url.insertChar" />
           <GetStarted>
             <Title resid="GetStarted.Title" />
             <Description resid="GetStarted.Description" />
@@ -64,10 +64,10 @@
                     <bt:Image size="32" resid="Icon.SmallA.32" />
                     <bt:Image size="80" resid="Icon.SmallA.80" />
                   </Icon>
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.Symbols" />
-                  </Action>
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                    <Action xsi:type="ExecuteFunction">
+                      <FunctionName>actionInserta</FunctionName>
+                    </Action>
                 </Control>
                 
               </Group>
@@ -94,9 +94,9 @@
                     <bt:Image size="32" resid="Icon.BigA.32" />
                     <bt:Image size="80" resid="Icon.BigA.80" />
                   </Icon>
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.Symbols" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertA</FunctionName>
                   </Action>
                 </Control>
 
@@ -112,9 +112,9 @@
                     <bt:Image size="32" resid="Icon.BigB.32" />
                     <bt:Image size="80" resid="Icon.BigB.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertB</FunctionName>
                   </Action>
                 </Control>
 
@@ -129,10 +129,10 @@
                     <bt:Image size="16" resid="Icon.BigC.16" />
                     <bt:Image size="32" resid="Icon.BigC.32" />
                     <bt:Image size="80" resid="Icon.BigC.80" />
-                  </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  </Icon> 
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertC</FunctionName>
                   </Action>
                 </Control>
 
@@ -148,9 +148,9 @@
                     <bt:Image size="32" resid="Icon.BigD.32" />
                     <bt:Image size="80" resid="Icon.BigD.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertD</FunctionName>
                   </Action>
                 </Control>
 
@@ -166,9 +166,9 @@
                     <bt:Image size="32" resid="Icon.BigE.32" />
                     <bt:Image size="80" resid="Icon.BigE.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertE</FunctionName>
                   </Action>
                 </Control>
 
@@ -184,9 +184,9 @@
                     <bt:Image size="32" resid="Icon.BigF.32" />
                     <bt:Image size="80" resid="Icon.BigF.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertF</FunctionName>
                   </Action>
                 </Control>
 
@@ -202,9 +202,9 @@
                     <bt:Image size="32" resid="Icon.BigG.32" />
                     <bt:Image size="80" resid="Icon.BigG.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertG</FunctionName>
                   </Action>
                 </Control>
               
@@ -220,9 +220,9 @@
                     <bt:Image size="32" resid="Icon.BigH.32" />
                     <bt:Image size="80" resid="Icon.BigH.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertH</FunctionName>
                   </Action>
                 </Control>
 
@@ -238,9 +238,9 @@
                     <bt:Image size="32" resid="Icon.BigI.32" />
                     <bt:Image size="80" resid="Icon.BigI.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertI</FunctionName>
                   </Action>
                 </Control>
               
@@ -256,9 +256,9 @@
                     <bt:Image size="32" resid="Icon.BigJ.32" />
                     <bt:Image size="80" resid="Icon.BigJ.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertJ</FunctionName>
                   </Action>
                 </Control>
               
@@ -274,9 +274,9 @@
                     <bt:Image size="32" resid="Icon.BigK.32" />
                     <bt:Image size="80" resid="Icon.BigK.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertK</FunctionName>
                   </Action>
                 </Control>
               
@@ -292,9 +292,9 @@
                     <bt:Image size="32" resid="Icon.BigL.32" />
                     <bt:Image size="80" resid="Icon.BigL.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertL</FunctionName>
                   </Action>
                 </Control>
               
@@ -310,9 +310,9 @@
                     <bt:Image size="32" resid="Icon.BigM.32" />
                     <bt:Image size="80" resid="Icon.BigM.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertM</FunctionName>
                   </Action>
                 </Control>
               
@@ -328,9 +328,9 @@
                     <bt:Image size="32" resid="Icon.BigN.32" />
                     <bt:Image size="80" resid="Icon.BigN.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertN</FunctionName>
                   </Action>
                 </Control>
               
@@ -346,9 +346,9 @@
                     <bt:Image size="32" resid="Icon.BigO.32" />
                     <bt:Image size="80" resid="Icon.BigO.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertO</FunctionName>
                   </Action>
                 </Control>
               
@@ -364,9 +364,9 @@
                     <bt:Image size="32" resid="Icon.BigP.32" />
                     <bt:Image size="80" resid="Icon.BigP.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertP</FunctionName>
                   </Action>
                 </Control>
               
@@ -382,9 +382,9 @@
                     <bt:Image size="32" resid="Icon.BigQ.32" />
                     <bt:Image size="80" resid="Icon.BigQ.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertQ</FunctionName>
                   </Action>
                 </Control>
               
@@ -400,9 +400,9 @@
                     <bt:Image size="32" resid="Icon.BigR.32" />
                     <bt:Image size="80" resid="Icon.BigR.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertR</FunctionName>
                   </Action>
                 </Control>
               
@@ -418,9 +418,9 @@
                     <bt:Image size="32" resid="Icon.BigS.32" />
                     <bt:Image size="80" resid="Icon.BigS.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertS</FunctionName>
                   </Action>
                 </Control>
               
@@ -436,9 +436,9 @@
                     <bt:Image size="32" resid="Icon.BigT.32" />
                     <bt:Image size="80" resid="Icon.BigT.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertT</FunctionName>
                   </Action>
                 </Control>
               
@@ -454,9 +454,9 @@
                     <bt:Image size="32" resid="Icon.BigU.32" />
                     <bt:Image size="80" resid="Icon.BigU.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                   <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertU</FunctionName>
                   </Action>
                 </Control>
               
@@ -472,9 +472,9 @@
                     <bt:Image size="32" resid="Icon.BigV.32" />
                     <bt:Image size="80" resid="Icon.BigV.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertV</FunctionName>
                   </Action>
                 </Control>
               
@@ -490,9 +490,9 @@
                     <bt:Image size="32" resid="Icon.BigW.32" />
                     <bt:Image size="80" resid="Icon.BigW.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertW</FunctionName>
                   </Action>
                 </Control>
               
@@ -508,9 +508,9 @@
                     <bt:Image size="32" resid="Icon.BigX.32" />
                     <bt:Image size="80" resid="Icon.BigX.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertX</FunctionName>
                   </Action>
                 </Control>
               
@@ -526,9 +526,9 @@
                     <bt:Image size="32" resid="Icon.BigY.32" />
                     <bt:Image size="80" resid="Icon.BigY.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertY</FunctionName>
                   </Action>
                 </Control>
               
@@ -544,9 +544,9 @@
                     <bt:Image size="32" resid="Icon.BigZ.32" />
                     <bt:Image size="80" resid="Icon.BigZ.80" />
                   </Icon>                  
-                  <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                      <SourceLocation resid="Url.ShapesAndPicture" />
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertZ</FunctionName>
                   </Action>
                 </Control>
               </Group>
@@ -902,6 +902,7 @@
         <bt:Url id="Url.Symbols" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Symbols/src/symbol-pane.html" />
         <bt:Url id="Url.SmallLetter" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/SmallLetters/src/taskpane.html" />
         <bt:Url id="Url.BigLetter" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/BigLetters/src/taskpane.html" />
+        <bt:Url id="Url.insertChar" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/InsertChar/src/insertChar.html" />
       </bt:Urls>
 
       <bt:ShortStrings>
