@@ -53,13 +53,13 @@
                 range.load("text");
                 await context.sync();
 
-if (range.isNullObject) {
-    // Get the current slide and add a new text box pre-filled with the character
-    const slide = context.presentation.getSelectedSlides().getItem(0);
-    slide.shapes.addTextField(char);
-    await context.sync();
-    return;
-}
+                if (range.isNullObject) {
+                    // Get the current slide and add a new text box pre-filled with the character
+                    const slide = context.presentation.getSelectedSlides().getItem(0);
+                    slide.shapes.addTextField(char);
+                    await context.sync();
+                    return;
+                }
 
                 // "End" inserts the text right after the selection point, preserving existing text
                 //range.insertText(char, "End");
