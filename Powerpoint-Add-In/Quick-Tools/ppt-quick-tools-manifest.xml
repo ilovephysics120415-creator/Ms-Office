@@ -44,6 +44,35 @@
             <!-- Custom Tab Configuration -->
             <CustomTab id="QuickToolsTab">
 
+              <!-- Group : Small Letter Controls -->
+              <Group id="Group_Small_Letters">
+                <Label resid="Small_Letters.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.SmallA.16" />
+                  <bt:Image size="32" resid="Icon.SmallA.32" />
+                  <bt:Image size="80" resid="Icon.SmallA.80" />
+                </Icon>
+                
+                <Control xsi:type="Button" id="Btn_SmallA">
+                  <Label resid="Label_Small_a" />
+                  <Supertip>
+                    <Title resid="Label_Small_a" />
+                    <Description resid="Desc_SmallA" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.SmallA.16" />
+                    <bt:Image size="32" resid="Icon.SmallA.32" />
+                    <bt:Image size="80" resid="Icon.SmallA.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                      <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
+                      <SourceLocation resid="Url.Symbols" />
+                  </Action>
+                </Control>
+                
+              </Group>
+
+              
               <!-- Group 0: Letter Controls -->
               <Group id="Group_Big_Letters">
                 <Label resid="Big_Letters.Label" />
@@ -748,6 +777,111 @@
         <bt:Image id="Icon.BigZ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-z-32.png"/>
         <bt:Image id="Icon.BigZ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-z-80.png"/>
 
+        <bt:Image id="Icon.SmallA.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-a-16.png"/>
+        <bt:Image id="Icon.SmallA.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-a-32.png"/>
+        <bt:Image id="Icon.SmallA.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-a-80.png"/>
+
+        <bt:Image id="Icon.SmallB.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-b-16.png"/>
+        <bt:Image id="Icon.SmallB.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-b-32.png"/>
+        <bt:Image id="Icon.SmallB.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-b-80.png"/>
+
+        <bt:Image id="Icon.SmallC.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-c-16.png"/>
+        <bt:Image id="Icon.SmallC.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-c-32.png"/>
+        <bt:Image id="Icon.SmallC.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-c-80.png"/>
+
+        <bt:Image id="Icon.SmallD.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-d-16.png"/>
+        <bt:Image id="Icon.SmallD.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-d-32.png"/>
+        <bt:Image id="Icon.SmallD.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-d-80.png"/>
+
+        <bt:Image id="Icon.SmallE.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-e-16.png"/>
+        <bt:Image id="Icon.SmallE.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-e-32.png"/>
+        <bt:Image id="Icon.SmallE.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-e-80.png"/>
+
+        <bt:Image id="Icon.SmallF.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-f-16.png"/>
+        <bt:Image id="Icon.SmallF.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-f-32.png"/>
+        <bt:Image id="Icon.SmallF.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-f-80.png"/>
+
+        <bt:Image id="Icon.SmallG.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-g-16.png"/>
+        <bt:Image id="Icon.SmallG.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-g-32.png"/>
+        <bt:Image id="Icon.SmallG.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-g-80.png"/>
+
+        <bt:Image id="Icon.SmallH.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-h-16.png"/>
+        <bt:Image id="Icon.SmallH.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-h-32.png"/>
+        <bt:Image id="Icon.SmallH.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-h-80.png"/>
+
+        <bt:Image id="Icon.SmallI.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-i-16.png"/>
+        <bt:Image id="Icon.SmallI.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-i-32.png"/>
+        <bt:Image id="Icon.SmallI.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-i-80.png"/>
+
+        <bt:Image id="Icon.SmallJ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-j-16.png"/>
+        <bt:Image id="Icon.SmallJ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-j-32.png"/>
+        <bt:Image id="Icon.SmallJ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-j-80.png"/>
+
+        <bt:Image id="Icon.SmallK.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-k-16.png"/>
+        <bt:Image id="Icon.SmallK.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-k-32.png"/>
+        <bt:Image id="Icon.SmallK.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-k-80.png"/>
+
+        <bt:Image id="Icon.SmallL.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-l-16.png"/>
+        <bt:Image id="Icon.SmallL.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-l-32.png"/>
+        <bt:Image id="Icon.SmallL.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-l-80.png"/>
+
+        <bt:Image id="Icon.SmallM.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-m-16.png"/>
+        <bt:Image id="Icon.SmallM.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-m-32.png"/>
+        <bt:Image id="Icon.SmallM.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-m-80.png"/>
+
+        <bt:Image id="Icon.SmallN.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-n-16.png"/>
+        <bt:Image id="Icon.SmallN.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-n-32.png"/>
+        <bt:Image id="Icon.SmallN.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-n-80.png"/>
+
+        <bt:Image id="Icon.SmallO.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-o-16.png"/>
+        <bt:Image id="Icon.SmallO.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-o-32.png"/>
+        <bt:Image id="Icon.SmallO.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-o-80.png"/>
+
+        <bt:Image id="Icon.SmallP.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-p-16.png"/>
+        <bt:Image id="Icon.SmallP.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-p-32.png"/>
+        <bt:Image id="Icon.SmallP.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-p-80.png"/>
+
+        <bt:Image id="Icon.SmallQ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-q-16.png"/>
+        <bt:Image id="Icon.SmallQ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-q-32.png"/>
+        <bt:Image id="Icon.SmallQ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-q-80.png"/>
+
+        <bt:Image id="Icon.SmallR.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-r-16.png"/>
+        <bt:Image id="Icon.SmallR.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-r-32.png"/>
+        <bt:Image id="Icon.SmallR.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-r-80.png"/>
+
+        <bt:Image id="Icon.SmallS.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-s-16.png"/>
+        <bt:Image id="Icon.SmallS.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-s-32.png"/>
+        <bt:Image id="Icon.SmallS.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-s-80.png"/>
+
+        <bt:Image id="Icon.SmallT.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-t-16.png"/>
+        <bt:Image id="Icon.SmallT.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-t-32.png"/>
+        <bt:Image id="Icon.SmallT.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-t-80.png"/>
+
+        <bt:Image id="Icon.SmallU.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-u-16.png"/>
+        <bt:Image id="Icon.SmallU.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-u-32.png"/>
+        <bt:Image id="Icon.SmallU.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-u-80.png"/>
+
+        <bt:Image id="Icon.SmallV.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-v-16.png"/>
+        <bt:Image id="Icon.SmallV.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-v-32.png"/>
+        <bt:Image id="Icon.SmallV.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-v-80.png"/>
+
+        <bt:Image id="Icon.SmallW.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-w-16.png"/>
+        <bt:Image id="Icon.SmallW.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-w-32.png"/>
+        <bt:Image id="Icon.SmallW.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-w-80.png"/>
+
+        <bt:Image id="Icon.SmallX.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-x-16.png"/>
+        <bt:Image id="Icon.SmallX.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-x-32.png"/>
+        <bt:Image id="Icon.SmallX.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-x-80.png"/>
+
+        <bt:Image id="Icon.SmallY.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-y-16.png"/>
+        <bt:Image id="Icon.SmallY.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-y-32.png"/>
+        <bt:Image id="Icon.SmallY.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-y-80.png"/>
+
+        <bt:Image id="Icon.SmallZ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-z-16.png"/>
+        <bt:Image id="Icon.SmallZ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-z-32.png"/>
+        <bt:Image id="Icon.SmallZ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-z-80.png"/>
+        
+        
         <bt:Image id="Icon.Shape.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-16.png"/>
         <bt:Image id="Icon.Shape.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-32.png"/>
         <bt:Image id="Icon.Shape.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-80.png"/>
@@ -773,8 +907,37 @@
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Quick Tools" />
         <bt:String id="Tab.Label" DefaultValue="Quick Tools" />
+        <bt:String id="Small_Letters.Label" DefaultValue="Small Maths Letters" />
         <bt:String id="Big_Letters.Label" DefaultValue="Big Maths Letters" />
 
+        <bt:String id="Label_Small_a" DefaultValue=" " />
+        <bt:String id="Label_Small_b" DefaultValue=" " />
+        <bt:String id="Label_Small_c" DefaultValue=" " />
+        <bt:String id="Label_Small_d" DefaultValue=" " />
+        <bt:String id="Label_Small_e" DefaultValue=" " />
+        <bt:String id="Label_Small_f" DefaultValue=" " />
+        <bt:String id="Label_Small_g" DefaultValue=" " />
+        <bt:String id="Label_Small_h" DefaultValue=" " />
+        <bt:String id="Label_Small_i" DefaultValue=" " />
+        <bt:String id="Label_Small_j" DefaultValue=" " />
+        <bt:String id="Label_Small_k" DefaultValue=" " />
+        <bt:String id="Label_Small_l" DefaultValue=" " />
+        <bt:String id="Label_Small_m" DefaultValue=" " />
+        <bt:String id="Label_Small_n" DefaultValue=" " />
+        <bt:String id="Label_Small_o" DefaultValue=" " />
+        <bt:String id="Label_Small_p" DefaultValue=" " />
+        <bt:String id="Label_Small_q" DefaultValue=" " />
+        <bt:String id="Label_Small_r" DefaultValue=" " />
+        <bt:String id="Label_Small_s" DefaultValue=" " />
+        <bt:String id="Label_Small_t" DefaultValue=" " />
+        <bt:String id="Label_Small_u" DefaultValue=" " />
+        <bt:String id="Label_Small_v" DefaultValue=" " />
+        <bt:String id="Label_Small_w" DefaultValue=" " />
+        <bt:String id="Label_Small_x" DefaultValue=" " />
+        <bt:String id="Label_Small_y" DefaultValue=" " />
+        <bt:String id="Label_Small_z" DefaultValue=" " />
+
+       
         <bt:String id="Label_BigA" DefaultValue=" " />
         <bt:String id="Label_BigB" DefaultValue=" " />
         <bt:String id="Label_BigC" DefaultValue=" " />
@@ -820,6 +983,33 @@
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Open the Quick Tools task panes from the ribbon tab." />
 
+        <bt:String id="Desc_Small_a" DefaultValue="Letter a Button" />
+        <bt:String id="Desc_Small_b" DefaultValue="Letter b Button" />
+        <bt:String id="Desc_Small_c" DefaultValue="Letter c Button" />
+        <bt:String id="Desc_Small_d" DefaultValue="Letter d Button" />
+        <bt:String id="Desc_Small_e" DefaultValue="Letter e Button" />
+        <bt:String id="Desc_Small_f" DefaultValue="Letter f Button" />
+        <bt:String id="Desc_Small_g" DefaultValue="Letter g Button" />
+        <bt:String id="Desc_Small_h" DefaultValue="Letter h Button" />
+        <bt:String id="Desc_Small_i" DefaultValue="Letter i Button" />
+        <bt:String id="Desc_Small_j" DefaultValue="Letter j Button" />
+        <bt:String id="Desc_Small_k" DefaultValue="Letter k Button" />
+        <bt:String id="Desc_Small_l" DefaultValue="Letter l Button" />
+        <bt:String id="Desc_Small_m" DefaultValue="Letter m Button" />
+        <bt:String id="Desc_Small_n" DefaultValue="Letter n Button" />
+        <bt:String id="Desc_Small_o" DefaultValue="Letter o Button" />
+        <bt:String id="Desc_Small_p" DefaultValue="Letter p Button" />
+        <bt:String id="Desc_Small_q" DefaultValue="Letter q Button" />
+        <bt:String id="Desc_Small_r" DefaultValue="Letter r Button" />
+        <bt:String id="Desc_Small_s" DefaultValue="Letter s Button" />
+        <bt:String id="Desc_Small_t" DefaultValue="Letter t Button" />
+        <bt:String id="Desc_Small_u" DefaultValue="Letter u Button" />
+        <bt:String id="Desc_Small_v" DefaultValue="Letter v Button" />
+        <bt:String id="Desc_Small_w" DefaultValue="Letter w Button" />
+        <bt:String id="Desc_Small_x" DefaultValue="Letter x Button" />
+        <bt:String id="Desc_Small_y" DefaultValue="Letter y Button" />
+        <bt:String id="Desc_Small_z" DefaultValue="Letter z Button" />
+        
         <bt:String id="Desc_BigA" DefaultValue="Letter A Button" />
         <bt:String id="Desc_BigB" DefaultValue="Letter B Button" />
         <bt:String id="Desc_BigC" DefaultValue="Letter C Button" />
