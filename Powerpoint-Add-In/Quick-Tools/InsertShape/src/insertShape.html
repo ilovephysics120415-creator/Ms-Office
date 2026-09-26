@@ -22,9 +22,10 @@
       Office.actions.associate("actionInsertShapeCylinder", actionInsertShapeCylinder);
 
     Office.onReady(() => {
+            Office.actions.associate("actionInsertShapeCircle", actionInsertShapeCircle);
+
       console.log("Office initialized successfully.");
     });
-      Office.actions.associate("actionInsertShapeCircle", actionInsertShapeCircle);
 
     // Default placement/size for every inserted shape, in points.
     // Adjust freely - these just avoid every shape landing exactly on top
