@@ -45,6 +45,14 @@
           const shapes = context.presentation.getSelectedSlides().getItemAt(0).shapes;
           const shape = shapes.addGeometricShape(shapeType, options || DEFAULT_OPTIONS);
           shape.name = shapeName;
+
+          // Remove fill (make transparent)
+          shape.fill.clear();
+          
+          // Set outline formatting: 1pt thick and black
+          shape.line.color = "#000000";
+          shape.line.weight = 1;
+          
           await context.sync();
         });
       } catch (error) {
@@ -145,6 +153,11 @@
             width: 150,
           });
           line.name = "Line";
+
+          // Set line formatting: 1pt thick and black
+          line.line.color = "#000000";
+          line.line.weight = 1;
+
           await context.sync();
         });
       } catch (error) {
