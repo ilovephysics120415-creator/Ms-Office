@@ -8,8 +8,11 @@
   <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 
   <script type="text/javascript">
+ alert("Button clicked!");
+    Office.onReady(() => {
       // Each of these names must match the <FunctionName> in the manifest's
       // ExecuteFunction actions for Group_Shapes.
+      Office.actions.associate("actionInsertShapeCircle", actionInsertShapeCircle);
       Office.actions.associate("actionInsertShapeSquare", actionInsertShapeSquare);
       Office.actions.associate("actionInsertShapeRectangle", actionInsertShapeRectangle);
       Office.actions.associate("actionInsertShapeTriangle", actionInsertShapeTriangle);
@@ -20,9 +23,6 @@
       Office.actions.associate("actionInsertShapeTrapezoid", actionInsertShapeTrapezoid);
       Office.actions.associate("actionInsertShapeLine", actionInsertShapeLine);
       Office.actions.associate("actionInsertShapeCylinder", actionInsertShapeCylinder);
-
-    Office.onReady(() => {
-            Office.actions.associate("actionInsertShapeCircle", actionInsertShapeCircle);
 
       console.log("Office initialized successfully.");
     });
@@ -60,7 +60,6 @@
     async function actionInsertShapeCircle(event) {
       // No dedicated "Circle" enum value - a circle is an Ellipse
       // with equal width and height.
-      alert("Button clicked!");
       await insertGeometricShape(
         event,
         PowerPoint.GeometricShapeType.ellipse,
