@@ -10,7 +10,6 @@
   <script type="text/javascript">
       // Each of these names must match the <FunctionName> in the manifest's
       // ExecuteFunction actions for Group_Shapes.
-      Office.actions.associate("actionInsertShapeCircle", actionInsertShapeCircle);
       Office.actions.associate("actionInsertShapeSquare", actionInsertShapeSquare);
       Office.actions.associate("actionInsertShapeRectangle", actionInsertShapeRectangle);
       Office.actions.associate("actionInsertShapeTriangle", actionInsertShapeTriangle);
@@ -25,6 +24,7 @@
     Office.onReady(() => {
       console.log("Office initialized successfully.");
     });
+      Office.actions.associate("actionInsertShapeCircle", actionInsertShapeCircle);
 
     // Default placement/size for every inserted shape, in points.
     // Adjust freely - these just avoid every shape landing exactly on top
