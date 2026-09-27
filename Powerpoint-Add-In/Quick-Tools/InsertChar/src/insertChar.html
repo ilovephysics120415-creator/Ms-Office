@@ -104,8 +104,8 @@
                 }
 
                 // "End" inserts the text right after the selection point, preserving existing text
-                //range.insertText(char, "End");
-                range.text=range.text+char;
+                range.insertText(char, "End");
+                //range.text=range.text+char;
                 await context.sync();
             }).catch((error) => {
                 console.error("Could not insert character:", error);
