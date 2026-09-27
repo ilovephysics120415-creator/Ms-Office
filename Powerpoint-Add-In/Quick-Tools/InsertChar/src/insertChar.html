@@ -238,13 +238,19 @@
     };
 
     /**
-     * Inserts a character at the end of the current selection point
-     * without overwriting existing text.
+     * Inserts a character at the cursor position, formatted in Cambria Math,
+     * followed by a space in the slide's normal font so subsequent typing
+     * isn't stuck in Cambria Math.
+     *
+     * Note: PowerPoint.TextRange has no insertText() method (unlike
+     * Word.Range) - the only way to add text is to rebuild the .text
+     * property directly.
      */
     function insertFormattedLetter(char) {
       return PowerPoint.run(async (context) => {
         const range = context.presentation.getSelectedTextRangeOrNullObject();
         range.load("text");
+        range.font.load("name");
         await context.sync();
 
         if (range.isNullObject) {
@@ -255,9 +261,25 @@
           return;
         }
 
-        // "End" inserts the text right after the selection point, preserving existing text
-        range.insertText(char, "End");
-        //range.text = range.text + char
+        const originalFontName = range.font.name;   // font in effect at the cursor
+        const insertAt = range.text.length;          // position where char will land
+
+        // Append the character plus a trailing space (no insertText() available)
+        range.text = range.text + char + " ";
+        await context.sync();
+
+        // Format only the inserted character as Cambria Math
+        const charRange = range.getSubstring(insertAt, char.length);
+        charRange.font.name = "Cambria Math";
+
+        // Format the trailing space back to the original slide font
+        const spaceRange = range.getSubstring(insertAt + char.length, 1);
+        spaceRange.font.name = originalFontName;
+
+        // Park the cursor right after the space, ready for normal typing
+        const cursorRange = range.getSubstring(insertAt + char.length + 1, 0);
+        cursorRange.setSelected();
+
         await context.sync();
       });
     }
