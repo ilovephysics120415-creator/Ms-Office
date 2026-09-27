@@ -261,23 +261,22 @@
           return;
         }
 
-        const originalFontName = range.font.name;   // font in effect at the cursor
-        const insertAt = range.text.length;          // position where char will land
+        const originalFontName = range.font.name;
 
-        // Append the character plus a trailing space (no insertText() available)
         range.text = range.text + char + " ";
+        range.load("text");                 // reload — get the POST-edit text
         await context.sync();
 
-        // Format only the inserted character as Cambria Math
+        const finalLength = range.text.length;             // length after edit (post-autocorrect too)
+        const insertAt = finalLength - char.length - 1;     // char is always right before the trailing space
+
         const charRange = range.getSubstring(insertAt, char.length);
         charRange.font.name = "Cambria Math";
 
-        // Format the trailing space back to the original slide font
         const spaceRange = range.getSubstring(insertAt + char.length, 1);
         spaceRange.font.name = originalFontName;
 
-        // Park the cursor right after the space, ready for normal typing
-        const cursorRange = range.getSubstring(insertAt + char.length + 1, 0);
+        const cursorRange = range.getSubstring(finalLength, 0);
         cursorRange.setSelected();
 
         await context.sync();
