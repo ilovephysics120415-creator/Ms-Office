@@ -268,7 +268,7 @@
         await context.sync();
 
         const finalLength = range.text.length;             // length after edit (post-autocorrect too)
-        const insertAt = finalLength - char.length - 1;     // char is always right before the trailing space
+        const insertAt = finalLength - char.length; // - 1;     // char is always right before the trailing space
 
         const charRange = range.getSubstring(insertAt, char.length);
         charRange.font.name = "Cambria Math";
