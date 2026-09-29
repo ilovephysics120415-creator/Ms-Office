@@ -252,7 +252,7 @@
   await context.sync();
 }*/
 
-function insertFormattedLetter(char) {
+/*function insertFormattedLetter(char) {
   return PowerPoint.run(async (context) => {
     const range = context.presentation.getSelectedTextRangeOrNullObject();
     range.load("text");
@@ -289,6 +289,26 @@ function insertFormattedLetter(char) {
     cursorRange.setSelected();
 
     charRange.load("text");
+    await context.sync();
+  });
+}*/
+
+    function insertFormattedLetter(char) {
+  return PowerPoint.run(async (context) => {
+    const range = context.presentation.getSelectedTextRangeOrNullObject();
+    range.load("text,start,length");
+    await context.sync();
+
+    if (range.isNullObject) {
+      const slide = context.presentation.getSelectedSlides().getItem(0);
+      slide.shapes.addTextField(char);
+      await context.sync();
+      return;
+    }
+
+    const beforeText = range.text;
+    range.text = beforeText + char +
+      "[s" + range.start + ",l" + range.length + ",t" + beforeText.length + "]";
     await context.sync();
   });
 }
