@@ -247,52 +247,6 @@
      * property directly.
      */
     function insertFormattedLetter(char) {
-  return PowerPoint.run(async (context) => {
-    const range = context.presentation.getSelectedTextRangeOrNullObject();
-    range.load("text");
-    range.font.load("name");
-    await context.sync();
-
-    // Fallback if no text frame is selected
-    if (range.isNullObject) {
-      const slide = context.presentation.getSelectedSlides().getItem(0);
-      slide.shapes.addTextField(char);
-      await context.sync();
-      return;
-    }
-
-    // Step 5 Preparation: Save the slide's original font
-    const slideFont = range.font.name || "Calibri";
-
-    // Step 2 & 6: Append character + space at current position
-    const currentText = range.text;
-    range.text = currentText + char + " ";
-    await context.sync();
-
-    // Reload range to get precise post-edit length and indices
-    range.load("text");
-    await context.sync();
-
-    const totalLen = range.text.length;
-    const charLen = char.length;
-    const charStart = totalLen - charLen - 1; // Index where the symbol starts
-
-    // Step 1: Set font of inserted symbol to Cambria Math
-    const charRange = range.getSubstring(charStart, charLen);
-    charRange.font.name = "Cambria Math";
-
-    // Step 5: Set font of trailing space to slide font
-    const spaceRange = range.getSubstring(charStart + charLen, 1);
-    spaceRange.font.name = slideFont;
-
-    // Steps 3 & 4: Unselect symbol and place cursor to the right (after the space)
-    const cursorRange = range.getSubstring(totalLen, 0);
-    cursorRange.setSelected();
-
-    await context.sync();
-  });
-}
- /*   function insertFormattedLetter(char) {
       return PowerPoint.run(async (context) => {
         const range = context.presentation.getSelectedTextRangeOrNullObject();
         range.load("text");
@@ -327,7 +281,7 @@
 
         await context.sync();
       });
-    }*/
+    }
 
     /**
      * Builds an ExecuteFunction handler for a given charMap entry.
