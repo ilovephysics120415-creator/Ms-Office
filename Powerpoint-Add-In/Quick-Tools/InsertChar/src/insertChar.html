@@ -246,42 +246,58 @@
      * Word.Range) - the only way to add text is to rebuild the .text
      * property directly.
      */
-    function insertFormattedLetter(char) {
-      return PowerPoint.run(async (context) => {
-        const range = context.presentation.getSelectedTextRangeOrNullObject();
-        range.load("text");
-        range.font.load("name");
-        await context.sync();
+async function debugToSlide(context, message) {
+  const slide = context.presentation.getSelectedSlides().getItemAt(0);
+  slide.shapes.addTextBox(message, { left: 20, top: 20, width: 600, height: 160 }).name = "DEBUG";
+  await context.sync();
+}
 
-        if (range.isNullObject) {
-          // Get the current slide and add a new text box pre-filled with the character
-          const slide = context.presentation.getSelectedSlides().getItem(0);
-          slide.shapes.addTextField(char);
-          await context.sync();
-          return;
-        }
+function insertFormattedLetter(char) {
+  return PowerPoint.run(async (context) => {
+    const range = context.presentation.getSelectedTextRangeOrNullObject();
+    range.load("text");
+    range.font.load("name");
+    await context.sync();
 
-        const originalFontName = range.font.name;
-
-        range.text = range.text + char + " ";
-        range.load("text");                 // reload — get the POST-edit text
-        await context.sync();
-
-        const finalLength = range.text.length;             // length after edit (post-autocorrect too)
-        const insertAt = finalLength - char.length - 1;     // char is always right before the trailing space
-
-        const charRange = range.getSubstring(insertAt, char.length);
-        charRange.font.name = "Cambria Math";
-
-        const spaceRange = range.getSubstring(insertAt + char.length, 1);
-        spaceRange.font.name = originalFontName;
-
-        const cursorRange = range.getSubstring(finalLength, 0);
-        cursorRange.setSelected();
-
-        await context.sync();
-      });
+    if (range.isNullObject) {
+      const slide = context.presentation.getSelectedSlides().getItem(0);
+      slide.shapes.addTextField(char);
+      await context.sync();
+      return;
     }
+
+    const before = JSON.stringify(range.text);
+    const originalFontName = range.font.name;
+
+    range.text = range.text + char + " ";
+    range.load("text");
+    await context.sync();
+
+    const finalLength = range.text.length;
+    const insertAt = finalLength - char.length - 1;
+
+    const charRange = range.getSubstring(insertAt, char.length);
+    charRange.font.name = "Cambria Math";
+
+    const spaceRange = range.getSubstring(insertAt + char.length, 1);
+    spaceRange.font.name = originalFontName;
+
+    const cursorRange = range.getSubstring(finalLength, 0);
+    cursorRange.setSelected();
+
+    charRange.load("text");
+    await context.sync();
+
+    await debugToSlide(context,
+      "before=" + before + "\n" +
+      "after=" + JSON.stringify(range.text) + "\n" +
+      "len=" + finalLength + "\n" +
+      "char.length=" + char.length + "\n" +
+      "insertAt=" + insertAt + "\n" +
+      "charRange=" + JSON.stringify(charRange.text)
+    );
+  });
+}
 
     /**
      * Builds an ExecuteFunction handler for a given charMap entry.
