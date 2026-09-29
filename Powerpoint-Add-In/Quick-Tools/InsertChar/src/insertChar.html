@@ -250,30 +250,56 @@ function insertFormattedLetter(char) {
   return PowerPoint.run(async (context) => {
     const range = context.presentation.getSelectedTextRangeOrNullObject();
     range.load("text");
+    range.font.load("name");
     const shapes = context.presentation.getSelectedShapes();
     shapes.load("items");
     await context.sync();
 
-    if (range.isNullObject) { return; }
+    if (range.isNullObject) {
+      const slide = context.presentation.getSelectedSlides().getItemAt(0);
+      slide.shapes.addTextField(char);
+      await context.sync();
+      return;
+    }
 
-    const before = range.text;
-    let full = "(no shape)";
+    const originalFont = range.font.name;   // slide font
+    const before = range.text;              // text before caret, trailing spaces trimmed
+
+    let tr = null, full = null;
     if (shapes.items.length > 0) {
-      const tr = shapes.items[0].textFrame.textRange;
+      tr = shapes.items[0].textFrame.textRange;
       tr.load("text");
       await context.sync();
       full = tr.text;
     }
 
-    const rest = full.startsWith(before) ? full.slice(before.length) : "(mismatch)";
-    range.text = before + "#" +
-      "[b=" + JSON.stringify(before) +
-      ",f=" + JSON.stringify(full) +
-      ",rest=" + JSON.stringify(rest) +
-      ",nShapes=" + shapes.items.length + "]";
-    await context.sync();
+      const trimmed = (full !== null) ? full.trimEnd() : null;
+      const trailing = (full !== null) ? full.length - trimmed.length : 0;
+      
+      if (full !== null && trailing > 0 && before.length > 0 && trimmed.endsWith(before)) {
+      // Caret is after space1 (trailing spaces at end of box).
+      // Turn the last space into: space1 + char + space2
+      const lastSpace = tr.getSubstring(full.length - 1, 1);
+      lastSpace.text = " " + char + " ";
+      await context.sync();
+
+      tr.getSubstring(full.length, char.length).font.name = "Cambria Math";
+      tr.getSubstring(full.length + char.length, 1).font.name = originalFont;   // space2
+      tr.getSubstring(full.length + char.length + 1, 0).setSelected();
+      await context.sync();
+    } else {
+      // No trailing spaces before the caret (or mid-text)
+      range.text = before + char + " ";
+      await context.sync();
+
+      range.getSubstring(before.length, char.length).font.name = "Cambria Math";
+      range.getSubstring(before.length + char.length, 1).font.name = originalFont;   // space2
+      range.getSubstring(before.length + char.length + 1, 0).setSelected();
+      await context.sync();
+    }
   });
 }
+    
     /**
      * Builds an ExecuteFunction handler for a given charMap entry.
      * (Wrapped in a factory so each handler closes over its own functionName.)
