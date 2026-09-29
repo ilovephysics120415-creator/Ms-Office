@@ -293,10 +293,12 @@
   });
 }*/
 
-    function insertFormattedLetter(char) {
+function insertFormattedLetter(char) {
   return PowerPoint.run(async (context) => {
     const range = context.presentation.getSelectedTextRangeOrNullObject();
-    range.load("text,start,length");
+    range.load("text");
+    const shapes = context.presentation.getSelectedShapes();
+    shapes.load("items");
     await context.sync();
 
     if (range.isNullObject) {
@@ -306,9 +308,15 @@
       return;
     }
 
-    const beforeText = range.text;
-    range.text = beforeText + char +
-      "[s" + range.start + ",l" + range.length + ",t" + beforeText.length + "]";
+    let full = "(no shape)";
+    if (shapes.items.length > 0) {
+      const tr = shapes.items[0].textFrame.textRange;
+      tr.load("text");
+      await context.sync();
+      full = JSON.stringify(tr.text);
+    }
+
+    range.text = range.text + char + "[full=" + full + "]";
     await context.sync();
   });
 }
