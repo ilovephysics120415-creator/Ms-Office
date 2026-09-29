@@ -250,52 +250,28 @@ function insertFormattedLetter(char) {
   return PowerPoint.run(async (context) => {
     const range = context.presentation.getSelectedTextRangeOrNullObject();
     range.load("text");
-    range.font.load("name");
     const shapes = context.presentation.getSelectedShapes();
     shapes.load("items");
     await context.sync();
 
-    if (range.isNullObject) {
-      const slide = context.presentation.getSelectedSlides().getItemAt(0);
-      slide.shapes.addTextField(char);
-      await context.sync();
-      return;
-    }
+    if (range.isNullObject) { return; }
 
-    const originalFont = range.font.name;   // slide font
-    const before = range.text;              // text before caret, trailing spaces trimmed
-
-    let tr = null, full = null;
+    const before = range.text;
+    let full = "(no shape)";
     if (shapes.items.length > 0) {
-      tr = shapes.items[0].textFrame.textRange;
+      const tr = shapes.items[0].textFrame.textRange;
       tr.load("text");
       await context.sync();
       full = tr.text;
     }
 
-    const rest = (full !== null && full.startsWith(before)) ? full.slice(before.length) : null;
-
-    if (rest !== null && rest.length > 0 && /^ +$/.test(rest)) {
-      // Caret is after space1 (trailing spaces at end of box).
-      // Turn the last space into: space1 + char + space2
-      const lastSpace = tr.getSubstring(full.length - 1, 1);
-      lastSpace.text = " " + char + " ";
-      await context.sync();
-
-      tr.getSubstring(full.length, char.length).font.name = "Cambria Math";
-      tr.getSubstring(full.length + char.length, 1).font.name = originalFont;   // space2
-      tr.getSubstring(full.length + char.length + 1, 0).setSelected();
-      await context.sync();
-    } else {
-      // No trailing spaces before the caret (or mid-text)
-      range.text = before + char + " ";
-      await context.sync();
-
-      range.getSubstring(before.length, char.length).font.name = "Cambria Math";
-      range.getSubstring(before.length + char.length, 1).font.name = originalFont;   // space2
-      range.getSubstring(before.length + char.length + 1, 0).setSelected();
-      await context.sync();
-    }
+    const rest = full.startsWith(before) ? full.slice(before.length) : "(mismatch)";
+    range.text = before + "#" +
+      "[b=" + JSON.stringify(before) +
+      ",f=" + JSON.stringify(full) +
+      ",rest=" + JSON.stringify(rest) +
+      ",nShapes=" + shapes.items.length + "]";
+    await context.sync();
   });
 }
     /**
