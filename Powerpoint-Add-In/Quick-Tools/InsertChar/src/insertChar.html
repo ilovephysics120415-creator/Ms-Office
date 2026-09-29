@@ -246,57 +246,11 @@
      * Word.Range) - the only way to add text is to rebuild the .text
      * property directly.
      */
-/*async function debugToSlide(context, message) {
-  const slide = context.presentation.getSelectedSlides().getItemAt(0);
-  slide.shapes.addTextBox(message, { left: 20, top: 20, width: 600, height: 160 }).name = "DEBUG";
-  await context.sync();
-}*/
-
-/*function insertFormattedLetter(char) {
-  return PowerPoint.run(async (context) => {
-    const range = context.presentation.getSelectedTextRangeOrNullObject();
-    range.load("text");
-    range.font.load("name");
-    await context.sync();
-
-    if (range.isNullObject) {
-      const slide = context.presentation.getSelectedSlides().getItem(0);
-      slide.shapes.addTextField(char);
-      await context.sync();
-      return;
-    }
-
-    const before = JSON.stringify(range.text);
-    const originalFontName = range.font.name;
-
-    const beforeText = range.text;
-    range.text = beforeText + char + "[" + beforeText.length + "]";
-    
-    //range.text = range.text + char + "~";
-    range.load("text");
-    await context.sync();
-
-    const finalLength = range.text.length;
-    const insertAt = finalLength - char.length - 1;
-
-    const charRange = range.getSubstring(insertAt, char.length);
-    charRange.font.name = "Cambria Math";
-
-    const spaceRange = range.getSubstring(insertAt + char.length, 1);
-    spaceRange.font.name = originalFontName;
-
-    const cursorRange = range.getSubstring(finalLength, 0);
-    cursorRange.setSelected();
-
-    charRange.load("text");
-    await context.sync();
-  });
-}*/
-
 function insertFormattedLetter(char) {
   return PowerPoint.run(async (context) => {
     const range = context.presentation.getSelectedTextRangeOrNullObject();
     range.load("text");
+    range.font.load("name");
     const shapes = context.presentation.getSelectedShapes();
     shapes.load("items");
     await context.sync();
@@ -308,7 +262,9 @@ function insertFormattedLetter(char) {
       return;
     }
 
+    const originalFont = range.font.name;   // slide font
     const before = range.text;              // text before caret, trailing spaces trimmed
+
     let tr = null, full = null;
     if (shapes.items.length > 0) {
       tr = shapes.items[0].textFrame.textRange;
@@ -320,26 +276,28 @@ function insertFormattedLetter(char) {
     const rest = (full !== null && full.startsWith(before)) ? full.slice(before.length) : null;
 
     if (rest !== null && rest.length > 0 && /^ +$/.test(rest)) {
-      // Caret is after trailing spaces at the end: insert after them.
+      // Caret is after space1 (trailing spaces at end of box).
+      // Turn the last space into: space1 + char + space2
       const lastSpace = tr.getSubstring(full.length - 1, 1);
-      lastSpace.text = " " + char;
+      lastSpace.text = " " + char + " ";
       await context.sync();
 
       tr.getSubstring(full.length, char.length).font.name = "Cambria Math";
-      tr.getSubstring(full.length + char.length, 0).setSelected();
+      tr.getSubstring(full.length + char.length, 1).font.name = originalFont;   // space2
+      tr.getSubstring(full.length + char.length + 1, 0).setSelected();
       await context.sync();
     } else {
-      // No trailing spaces before the caret (or mid-text): insert at range end.
-      range.text = before + char;
+      // No trailing spaces before the caret (or mid-text)
+      range.text = before + char + " ";
       await context.sync();
 
       range.getSubstring(before.length, char.length).font.name = "Cambria Math";
-      range.getSubstring(before.length + char.length, 0).setSelected();
+      range.getSubstring(before.length + char.length, 1).font.name = originalFont;   // space2
+      range.getSubstring(before.length + char.length + 1, 0).setSelected();
       await context.sync();
     }
   });
 }
-
     /**
      * Builds an ExecuteFunction handler for a given charMap entry.
      * (Wrapped in a factory so each handler closes over its own functionName.)
