@@ -269,7 +269,7 @@ function insertFormattedLetter(char) {
     const before = JSON.stringify(range.text);
     const originalFontName = range.font.name;
 
-    range.text = range.text + char + " ";
+    range.text = range.text + char + "~";
     range.load("text");
     await context.sync();
 
