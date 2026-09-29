@@ -44,32 +44,872 @@
             <!-- Custom Tab Configuration -->
             <CustomTab id="QuickToolsTab">
 
+              <!-- Group 0: Insert Shape (direct-insert buttons, placed before Symbols) -->
+              <Group id="Group_Shapes">
+                <Label resid="GroupShapes.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.Shape.16" />
+                  <bt:Image size="32" resid="Icon.Shape.32" />
+                  <bt:Image size="80" resid="Icon.Shape.80" />
+                </Icon>
+
+                <!-- Button Circle -->
+                <Control xsi:type="Button" id="Btn_Shape_Circle">
+                  <Label resid="Label_Shape_Circle" />
+                  <Supertip>
+                    <Title resid="Label_Shape_Circle" />
+                    <Description resid="Desc_Shape_Circle" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Shape.Circle.16" />
+                    <bt:Image size="32" resid="Icon.Shape.Circle.32" />
+                    <bt:Image size="80" resid="Icon.Shape.Circle.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertShapeCircle</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Square -->
+                <Control xsi:type="Button" id="Btn_Shape_Square">
+                  <Label resid="Label_Shape_Square" />
+                  <Supertip>
+                    <Title resid="Label_Shape_Square" />
+                    <Description resid="Desc_Shape_Square" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Shape.Square.16" />
+                    <bt:Image size="32" resid="Icon.Shape.Square.32" />
+                    <bt:Image size="80" resid="Icon.Shape.Square.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertShapeSquare</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Rectangle -->
+                <Control xsi:type="Button" id="Btn_Shape_Rectangle">
+                  <Label resid="Label_Shape_Rectangle" />
+                  <Supertip>
+                    <Title resid="Label_Shape_Rectangle" />
+                    <Description resid="Desc_Shape_Rectangle" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Shape.Rectangle.16" />
+                    <bt:Image size="32" resid="Icon.Shape.Rectangle.32" />
+                    <bt:Image size="80" resid="Icon.Shape.Rectangle.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertShapeRectangle</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Triangle -->
+                <Control xsi:type="Button" id="Btn_Shape_Triangle">
+                  <Label resid="Label_Shape_Triangle" />
+                  <Supertip>
+                    <Title resid="Label_Shape_Triangle" />
+                    <Description resid="Desc_Shape_Triangle" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Shape.Triangle.16" />
+                    <bt:Image size="32" resid="Icon.Shape.Triangle.32" />
+                    <bt:Image size="80" resid="Icon.Shape.Triangle.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertShapeTriangle</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Right Triangle -->
+                <Control xsi:type="Button" id="Btn_Shape_RightTriangle">
+                  <Label resid="Label_Shape_RightTriangle" />
+                  <Supertip>
+                    <Title resid="Label_Shape_RightTriangle" />
+                    <Description resid="Desc_Shape_RightTriangle" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Shape.RightTriangle.16" />
+                    <bt:Image size="32" resid="Icon.Shape.RightTriangle.32" />
+                    <bt:Image size="80" resid="Icon.Shape.RightTriangle.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertShapeRightTriangle</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Diamond -->
+                <Control xsi:type="Button" id="Btn_Shape_Diamond">
+                  <Label resid="Label_Shape_Diamond" />
+                  <Supertip>
+                    <Title resid="Label_Shape_Diamond" />
+                    <Description resid="Desc_Shape_Diamond" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Shape.Diamond.16" />
+                    <bt:Image size="32" resid="Icon.Shape.Diamond.32" />
+                    <bt:Image size="80" resid="Icon.Shape.Diamond.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertShapeDiamond</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Ellipse -->
+                <Control xsi:type="Button" id="Btn_Shape_Ellipse">
+                  <Label resid="Label_Shape_Ellipse" />
+                  <Supertip>
+                    <Title resid="Label_Shape_Ellipse" />
+                    <Description resid="Desc_Shape_Ellipse" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Shape.Ellipse.16" />
+                    <bt:Image size="32" resid="Icon.Shape.Ellipse.32" />
+                    <bt:Image size="80" resid="Icon.Shape.Ellipse.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertShapeEllipse</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Parallelogram -->
+                <Control xsi:type="Button" id="Btn_Shape_Parallelogram">
+                  <Label resid="Label_Shape_Parallelogram" />
+                  <Supertip>
+                    <Title resid="Label_Shape_Parallelogram" />
+                    <Description resid="Desc_Shape_Parallelogram" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Shape.Parallelogram.16" />
+                    <bt:Image size="32" resid="Icon.Shape.Parallelogram.32" />
+                    <bt:Image size="80" resid="Icon.Shape.Parallelogram.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertShapeParallelogram</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Trapezoid -->
+                <Control xsi:type="Button" id="Btn_Shape_Trapezoid">
+                  <Label resid="Label_Shape_Trapezoid" />
+                  <Supertip>
+                    <Title resid="Label_Shape_Trapezoid" />
+                    <Description resid="Desc_Shape_Trapezoid" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Shape.Trapezoid.16" />
+                    <bt:Image size="32" resid="Icon.Shape.Trapezoid.32" />
+                    <bt:Image size="80" resid="Icon.Shape.Trapezoid.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertShapeTrapezoid</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Line -->
+                <Control xsi:type="Button" id="Btn_Shape_Line">
+                  <Label resid="Label_Shape_Line" />
+                  <Supertip>
+                    <Title resid="Label_Shape_Line" />
+                    <Description resid="Desc_Shape_Line" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Shape.Line.16" />
+                    <bt:Image size="32" resid="Icon.Shape.Line.32" />
+                    <bt:Image size="80" resid="Icon.Shape.Line.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertShapeLine</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Cylinder -->
+                <Control xsi:type="Button" id="Btn_Shape_Cylinder">
+                  <Label resid="Label_Shape_Cylinder" />
+                  <Supertip>
+                    <Title resid="Label_Shape_Cylinder" />
+                    <Description resid="Desc_Shape_Cylinder" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Shape.Cylinder.16" />
+                    <bt:Image size="32" resid="Icon.Shape.Cylinder.32" />
+                    <bt:Image size="80" resid="Icon.Shape.Cylinder.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertShapeCylinder</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+
+              <!-- Group : Symbols -->
+              <Group id="Group_Symbols">
+                <Label resid="Symbols.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.Symbol.16" />
+                  <bt:Image size="32" resid="Icon.Symbol.32" />
+                  <bt:Image size="80" resid="Icon.Symbol.80" />
+                </Icon>
+
+                <!-- Button Alpha -->
+                <Control xsi:type="Button" id="Btn_Alpha">
+                  <Label resid="Label_Alpha" />
+                  <Supertip>
+                    <Title resid="Label_Alpha" />
+                    <Description resid="Desc_Alpha" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Alpha.16" />
+                    <bt:Image size="32" resid="Icon.Alpha.32" />
+                    <bt:Image size="80" resid="Icon.Alpha.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertAlpha</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Beta -->
+                <Control xsi:type="Button" id="Btn_Beta">
+                  <Label resid="Label_Beta" />
+                  <Supertip>
+                    <Title resid="Label_Beta" />
+                    <Description resid="Desc_Beta" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Beta.16" />
+                    <bt:Image size="32" resid="Icon.Beta.32" />
+                    <bt:Image size="80" resid="Icon.Beta.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertBeta</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Lambda -->
+                <Control xsi:type="Button" id="Btn_Lambda">
+                  <Label resid="Label_Lambda" />
+                  <Supertip>
+                    <Title resid="Label_Lambda" />
+                    <Description resid="Desc_Lambda" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Lambda.16" />
+                    <bt:Image size="32" resid="Icon.Lambda.32" />
+                    <bt:Image size="80" resid="Icon.Lambda.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertLambda</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Degree -->
+                <Control xsi:type="Button" id="Btn_Degree">
+                  <Label resid="Label_Degree" />
+                  <Supertip>
+                    <Title resid="Label_Degree" />
+                    <Description resid="Desc_Degree" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Degree.16" />
+                    <bt:Image size="32" resid="Icon.Degree.32" />
+                    <bt:Image size="80" resid="Icon.Degree.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertDegree</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Degree Celsius -->
+                <!-- <Control xsi:type="Button" id="Btn_DegC">
+                  <Label resid="Label_DegC" />
+                  <Supertip>
+                    <Title resid="Label_DegC" />
+                    <Description resid="Desc_DegC" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.DegC.16" />
+                    <bt:Image size="32" resid="Icon.DegC.32" />
+                    <bt:Image size="80" resid="Icon.DegC.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertDegreeCelsius</FunctionName>
+                  </Action>
+                </Control> -->
+
+                <!-- Button Frequency -->
+                <Control xsi:type="Button" id="Btn_Freqf">
+                  <Label resid="Label_Freqf" />
+                  <Supertip>
+                    <Title resid="Label_Freqf" />
+                    <Description resid="Desc_Freqf" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Freqf.16" />
+                    <bt:Image size="32" resid="Icon.Freqf.32" />
+                    <bt:Image size="80" resid="Icon.Freqf.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertFrequency</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Gamma -->
+                <Control xsi:type="Button" id="Btn_Gamma">
+                  <Label resid="Label_Gamma" />
+                  <Supertip>
+                    <Title resid="Label_Gamma" />
+                    <Description resid="Desc_Gamma" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Gamma.16" />
+                    <bt:Image size="32" resid="Icon.Gamma.32" />
+                    <bt:Image size="80" resid="Icon.Gamma.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertGamma</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Theta -->
+                <Control xsi:type="Button" id="Btn_Theta">
+                  <Label resid="Label_Theta" />
+                  <Supertip>
+                    <Title resid="Label_Theta" />
+                    <Description resid="Desc_Theta" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Theta.16" />
+                    <bt:Image size="32" resid="Icon.Theta.32" />
+                    <bt:Image size="80" resid="Icon.Theta.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertTheta</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Ohm -->
+                <Control xsi:type="Button" id="Btn_Ohm">
+                  <Label resid="Label_Ohm" />
+                  <Supertip>
+                    <Title resid="Label_Ohm" />
+                    <Description resid="Desc_Ohm" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Ohm.16" />
+                    <bt:Image size="32" resid="Icon.Ohm.32" />
+                    <bt:Image size="80" resid="Icon.Ohm.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertOhm</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Pi -->
+                <Control xsi:type="Button" id="Btn_Pi">
+                  <Label resid="Label_Pi" />
+                  <Supertip>
+                    <Title resid="Label_Pi" />
+                    <Description resid="Desc_Pi" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Pi.16" />
+                    <bt:Image size="32" resid="Icon.Pi.32" />
+                    <bt:Image size="80" resid="Icon.Pi.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertPi</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Rho -->
+                <Control xsi:type="Button" id="Btn_Rho">
+                  <Label resid="Label_Rho" />
+                  <Supertip>
+                    <Title resid="Label_Rho" />
+                    <Description resid="Desc_Rho" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Rho.16" />
+                    <bt:Image size="32" resid="Icon.Rho.32" />
+                    <bt:Image size="80" resid="Icon.Rho.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertRho</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Mu -->
+                <Control xsi:type="Button" id="Btn_Mu">
+                  <Label resid="Label_Mu" />
+                  <Supertip>
+                    <Title resid="Label_Mu" />
+                    <Description resid="Desc_Mu" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Mu.16" />
+                    <bt:Image size="32" resid="Icon.Mu.32" />
+                    <bt:Image size="80" resid="Icon.Mu.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertMu</FunctionName>
+                  </Action>
+                </Control>
+
+              </Group>
+
+
               <!-- Group : Small Letter Controls -->
               <Group id="Group_Small_Letters">
                 <Label resid="Small_Letters.Label" />
                 <Icon>
-                  <bt:Image size="16" resid="Icon.SmallA.16" />
-                  <bt:Image size="32" resid="Icon.SmallA.32" />
-                  <bt:Image size="80" resid="Icon.SmallA.80" />
+                  <bt:Image size="16" resid="Icon.Smalla.16" />
+                  <bt:Image size="32" resid="Icon.Smalla.32" />
+                  <bt:Image size="80" resid="Icon.Smalla.80" />
                 </Icon>
                 
-                <Control xsi:type="Button" id="Btn_SmallA">
+                <!-- Button Letter a -->
+                <Control xsi:type="Button" id="Btn_Smalla">
                   <Label resid="Label_Small_a" />
                   <Supertip>
                     <Title resid="Label_Small_a" />
                     <Description resid="Desc_Small_a" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Icon.SmallA.16" />
-                    <bt:Image size="32" resid="Icon.SmallA.32" />
-                    <bt:Image size="80" resid="Icon.SmallA.80" />
+                    <bt:Image size="16" resid="Icon.Smalla.16" />
+                    <bt:Image size="32" resid="Icon.Smalla.32" />
+                    <bt:Image size="80" resid="Icon.Smalla.80" />
                   </Icon>
                   <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
                     <Action xsi:type="ExecuteFunction">
-                      <FunctionName>actionInserta</FunctionName>
+                      <FunctionName>actionInsertSmallA</FunctionName>
                     </Action>
                 </Control>
-                
+
+                <!-- Button Letter b -->
+                <Control xsi:type="Button" id="Btn_Smallb">
+                  <Label resid="Label_Small_b" />
+                  <Supertip>
+                    <Title resid="Label_Small_b" />
+                    <Description resid="Desc_Small_b" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallb.16" />
+                    <bt:Image size="32" resid="Icon.Smallb.32" />
+                    <bt:Image size="80" resid="Icon.Smallb.80" />
+                  </Icon>
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                    <Action xsi:type="ExecuteFunction">
+                      <FunctionName>actionInsertSmallB</FunctionName>
+                    </Action>
+                </Control>
+
+                <!-- Button Letter c -->
+                <Control xsi:type="Button" id="Btn_Smallc">
+                  <Label resid="Label_Small_c" />
+                  <Supertip>
+                    <Title resid="Label_Small_c" />
+                    <Description resid="Desc_Small_c" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallc.16" />
+                    <bt:Image size="32" resid="Icon.Smallc.32" />
+                    <bt:Image size="80" resid="Icon.Smallc.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallC</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter d -->
+                <Control xsi:type="Button" id="Btn_Smalld">
+                  <Label resid="Label_Small_d" />
+                  <Supertip>
+                    <Title resid="Label_Small_d" />
+                    <Description resid="Desc_Small_d" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smalld.16" />
+                    <bt:Image size="32" resid="Icon.Smalld.32" />
+                    <bt:Image size="80" resid="Icon.Smalld.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallD</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter e -->
+                <Control xsi:type="Button" id="Btn_Smalle">
+                  <Label resid="Label_Small_e" />
+                  <Supertip>
+                    <Title resid="Label_Small_e" />
+                    <Description resid="Desc_Small_e" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smalle.16" />
+                    <bt:Image size="32" resid="Icon.Smalle.32" />
+                    <bt:Image size="80" resid="Icon.Smalle.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallE</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter f -->
+                <Control xsi:type="Button" id="Btn_Smallf">
+                  <Label resid="Label_Small_f" />
+                  <Supertip>
+                    <Title resid="Label_Small_f" />
+                    <Description resid="Desc_Small_f" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallf.16" />
+                    <bt:Image size="32" resid="Icon.Smallf.32" />
+                    <bt:Image size="80" resid="Icon.Smallf.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallF</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter g -->
+                <Control xsi:type="Button" id="Btn_Smallg">
+                  <Label resid="Label_Small_g" />
+                  <Supertip>
+                    <Title resid="Label_Small_g" />
+                    <Description resid="Desc_Small_g" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallg.16" />
+                    <bt:Image size="32" resid="Icon.Smallg.32" />
+                    <bt:Image size="80" resid="Icon.Smallg.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallG</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter h -->
+                <Control xsi:type="Button" id="Btn_Smallh">
+                  <Label resid="Label_Small_h" />
+                  <Supertip>
+                    <Title resid="Label_Small_h" />
+                    <Description resid="Desc_Small_h" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallh.16" />
+                    <bt:Image size="32" resid="Icon.Smallh.32" />
+                    <bt:Image size="80" resid="Icon.Smallh.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallH</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter i -->
+                <Control xsi:type="Button" id="Btn_Smalli">
+                  <Label resid="Label_Small_i" />
+                  <Supertip>
+                    <Title resid="Label_Small_i" />
+                    <Description resid="Desc_Small_i" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smalli.16" />
+                    <bt:Image size="32" resid="Icon.Smalli.32" />
+                    <bt:Image size="80" resid="Icon.Smalli.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallI</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter j -->
+                <Control xsi:type="Button" id="Btn_Smallj">
+                  <Label resid="Label_Small_j" />
+                  <Supertip>
+                    <Title resid="Label_Small_j" />
+                    <Description resid="Desc_Small_j" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallj.16" />
+                    <bt:Image size="32" resid="Icon.Smallj.32" />
+                    <bt:Image size="80" resid="Icon.Smallj.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallJ</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter k -->
+                <Control xsi:type="Button" id="Btn_Smallk">
+                  <Label resid="Label_Small_k" />
+                  <Supertip>
+                    <Title resid="Label_Small_k" />
+                    <Description resid="Desc_Small_k" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallk.16" />
+                    <bt:Image size="32" resid="Icon.Smallk.32" />
+                    <bt:Image size="80" resid="Icon.Smallk.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallK</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter l -->
+                <Control xsi:type="Button" id="Btn_Smalll">
+                  <Label resid="Label_Small_l" />
+                  <Supertip>
+                    <Title resid="Label_Small_l" />
+                    <Description resid="Desc_Small_l" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smalll.16" />
+                    <bt:Image size="32" resid="Icon.Smalll.32" />
+                    <bt:Image size="80" resid="Icon.Smalll.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallL</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter m -->
+                <Control xsi:type="Button" id="Btn_Smallm">
+                  <Label resid="Label_Small_m" />
+                  <Supertip>
+                    <Title resid="Label_Small_m" />
+                    <Description resid="Desc_Small_m" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallm.16" />
+                    <bt:Image size="32" resid="Icon.Smallm.32" />
+                    <bt:Image size="80" resid="Icon.Smallm.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallM</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter n -->
+                <Control xsi:type="Button" id="Btn_Smalln">
+                  <Label resid="Label_Small_n" />
+                  <Supertip>
+                    <Title resid="Label_Small_n" />
+                    <Description resid="Desc_Small_n" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smalln.16" />
+                    <bt:Image size="32" resid="Icon.Smalln.32" />
+                    <bt:Image size="80" resid="Icon.Smalln.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallN</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter o -->
+                <Control xsi:type="Button" id="Btn_Smallo">
+                  <Label resid="Label_Small_o" />
+                  <Supertip>
+                    <Title resid="Label_Small_o" />
+                    <Description resid="Desc_Small_o" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallo.16" />
+                    <bt:Image size="32" resid="Icon.Smallo.32" />
+                    <bt:Image size="80" resid="Icon.Smallo.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallO</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter p -->
+                <Control xsi:type="Button" id="Btn_Smallp">
+                  <Label resid="Label_Small_p" />
+                  <Supertip>
+                    <Title resid="Label_Small_p" />
+                    <Description resid="Desc_Small_p" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallp.16" />
+                    <bt:Image size="32" resid="Icon.Smallp.32" />
+                    <bt:Image size="80" resid="Icon.Smallp.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallP</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter q -->
+                <Control xsi:type="Button" id="Btn_Smallq">
+                  <Label resid="Label_Small_q" />
+                  <Supertip>
+                    <Title resid="Label_Small_q" />
+                    <Description resid="Desc_Small_q" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallq.16" />
+                    <bt:Image size="32" resid="Icon.Smallq.32" />
+                    <bt:Image size="80" resid="Icon.Smallq.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallQ</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter r -->
+                <Control xsi:type="Button" id="Btn_Smallr">
+                  <Label resid="Label_Small_r" />
+                  <Supertip>
+                    <Title resid="Label_Small_r" />
+                    <Description resid="Desc_Small_r" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallr.16" />
+                    <bt:Image size="32" resid="Icon.Smallr.32" />
+                    <bt:Image size="80" resid="Icon.Smallr.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallR</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter s -->
+                <Control xsi:type="Button" id="Btn_Smalls">
+                  <Label resid="Label_Small_s" />
+                  <Supertip>
+                    <Title resid="Label_Small_s" />
+                    <Description resid="Desc_Small_s" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smalls.16" />
+                    <bt:Image size="32" resid="Icon.Smalls.32" />
+                    <bt:Image size="80" resid="Icon.Smalls.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallS</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter t -->
+                <Control xsi:type="Button" id="Btn_Smallt">
+                  <Label resid="Label_Small_t" />
+                  <Supertip>
+                    <Title resid="Label_Small_t" />
+                    <Description resid="Desc_Small_t" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallt.16" />
+                    <bt:Image size="32" resid="Icon.Smallt.32" />
+                    <bt:Image size="80" resid="Icon.Smallt.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallT</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter u -->
+                <Control xsi:type="Button" id="Btn_Smallu">
+                  <Label resid="Label_Small_u" />
+                  <Supertip>
+                    <Title resid="Label_Small_u" />
+                    <Description resid="Desc_Small_u" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallu.16" />
+                    <bt:Image size="32" resid="Icon.Smallu.32" />
+                    <bt:Image size="80" resid="Icon.Smallu.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallU</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter v -->
+                <Control xsi:type="Button" id="Btn_Smallv">
+                  <Label resid="Label_Small_v" />
+                  <Supertip>
+                    <Title resid="Label_Small_v" />
+                    <Description resid="Desc_Small_v" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallv.16" />
+                    <bt:Image size="32" resid="Icon.Smallv.32" />
+                    <bt:Image size="80" resid="Icon.Smallv.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallV</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter w -->
+                <Control xsi:type="Button" id="Btn_Smallw">
+                  <Label resid="Label_Small_w" />
+                  <Supertip>
+                    <Title resid="Label_Small_w" />
+                    <Description resid="Desc_Small_w" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallw.16" />
+                    <bt:Image size="32" resid="Icon.Smallw.32" />
+                    <bt:Image size="80" resid="Icon.Smallw.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallW</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter x -->
+                <Control xsi:type="Button" id="Btn_Smallx">
+                  <Label resid="Label_Small_x" />
+                  <Supertip>
+                    <Title resid="Label_Small_x" />
+                    <Description resid="Desc_Small_x" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallx.16" />
+                    <bt:Image size="32" resid="Icon.Smallx.32" />
+                    <bt:Image size="80" resid="Icon.Smallx.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallX</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter y -->
+                <Control xsi:type="Button" id="Btn_Smally">
+                  <Label resid="Label_Small_y" />
+                  <Supertip>
+                    <Title resid="Label_Small_y" />
+                    <Description resid="Desc_Small_y" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smally.16" />
+                    <bt:Image size="32" resid="Icon.Smally.32" />
+                    <bt:Image size="80" resid="Icon.Smally.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallY</FunctionName>
+                  </Action>
+                </Control>
+
+                <!-- Button Letter z -->
+                <Control xsi:type="Button" id="Btn_Smallz">
+                  <Label resid="Label_Small_z" />
+                  <Supertip>
+                    <Title resid="Label_Small_z" />
+                    <Description resid="Desc_Small_z" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smallz.16" />
+                    <bt:Image size="32" resid="Icon.Smallz.32" />
+                    <bt:Image size="80" resid="Icon.Smallz.80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>actionInsertSmallZ</FunctionName>
+                  </Action>
+                </Control>
+
               </Group>
 
               
@@ -580,7 +1420,7 @@
               </Group>
 
               <!-- Group 2: Symbols -->
-              <Group id="Group_Symbols">
+              <Group id="Group_Symbols_Taskpane">
                 <Label resid="Group2.Label" />
                 <Icon>
                   <bt:Image size="16" resid="Icon.Symbol.16" />
@@ -777,114 +1617,209 @@
         <bt:Image id="Icon.BigZ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-z-32.png"/>
         <bt:Image id="Icon.BigZ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-big-z-80.png"/>
 
-        <bt:Image id="Icon.SmallA.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-a-16.png"/>
-        <bt:Image id="Icon.SmallA.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-a-32.png"/>
-        <bt:Image id="Icon.SmallA.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-a-80.png"/>
 
-        <bt:Image id="Icon.SmallB.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-b-16.png"/>
-        <bt:Image id="Icon.SmallB.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-b-32.png"/>
-        <bt:Image id="Icon.SmallB.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-b-80.png"/>
+        <bt:Image id="Icon.Smalla.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-a-16.png"/>
+        <bt:Image id="Icon.Smalla.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-a-32.png"/>
+        <bt:Image id="Icon.Smalla.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-a-80.png"/>
 
-        <bt:Image id="Icon.SmallC.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-c-16.png"/>
-        <bt:Image id="Icon.SmallC.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-c-32.png"/>
-        <bt:Image id="Icon.SmallC.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-c-80.png"/>
+        <bt:Image id="Icon.Smallb.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-b-16.png"/>
+        <bt:Image id="Icon.Smallb.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-b-32.png"/>
+        <bt:Image id="Icon.Smallb.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-b-80.png"/>
 
-        <bt:Image id="Icon.SmallD.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-d-16.png"/>
-        <bt:Image id="Icon.SmallD.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-d-32.png"/>
-        <bt:Image id="Icon.SmallD.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-d-80.png"/>
+        <bt:Image id="Icon.Smallc.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-c-16.png"/>
+        <bt:Image id="Icon.Smallc.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-c-32.png"/>
+        <bt:Image id="Icon.Smallc.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-c-80.png"/>
 
-        <bt:Image id="Icon.SmallE.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-e-16.png"/>
-        <bt:Image id="Icon.SmallE.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-e-32.png"/>
-        <bt:Image id="Icon.SmallE.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-e-80.png"/>
+        <bt:Image id="Icon.Smalld.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-d-16.png"/>
+        <bt:Image id="Icon.Smalld.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-d-32.png"/>
+        <bt:Image id="Icon.Smalld.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-d-80.png"/>
 
-        <bt:Image id="Icon.SmallF.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-f-16.png"/>
-        <bt:Image id="Icon.SmallF.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-f-32.png"/>
-        <bt:Image id="Icon.SmallF.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-f-80.png"/>
+        <bt:Image id="Icon.Smalle.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-e-16.png"/>
+        <bt:Image id="Icon.Smalle.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-e-32.png"/>
+        <bt:Image id="Icon.Smalle.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-e-80.png"/>
 
-        <bt:Image id="Icon.SmallG.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-g-16.png"/>
-        <bt:Image id="Icon.SmallG.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-g-32.png"/>
-        <bt:Image id="Icon.SmallG.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-g-80.png"/>
+        <bt:Image id="Icon.Smallf.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-f-16.png"/>
+        <bt:Image id="Icon.Smallf.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-f-32.png"/>
+        <bt:Image id="Icon.Smallf.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-f-80.png"/>
 
-        <bt:Image id="Icon.SmallH.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-h-16.png"/>
-        <bt:Image id="Icon.SmallH.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-h-32.png"/>
-        <bt:Image id="Icon.SmallH.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-h-80.png"/>
+        <bt:Image id="Icon.Smallg.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-g-16.png"/>
+        <bt:Image id="Icon.Smallg.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-g-32.png"/>
+        <bt:Image id="Icon.Smallg.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-g-80.png"/>
 
-        <bt:Image id="Icon.SmallI.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-i-16.png"/>
-        <bt:Image id="Icon.SmallI.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-i-32.png"/>
-        <bt:Image id="Icon.SmallI.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-i-80.png"/>
+        <bt:Image id="Icon.Smallh.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-h-16.png"/>
+        <bt:Image id="Icon.Smallh.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-h-32.png"/>
+        <bt:Image id="Icon.Smallh.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-h-80.png"/>
 
-        <bt:Image id="Icon.SmallJ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-j-16.png"/>
-        <bt:Image id="Icon.SmallJ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-j-32.png"/>
-        <bt:Image id="Icon.SmallJ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-j-80.png"/>
+        <bt:Image id="Icon.Smalli.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-i-16.png"/>
+        <bt:Image id="Icon.Smalli.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-i-32.png"/>
+        <bt:Image id="Icon.Smalli.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-i-80.png"/>
 
-        <bt:Image id="Icon.SmallK.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-k-16.png"/>
-        <bt:Image id="Icon.SmallK.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-k-32.png"/>
-        <bt:Image id="Icon.SmallK.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-k-80.png"/>
+        <bt:Image id="Icon.Smallj.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-j-16.png"/>
+        <bt:Image id="Icon.Smallj.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-j-32.png"/>
+        <bt:Image id="Icon.Smallj.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-j-80.png"/>
 
-        <bt:Image id="Icon.SmallL.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-l-16.png"/>
-        <bt:Image id="Icon.SmallL.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-l-32.png"/>
-        <bt:Image id="Icon.SmallL.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-l-80.png"/>
+        <bt:Image id="Icon.Smallk.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-k-16.png"/>
+        <bt:Image id="Icon.Smallk.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-k-32.png"/>
+        <bt:Image id="Icon.Smallk.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-k-80.png"/>
 
-        <bt:Image id="Icon.SmallM.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-m-16.png"/>
-        <bt:Image id="Icon.SmallM.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-m-32.png"/>
-        <bt:Image id="Icon.SmallM.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-m-80.png"/>
+        <bt:Image id="Icon.Smalll.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-l-16.png"/>
+        <bt:Image id="Icon.Smalll.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-l-32.png"/>
+        <bt:Image id="Icon.Smalll.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-l-80.png"/>
 
-        <bt:Image id="Icon.SmallN.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-n-16.png"/>
-        <bt:Image id="Icon.SmallN.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-n-32.png"/>
-        <bt:Image id="Icon.SmallN.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-n-80.png"/>
+        <bt:Image id="Icon.Smallm.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-m-16.png"/>
+        <bt:Image id="Icon.Smallm.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-m-32.png"/>
+        <bt:Image id="Icon.Smallm.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-m-80.png"/>
 
-        <bt:Image id="Icon.SmallO.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-o-16.png"/>
-        <bt:Image id="Icon.SmallO.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-o-32.png"/>
-        <bt:Image id="Icon.SmallO.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-o-80.png"/>
+        <bt:Image id="Icon.Smalln.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-n-16.png"/>
+        <bt:Image id="Icon.Smalln.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-n-32.png"/>
+        <bt:Image id="Icon.Smalln.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-n-80.png"/>
 
-        <bt:Image id="Icon.SmallP.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-p-16.png"/>
-        <bt:Image id="Icon.SmallP.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-p-32.png"/>
-        <bt:Image id="Icon.SmallP.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-p-80.png"/>
+        <bt:Image id="Icon.Smallo.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-o-16.png"/>
+        <bt:Image id="Icon.Smallo.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-o-32.png"/>
+        <bt:Image id="Icon.Smallo.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-o-80.png"/>
 
-        <bt:Image id="Icon.SmallQ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-q-16.png"/>
-        <bt:Image id="Icon.SmallQ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-q-32.png"/>
-        <bt:Image id="Icon.SmallQ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-q-80.png"/>
+        <bt:Image id="Icon.Smallp.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-p-16.png"/>
+        <bt:Image id="Icon.Smallp.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-p-32.png"/>
+        <bt:Image id="Icon.Smallp.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-p-80.png"/>
 
-        <bt:Image id="Icon.SmallR.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-r-16.png"/>
-        <bt:Image id="Icon.SmallR.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-r-32.png"/>
-        <bt:Image id="Icon.SmallR.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-r-80.png"/>
+        <bt:Image id="Icon.Smallq.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-q-16.png"/>
+        <bt:Image id="Icon.Smallq.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-q-32.png"/>
+        <bt:Image id="Icon.Smallq.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-q-80.png"/>
 
-        <bt:Image id="Icon.SmallS.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-s-16.png"/>
-        <bt:Image id="Icon.SmallS.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-s-32.png"/>
-        <bt:Image id="Icon.SmallS.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-s-80.png"/>
+        <bt:Image id="Icon.Smallr.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-r-16.png"/>
+        <bt:Image id="Icon.Smallr.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-r-32.png"/>
+        <bt:Image id="Icon.Smallr.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-r-80.png"/>
 
-        <bt:Image id="Icon.SmallT.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-t-16.png"/>
-        <bt:Image id="Icon.SmallT.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-t-32.png"/>
-        <bt:Image id="Icon.SmallT.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-t-80.png"/>
+        <bt:Image id="Icon.Smalls.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-s-16.png"/>
+        <bt:Image id="Icon.Smalls.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-s-32.png"/>
+        <bt:Image id="Icon.Smalls.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-s-80.png"/>
 
-        <bt:Image id="Icon.SmallU.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-u-16.png"/>
-        <bt:Image id="Icon.SmallU.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-u-32.png"/>
-        <bt:Image id="Icon.SmallU.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-u-80.png"/>
+        <bt:Image id="Icon.Smallt.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-t-16.png"/>
+        <bt:Image id="Icon.Smallt.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-t-32.png"/>
+        <bt:Image id="Icon.Smallt.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-t-80.png"/>
 
-        <bt:Image id="Icon.SmallV.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-v-16.png"/>
-        <bt:Image id="Icon.SmallV.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-v-32.png"/>
-        <bt:Image id="Icon.SmallV.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-v-80.png"/>
+        <bt:Image id="Icon.Smallu.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-u-16.png"/>
+        <bt:Image id="Icon.Smallu.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-u-32.png"/>
+        <bt:Image id="Icon.Smallu.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-u-80.png"/>
 
-        <bt:Image id="Icon.SmallW.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-w-16.png"/>
-        <bt:Image id="Icon.SmallW.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-w-32.png"/>
-        <bt:Image id="Icon.SmallW.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-w-80.png"/>
+        <bt:Image id="Icon.Smallv.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-v-16.png"/>
+        <bt:Image id="Icon.Smallv.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-v-32.png"/>
+        <bt:Image id="Icon.Smallv.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-v-80.png"/>
 
-        <bt:Image id="Icon.SmallX.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-x-16.png"/>
-        <bt:Image id="Icon.SmallX.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-x-32.png"/>
-        <bt:Image id="Icon.SmallX.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-x-80.png"/>
+        <bt:Image id="Icon.Smallw.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-w-16.png"/>
+        <bt:Image id="Icon.Smallw.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-w-32.png"/>
+        <bt:Image id="Icon.Smallw.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-w-80.png"/>
 
-        <bt:Image id="Icon.SmallY.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-y-16.png"/>
-        <bt:Image id="Icon.SmallY.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-y-32.png"/>
-        <bt:Image id="Icon.SmallY.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-y-80.png"/>
+        <bt:Image id="Icon.Smallx.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-x-16.png"/>
+        <bt:Image id="Icon.Smallx.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-x-32.png"/>
+        <bt:Image id="Icon.Smallx.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-x-80.png"/>
 
-        <bt:Image id="Icon.SmallZ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-z-16.png"/>
-        <bt:Image id="Icon.SmallZ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-z-32.png"/>
-        <bt:Image id="Icon.SmallZ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-z-80.png"/>
+        <bt:Image id="Icon.Smally.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-y-16.png"/>
+        <bt:Image id="Icon.Smally.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-y-32.png"/>
+        <bt:Image id="Icon.Smally.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-y-80.png"/>
+
+        <bt:Image id="Icon.Smallz.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-z-16.png"/>
+        <bt:Image id="Icon.Smallz.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-z-32.png"/>
+        <bt:Image id="Icon.Smallz.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-small-z-80.png"/>
         
-        
-        <bt:Image id="Icon.Shape.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-16.png"/>
-        <bt:Image id="Icon.Shape.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-32.png"/>
-        <bt:Image id="Icon.Shape.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-80.png"/>
+
+        <bt:Image id="Icon.Alpha.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-alpha-16.png"/>
+        <bt:Image id="Icon.Alpha.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-alpha-32.png"/>
+        <bt:Image id="Icon.Alpha.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-alpha-80.png"/>
+
+        <bt:Image id="Icon.Beta.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-beta-16.png"/>
+        <bt:Image id="Icon.Beta.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-beta-32.png"/>
+        <bt:Image id="Icon.Beta.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-beta-80.png"/>
+
+        <bt:Image id="Icon.Gamma.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-gamma-16.png"/>
+        <bt:Image id="Icon.Gamma.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-gamma-32.png"/>
+        <bt:Image id="Icon.Gamma.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-gamma-80.png"/>
+
+        <bt:Image id="Icon.Lambda.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-lambda-16.png"/>
+        <bt:Image id="Icon.Lambda.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-lambda-32.png"/>
+        <bt:Image id="Icon.Lambda.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-lambda-80.png"/>
+
+        <bt:Image id="Icon.Mu.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-mu-16.png"/>
+        <bt:Image id="Icon.Mu.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-mu-32.png"/>
+        <bt:Image id="Icon.Mu.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-mu-80.png"/>
+
+        <bt:Image id="Icon.Ohm.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-ohm-16.png"/>
+        <bt:Image id="Icon.Ohm.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-ohm-32.png"/>
+        <bt:Image id="Icon.Ohm.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-ohm-80.png"/>
+
+        <bt:Image id="Icon.Pi.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-pi-16.png"/>
+        <bt:Image id="Icon.Pi.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-pi-32.png"/>
+        <bt:Image id="Icon.Pi.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-pi-80.png"/>
+
+        <bt:Image id="Icon.Rho.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-rho-16.png"/>
+        <bt:Image id="Icon.Rho.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-rho-32.png"/>
+        <bt:Image id="Icon.Rho.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-rho-80.png"/>
+
+        <bt:Image id="Icon.Theta.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-theta-16.png"/>
+        <bt:Image id="Icon.Theta.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-theta-32.png"/>
+        <bt:Image id="Icon.Theta.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-theta-80.png"/>
+
+        <bt:Image id="Icon.Degree.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-degree-16.png"/>
+        <bt:Image id="Icon.Degree.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-degree-32.png"/>
+        <bt:Image id="Icon.Degree.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-degree-80.png"/>
+
+        <bt:Image id="Icon.DegC.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-degree_celsius-16.png"/>
+        <bt:Image id="Icon.DegC.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-degree_celsius-32.png"/>
+        <bt:Image id="Icon.DegC.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-degree_celsius-80.png"/>
+
+        <bt:Image id="Icon.Freqf.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-frequency_f-16.png"/>
+        <bt:Image id="Icon.Freqf.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-frequency_f-32.png"/>
+        <bt:Image id="Icon.Freqf.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-symbol-frequency_f-80.png"/>
+
+
+        <bt:Image id="Icon.Shape.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-circle-16.png"/>
+        <bt:Image id="Icon.Shape.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-circle-32.png"/>
+        <bt:Image id="Icon.Shape.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-circle-80.png"/>
+
+        <!-- Per-shape icons for Group_Shapes (Quick-Tools/assets/ ; note: source filename uses "elipse" not "ellipse") -->
+        <bt:Image id="Icon.Shape.Circle.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-circle-16.png"/>
+        <bt:Image id="Icon.Shape.Circle.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-circle-32.png"/>
+        <bt:Image id="Icon.Shape.Circle.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-circle-80.png"/>
+
+        <bt:Image id="Icon.Shape.Square.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-square-16.png"/>
+        <bt:Image id="Icon.Shape.Square.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-square-32.png"/>
+        <bt:Image id="Icon.Shape.Square.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-square-80.png"/>
+
+        <bt:Image id="Icon.Shape.Rectangle.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-rectangle-16.png"/>
+        <bt:Image id="Icon.Shape.Rectangle.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-rectangle-32.png"/>
+        <bt:Image id="Icon.Shape.Rectangle.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-rectangle-80.png"/>
+
+        <bt:Image id="Icon.Shape.Triangle.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-triangle-16.png"/>
+        <bt:Image id="Icon.Shape.Triangle.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-triangle-32.png"/>
+        <bt:Image id="Icon.Shape.Triangle.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-triangle-80.png"/>
+
+        <bt:Image id="Icon.Shape.RightTriangle.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-rightTriangle-16.png"/>
+        <bt:Image id="Icon.Shape.RightTriangle.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-rightTriangle-32.png"/>
+        <bt:Image id="Icon.Shape.RightTriangle.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-rightTriangle-80.png"/>
+
+        <bt:Image id="Icon.Shape.Diamond.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-diamond-16.png"/>
+        <bt:Image id="Icon.Shape.Diamond.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-diamond-32.png"/>
+        <bt:Image id="Icon.Shape.Diamond.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-diamond-80.png"/>
+
+        <bt:Image id="Icon.Shape.Ellipse.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-elipse-16.png"/>
+        <bt:Image id="Icon.Shape.Ellipse.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-elipse-32.png"/>
+        <bt:Image id="Icon.Shape.Ellipse.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-elipse-80.png"/>
+
+        <bt:Image id="Icon.Shape.Parallelogram.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-parallelogram-16.png"/>
+        <bt:Image id="Icon.Shape.Parallelogram.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-parallelogram-32.png"/>
+        <bt:Image id="Icon.Shape.Parallelogram.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-parallelogram-80.png"/>
+
+        <bt:Image id="Icon.Shape.Trapezoid.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-trapezoid-16.png"/>
+        <bt:Image id="Icon.Shape.Trapezoid.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-trapezoid-32.png"/>
+        <bt:Image id="Icon.Shape.Trapezoid.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-trapezoid-80.png"/>
+
+        <bt:Image id="Icon.Shape.Line.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-line-16.png"/>
+        <bt:Image id="Icon.Shape.Line.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-line-32.png"/>
+        <bt:Image id="Icon.Shape.Line.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-line-80.png"/>
+
+        <bt:Image id="Icon.Shape.Cylinder.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-cylinder-16.png"/>
+        <bt:Image id="Icon.Shape.Cylinder.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-cylinder-32.png"/>
+        <bt:Image id="Icon.Shape.Cylinder.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-shape-cylinder-80.png"/>
         <bt:Image id="Icon.Symbol.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-lambda-16.png"/>
         <bt:Image id="Icon.Symbol.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-lambda-32.png"/>
         <bt:Image id="Icon.Symbol.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-lambda-80.png"/>
@@ -910,6 +1845,20 @@
         <bt:String id="Tab.Label" DefaultValue="Quick Tools" />
         <bt:String id="Small_Letters.Label" DefaultValue="Small Maths Letters" />
         <bt:String id="Big_Letters.Label" DefaultValue="Big Maths Letters" />
+        <bt:String id="Symbols.Label" DefaultValue="Physics Symbols" />
+
+        <bt:String id="Label_Alpha" DefaultValue=" " />
+        <bt:String id="Label_Beta" DefaultValue=" " />
+        <bt:String id="Label_Gamma" DefaultValue=" " />
+        <bt:String id="Label_Lambda" DefaultValue=" " />
+        <bt:String id="Label_Degree" DefaultValue=" " />
+        <bt:String id="Label_DegC" DefaultValue=" " />
+        <bt:String id="Label_Freqf" DefaultValue=" " />
+        <bt:String id="Label_Theta" DefaultValue=" " />
+        <bt:String id="Label_Ohm" DefaultValue=" "/>
+        <bt:String id="Label_Rho" DefaultValue=" "/>
+        <bt:String id="Label_Pi" DefaultValue=" "/>
+        <bt:String id="Label_Mu" DefaultValue=" "/>
 
         <bt:String id="Label_Small_a" DefaultValue=" " />
         <bt:String id="Label_Small_b" DefaultValue=" " />
@@ -967,6 +1916,19 @@
         <bt:String id="Label_BigZ" DefaultValue=" " />
 
 
+        <bt:String id="GroupShapes.Label" DefaultValue="Insert Shape" />
+        <bt:String id="Label_Shape_Circle" DefaultValue="Circle" />
+        <bt:String id="Label_Shape_Square" DefaultValue="Square" />
+        <bt:String id="Label_Shape_Rectangle" DefaultValue="Rectangle" />
+        <bt:String id="Label_Shape_Triangle" DefaultValue="Triangle" />
+        <bt:String id="Label_Shape_RightTriangle" DefaultValue="Right Triangle" />
+        <bt:String id="Label_Shape_Diamond" DefaultValue="Diamond" />
+        <bt:String id="Label_Shape_Ellipse" DefaultValue="Ellipse" />
+        <bt:String id="Label_Shape_Parallelogram" DefaultValue="Parallelogram" />
+        <bt:String id="Label_Shape_Trapezoid" DefaultValue="Trapezoid" />
+        <bt:String id="Label_Shape_Line" DefaultValue="Line" />
+        <bt:String id="Label_Shape_Cylinder" DefaultValue="Cylinder" />
+
         <bt:String id="Group1.Label" DefaultValue="Shapes" />
         <bt:String id="Group2.Label" DefaultValue="Symbols" />
         <bt:String id="Group3.Label" DefaultValue="Small Letter" />
@@ -983,6 +1945,32 @@
 
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Open the Quick Tools task panes from the ribbon tab." />
+
+
+        <bt:String id="Desc_Shape_Circle" DefaultValue="Insert a circle shape" />
+        <bt:String id="Desc_Shape_Square" DefaultValue="Insert a square shape" />
+        <bt:String id="Desc_Shape_Rectangle" DefaultValue="Insert a rectangle shape" />
+        <bt:String id="Desc_Shape_Triangle" DefaultValue="Insert a triangle shape" />
+        <bt:String id="Desc_Shape_RightTriangle" DefaultValue="Insert a right triangle shape" />
+        <bt:String id="Desc_Shape_Diamond" DefaultValue="Insert a diamond shape" />
+        <bt:String id="Desc_Shape_Ellipse" DefaultValue="Insert an ellipse shape" />
+        <bt:String id="Desc_Shape_Parallelogram" DefaultValue="Insert a parallelogram shape" />
+        <bt:String id="Desc_Shape_Trapezoid" DefaultValue="Insert a trapezoid shape" />
+        <bt:String id="Desc_Shape_Line" DefaultValue="Insert a straight line" />
+        <bt:String id="Desc_Shape_Cylinder" DefaultValue="Insert a cylinder shape" />
+
+        <bt:String id="Desc_Alpha" DefaultValue="Alpha Button" />
+        <bt:String id="Desc_Beta" DefaultValue="Beta Button" />
+        <bt:String id="Desc_Gamma" DefaultValue="Gamma Button" />
+        <bt:String id="Desc_Lambda" DefaultValue="Lambda Button" />
+        <bt:String id="Desc_Mu" DefaultValue="Mu Button" />
+        <bt:String id="Desc_Ohm" DefaultValue="Ohm Button" />
+        <bt:String id="Desc_Pi" DefaultValue="Pi Button" />
+        <bt:String id="Desc_Rho" DefaultValue="Rho Button" />
+        <bt:String id="Desc_Theta" DefaultValue="Theta Button" />
+        <bt:String id="Desc_Degree" DefaultValue="Degree Button" />
+        <bt:String id="Desc_DegC" DefaultValue="Degree Celsius Button" />
+        <bt:String id="Desc_Freqf" DefaultValue="Frequency f Button" />
 
         <bt:String id="Desc_Small_a" DefaultValue="Letter a Button" />
         <bt:String id="Desc_Small_b" DefaultValue="Letter b Button" />
