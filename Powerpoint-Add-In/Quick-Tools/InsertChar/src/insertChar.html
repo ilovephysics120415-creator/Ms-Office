@@ -246,11 +246,11 @@
      * Word.Range) - the only way to add text is to rebuild the .text
      * property directly.
      */
-async function debugToSlide(context, message) {
+/*async function debugToSlide(context, message) {
   const slide = context.presentation.getSelectedSlides().getItemAt(0);
   slide.shapes.addTextBox(message, { left: 20, top: 20, width: 600, height: 160 }).name = "DEBUG";
   await context.sync();
-}
+}*/
 
 function insertFormattedLetter(char) {
   return PowerPoint.run(async (context) => {
@@ -269,7 +269,10 @@ function insertFormattedLetter(char) {
     const before = JSON.stringify(range.text);
     const originalFontName = range.font.name;
 
-    range.text = range.text + char + "~";
+    const beforeText = range.text;
+    range.text = beforeText + char + "[" + beforeText.length + "]";
+    
+    //range.text = range.text + char + "~";
     range.load("text");
     await context.sync();
 
@@ -288,13 +291,13 @@ function insertFormattedLetter(char) {
     charRange.load("text");
     await context.sync();
 
-    await debugToSlide(context,
+    /*await debugToSlide(context,
       "before=" + before + "\n" +
       "after=" + JSON.stringify(range.text) + "\n" +
       "len=" + finalLength + "\n" +
       "char.length=" + char.length + "\n" +
       "insertAt=" + insertAt + "\n" +
-      "charRange=" + JSON.stringify(charRange.text)
+      "charRange=" + JSON.stringify(charRange.text)*/
     );
   });
 }
