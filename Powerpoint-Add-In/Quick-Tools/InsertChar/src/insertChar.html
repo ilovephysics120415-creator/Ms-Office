@@ -302,22 +302,41 @@ function insertFormattedLetter(char) {
     await context.sync();
 
     if (range.isNullObject) {
-      const slide = context.presentation.getSelectedSlides().getItem(0);
+      const slide = context.presentation.getSelectedSlides().getItemAt(0);
       slide.shapes.addTextField(char);
       await context.sync();
       return;
     }
 
-    let full = "(no shape)";
+    const before = range.text;              // text before caret, trailing spaces trimmed
+    let tr = null, full = null;
     if (shapes.items.length > 0) {
-      const tr = shapes.items[0].textFrame.textRange;
+      tr = shapes.items[0].textFrame.textRange;
       tr.load("text");
       await context.sync();
-      full = JSON.stringify(tr.text);
+      full = tr.text;
     }
 
-    range.text = range.text + char + "[full=" + full + "]";
-    await context.sync();
+    const rest = (full !== null && full.startsWith(before)) ? full.slice(before.length) : null;
+
+    if (rest !== null && rest.length > 0 && /^ +$/.test(rest)) {
+      // Caret is after trailing spaces at the end: insert after them.
+      const lastSpace = tr.getSubstring(full.length - 1, 1);
+      lastSpace.text = " " + char;
+      await context.sync();
+
+      tr.getSubstring(full.length, char.length).font.name = "Cambria Math";
+      tr.getSubstring(full.length + char.length, 0).setSelected();
+      await context.sync();
+    } else {
+      // No trailing spaces before the caret (or mid-text): insert at range end.
+      range.text = before + char;
+      await context.sync();
+
+      range.getSubstring(before.length, char.length).font.name = "Cambria Math";
+      range.getSubstring(before.length + char.length, 0).setSelected();
+      await context.sync();
+    }
   });
 }
 
