@@ -248,6 +248,45 @@
      */
     function insertFormattedLetter(char) {
       return PowerPoint.run(async (context) => {
+    let range = context.presentation.getSelectedTextRangeOrNullObject();
+    range.font.load("name");
+    await context.sync();
+
+    // Fallback if no text box is selected
+    if (range.isNullObject) {
+      const slide = context.presentation.getSelectedSlides().getItem(0);
+      slide.shapes.addTextField(char);
+      await context.sync();
+      return;
+    }
+
+    // Step 1: Save original font & change font to Cambria Math at cursor position
+    const slideFont = range.font.name;
+    range.font.name = "Cambria Math";
+    await context.sync();
+
+    // Step 2: Insert the symbol or letter
+    const insertedRange = range.insertText(char, PowerPoint.InsertLocation.after);
+    await context.sync();
+
+    // Step 3 & 4: Unselect the character and place cursor to its right
+    const cursorAfterChar = insertedRange.getSubstring(char.length, 0);
+    cursorAfterChar.setSelected();
+    await context.sync();
+
+    // Step 5: Change back to slide font at the new cursor position
+    const postCharRange = context.presentation.getSelectedTextRangeOrNullObject();
+    postCharRange.font.name = slideFont;
+    await context.sync();
+
+    // Step 6: Insert space bar and move cursor past it
+    const spaceRange = postCharRange.insertText(" ", PowerPoint.InsertLocation.after);
+    const finalCursor = spaceRange.getSubstring(1, 0);
+    finalCursor.setSelected();
+
+    await context.sync();
+  });
+      /*return PowerPoint.run(async (context) => {
         const range = context.presentation.getSelectedTextRangeOrNullObject();
         range.load("text");
         range.font.load("name");
@@ -268,7 +307,7 @@
         await context.sync();
 
         const finalLength = range.text.length;             // length after edit (post-autocorrect too)
-        const insertAt = finalLength - char.length; // - 1;     // char is always right before the trailing space
+        const insertAt = finalLength - char.length - 1;     // char is always right before the trailing space
 
         const charRange = range.getSubstring(insertAt, char.length);
         charRange.font.name = "Cambria Math";
@@ -280,7 +319,7 @@
         cursorRange.setSelected();
 
         await context.sync();
-      });
+      });*/
     }
 
     /**
