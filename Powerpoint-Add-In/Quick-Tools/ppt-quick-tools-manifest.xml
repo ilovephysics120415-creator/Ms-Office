@@ -24,7 +24,7 @@
   </Hosts>
 
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/src/taskpane.html" />
+    <SourceLocation DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/InsertChar/src/insertChar.html" />
   </DefaultSettings>
 
   <Permissions>ReadWriteDocument</Permissions>
@@ -452,6 +452,35 @@
                   <Action xsi:type="ExecuteFunction">
                     <FunctionName>actionInsertMu</FunctionName>
                   </Action>
+                </Control>
+
+              </Group>
+
+              <!-- Group : Math Operators -->
+              <Group id="Group_Math_Operators">
+                <Label resid="Math_Operators.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.Smalla.16" />
+                  <bt:Image size="32" resid="Icon.Smalla.32" />
+                  <bt:Image size="80" resid="Icon.Smalla.80" />
+                </Icon>
+
+                <!-- Button Plus -->
+                <Control xsi:type="Button" id="Btn_Plus">
+                  <Label resid="Label_Plus" />
+                  <Supertip>
+                    <Title resid="Label_Plus" />
+                    <Description resid="Desc_Plus" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Smalla.16" />
+                    <bt:Image size="32" resid="Icon.Smalla.32" />
+                    <bt:Image size="80" resid="Icon.Smalla.80" />
+                  </Icon>
+                  <!-- REPLACED SHOWTASKPANE WITH EXECUTEFUNCTION -->
+                    <Action xsi:type="ExecuteFunction">
+                      <FunctionName>actionInsertPlus</FunctionName>
+                    </Action>
                 </Control>
 
               </Group>
@@ -1393,110 +1422,6 @@
               
 
 
-              <!-- Group 1: Shapes and Picture -->
-              <Group id="Group_ShapesAndPicture">
-                <Label resid="Group1.Label" />
-                <Icon>
-                  <bt:Image size="16" resid="Icon.Shape.16" />
-                  <bt:Image size="32" resid="Icon.Shape.32" />
-                  <bt:Image size="80" resid="Icon.Shape.80" />
-                </Icon>
-                <Control xsi:type="Button" id="Button_ShapesAndPicture">
-                  <Label resid="Item1.Label" />
-                  <Supertip>
-                    <Title resid="Item1.Title" />
-                    <Description resid="Item1.Description" />
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="Icon.Shape.16" />
-                    <bt:Image size="32" resid="Icon.Shape.32" />
-                    <bt:Image size="80" resid="Icon.Shape.80" />
-                  </Icon>
-                  <Action xsi:type="ShowTaskpane">
-                    <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                    <SourceLocation resid="Url.ShapesAndPicture" />
-                  </Action>
-                </Control>
-              </Group>
-
-              <!-- Group 2: Symbols -->
-              <Group id="Group_Symbols_Taskpane">
-                <Label resid="Group2.Label" />
-                <Icon>
-                  <bt:Image size="16" resid="Icon.Symbol.16" />
-                  <bt:Image size="32" resid="Icon.Symbol.32" />
-                  <bt:Image size="80" resid="Icon.Symbol.80" />
-                </Icon>
-                <Control xsi:type="Button" id="Button_Symbols">
-                  <Label resid="Item2.Label" />
-                  <Supertip>
-                    <Title resid="Item2.Title" />
-                    <Description resid="Item2.Description" />
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="Icon.Symbol.16" />
-                    <bt:Image size="32" resid="Icon.Symbol.32" />
-                    <bt:Image size="80" resid="Icon.Symbol.80" />
-                  </Icon>
-                  <Action xsi:type="ShowTaskpane">
-                    <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                    <SourceLocation resid="Url.Symbols" />
-                  </Action>
-                </Control>
-              </Group>
-
-              <!-- Group 3: Small Letters -->
-              <Group id="Group_SmallLetter">
-                <Label resid="Group3.Label" />
-                <Icon>
-                  <bt:Image size="16" resid="Icon.SmallLetter.16" />
-                  <bt:Image size="32" resid="Icon.SmallLetter.32" />
-                  <bt:Image size="80" resid="Icon.SmallLetter.80" />
-                </Icon>
-                <Control xsi:type="Button" id="Button_SmallLetter">
-                  <Label resid="Item3.Label" />
-                  <Supertip>
-                    <Title resid="Item3.Title" />
-                    <Description resid="Item3.Description" />
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="Icon.SmallLetter.16" />
-                    <bt:Image size="32" resid="Icon.SmallLetter.32" />
-                    <bt:Image size="80" resid="Icon.SmallLetter.80" />
-                  </Icon>
-                  <Action xsi:type="ShowTaskpane">
-                    <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                    <SourceLocation resid="Url.SmallLetter" />
-                  </Action>
-                </Control>
-              </Group>
-
-              <!-- Group 4: Big Letters -->
-              <Group id="Group_BigLetter">
-                <Label resid="Group4.Label" />
-                <Icon>
-                  <bt:Image size="16" resid="Icon.BigLetter.16" />
-                  <bt:Image size="32" resid="Icon.BigLetter.32" />
-                  <bt:Image size="80" resid="Icon.BigLetter.80" />
-                </Icon>
-                <Control xsi:type="Button" id="Button_BigLetter">
-                  <Label resid="Item4.Label" />
-                  <Supertip>
-                    <Title resid="Item4.Title" />
-                    <Description resid="Item4.Description" />
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="Icon.BigLetter.16" />
-                    <bt:Image size="32" resid="Icon.BigLetter.32" />
-                    <bt:Image size="80" resid="Icon.BigLetter.80" />
-                  </Icon>
-                  <Action xsi:type="ShowTaskpane">
-                    <TaskpaneId>QuickToolsTaskPane</TaskpaneId>
-                    <SourceLocation resid="Url.BigLetter" />
-                  </Action>
-                </Control>
-              </Group>
-
               <Label resid="Tab.Label" />
               <InsertAfter>TabInsert</InsertAfter>
             </CustomTab>
@@ -1823,20 +1748,10 @@
         <bt:Image id="Icon.Symbol.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-lambda-16.png"/>
         <bt:Image id="Icon.Symbol.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-lambda-32.png"/>
         <bt:Image id="Icon.Symbol.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-lambda-80.png"/>
-        <bt:Image id="Icon.SmallLetter.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-smallletter-16.png"/>
-        <bt:Image id="Icon.SmallLetter.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-smallletter-32.png"/>
-        <bt:Image id="Icon.SmallLetter.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-smallletter-80.png"/>
-        <bt:Image id="Icon.BigLetter.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-bigletter-16.png"/>
-        <bt:Image id="Icon.BigLetter.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-bigletter-32.png"/>
-        <bt:Image id="Icon.BigLetter.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/assets/icon-bigletter-80.png"/>
       </bt:Images>
       
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMore" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/" />
-        <bt:Url id="Url.ShapesAndPicture" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/ShapesAndPicture/src/taskpane.html" />
-        <bt:Url id="Url.Symbols" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/Symbols/src/symbol-pane.html" />
-        <bt:Url id="Url.SmallLetter" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/SmallLetters/src/taskpane.html" />
-        <bt:Url id="Url.BigLetter" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/BigLetters/src/taskpane.html" />
         <bt:Url id="Url.insertChar" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Powerpoint-Add-In/Quick-Tools/InsertChar/src/insertChar.html" />
       </bt:Urls>
 
@@ -1846,6 +1761,7 @@
         <bt:String id="Small_Letters.Label" DefaultValue="Small Maths Letters" />
         <bt:String id="Big_Letters.Label" DefaultValue="Big Maths Letters" />
         <bt:String id="Symbols.Label" DefaultValue="Physics Symbols" />
+        <bt:String id="Math_Operators.Label" DefaultValue="Math Operators Symbols" />
 
         <bt:String id="Label_Alpha" DefaultValue=" " />
         <bt:String id="Label_Beta" DefaultValue=" " />
@@ -1859,6 +1775,8 @@
         <bt:String id="Label_Rho" DefaultValue=" "/>
         <bt:String id="Label_Pi" DefaultValue=" "/>
         <bt:String id="Label_Mu" DefaultValue=" "/>
+
+        <bt:String id="Label_Plus" DefaultValue="+"/>
 
         <bt:String id="Label_Small_a" DefaultValue=" " />
         <bt:String id="Label_Small_b" DefaultValue=" " />
@@ -1929,22 +1847,11 @@
         <bt:String id="Label_Shape_Line" DefaultValue="Line" />
         <bt:String id="Label_Shape_Cylinder" DefaultValue="Cylinder" />
 
-        <bt:String id="Group1.Label" DefaultValue="Shapes" />
-        <bt:String id="Group2.Label" DefaultValue="Symbols" />
-        <bt:String id="Group3.Label" DefaultValue="Small Letter" />
-        <bt:String id="Group4.Label" DefaultValue="Big Letter" />
-        <bt:String id="Item1.Label" DefaultValue="Shapes and Picture" />
-        <bt:String id="Item1.Title" DefaultValue="Shapes and Picture" />
-        <bt:String id="Item2.Label" DefaultValue="Symbols" />
-        <bt:String id="Item2.Title" DefaultValue="Symbols" />
-        <bt:String id="Item3.Label" DefaultValue="Small Letter" />
-        <bt:String id="Item3.Title" DefaultValue="Small Letter" />
-        <bt:String id="Item4.Label" DefaultValue="Big Letter" />
-        <bt:String id="Item4.Title" DefaultValue="Big Letter" />
+
       </bt:ShortStrings>
 
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Open the Quick Tools task panes from the ribbon tab." />
+        <bt:String id="GetStarted.Description" DefaultValue="Use the Quick Tools tab to insert shapes, symbols and letters." />
 
 
         <bt:String id="Desc_Shape_Circle" DefaultValue="Insert a circle shape" />
@@ -1971,6 +1878,8 @@
         <bt:String id="Desc_Degree" DefaultValue="Degree Button" />
         <bt:String id="Desc_DegC" DefaultValue="Degree Celsius Button" />
         <bt:String id="Desc_Freqf" DefaultValue="Frequency f Button" />
+
+        <bt:String id="Desc_Plus" DefaultValue="Plus Button" />
 
         <bt:String id="Desc_Small_a" DefaultValue="Letter a Button" />
         <bt:String id="Desc_Small_b" DefaultValue="Letter b Button" />
@@ -2026,10 +1935,6 @@
         <bt:String id="Desc_BigY" DefaultValue="Letter Y Button" />
         <bt:String id="Desc_BigZ" DefaultValue="Letter Z Button" />
 
-        <bt:String id="Item1.Description" DefaultValue="Open Shapes and Picture task pane." />
-        <bt:String id="Item2.Description" DefaultValue="Open Symbols task pane." />
-        <bt:String id="Item3.Description" DefaultValue="Open Small Letter task pane." />
-        <bt:String id="Item4.Description" DefaultValue="Open Big Letter task pane." />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
