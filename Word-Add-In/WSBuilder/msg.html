@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>WS Builder</title>
+  <style>
+    body { font-family: -apple-system, "Segoe UI", Arial, sans-serif; font-size: 14px; padding: 16px; color: #333; }
+    pre  { white-space: pre-wrap; word-wrap: break-word; margin: 0; font-family: inherit; }
+  </style>
+</head>
+<body>
+  <pre id="m"></pre>
+  <script>
+    document.getElementById("m").textContent =
+      new URLSearchParams(window.location.search).get("m") || "(no message)";
+  </script>
+</body>
+</html>
