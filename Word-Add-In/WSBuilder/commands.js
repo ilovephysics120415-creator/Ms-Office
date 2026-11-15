@@ -461,6 +461,20 @@ const actions = {
   ...mcqSequences("Medium", "Medium options", mcqMediumOptionOoxml),
   ...mcqSequences("Long", "Long options", mcqLongOptionOoxml),
 
+  // Group 2 "Table", 7th button: Qn Pic  (sequence copied from MCQ_Pic_Option.js: Qn No, Qn Pic, Qn Pic)
+  async mcqQnPicAns(log) {
+    await mcqStep("Qn No", mcqQnNoOoxml, log);
+    await mcqStep("Qn Pic", mcqQnPicOoxml, log);
+    await mcqStep("Qn Pic", mcqQnPicOoxml, log);
+  },
+  // 8th button of group 2: Qn Pic Qn  (MCQ_Pic_Option.js: Qn No, Qn Pic, Qn Pic, Qn Pic)
+  async mcqQnPicQnAns(log) {
+    await mcqStep("Qn No", mcqQnNoOoxml, log);
+    await mcqStep("Qn Pic", mcqQnPicOoxml, log);
+    await mcqStep("Qn Pic", mcqQnPicOoxml, log);
+    await mcqStep("Qn Pic", mcqQnPicOoxml, log);
+  },
+
   // Group 2 "Table": Table Two / Table Three  (sequences copied from MCQ_Table_*_Option_Tbl.js)
   ...mcqSequences("TableTwo", "Table two options", mcqTableTwoOoxml),
   ...mcqSequences("TableThree", "Table three options", mcqTableThreeOoxml),
