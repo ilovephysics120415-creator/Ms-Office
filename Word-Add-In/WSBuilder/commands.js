@@ -10,7 +10,7 @@
 
 // Set to false once testing is finished. While true, a dialog reports the
 // width that was read after every successful click.
-const WSB_DEBUG = true;
+const WSB_DEBUG = false;
 
 const CM_TWIPS = 566.929; // used by the MCQ files (twips per cm)
 const CM_PT = 28.3465;    // used by the SQ files  (points per cm)
@@ -134,9 +134,12 @@ const mcqAutonum = () =>
 const mcqCell = (w, inner) =>
   `<w:tc><w:tcPr><w:tcW w:w="${w}" w:type="dxa"/></w:tcPr><w:p>${MCQ_PPR}${inner || ""}</w:p></w:tc>`;
 
-function mcqTable(totalTwips, widths, innerPerCell) {
+/** rows: array of rows, each an array of per-cell inner XML. trailingPara: add a blank paragraph after the table. */
+function mcqTable(totalTwips, widths, rows, trailingPara) {
   const grid = widths.map((w) => `<w:gridCol w:w="${w}"/>`).join("");
-  const cells = widths.map((w, i) => mcqCell(w, innerPerCell[i])).join("");
+  const trs = rows
+    .map((inner) => `<w:tr>${widths.map((w, i) => mcqCell(w, inner[i])).join("")}</w:tr>`)
+    .join("");
   return `
       <w:wordDocument xmlns:w="http://schemas.microsoft.com/office/word/2003/wordml">
         <w:body>
@@ -149,9 +152,9 @@ function mcqTable(totalTwips, widths, innerPerCell) {
               </w:tblBorders>
             </w:tblPr>
             <w:tblGrid>${grid}</w:tblGrid>
-            <w:tr>${cells}</w:tr>
+            ${trs}
           </w:tbl>
-          <w:p>${MCQ_PPR}</w:p>
+          ${trailingPara ? `<w:p>${MCQ_PPR}</w:p>` : ""}
         </w:body>
       </w:wordDocument>
     `;
@@ -159,12 +162,12 @@ function mcqTable(totalTwips, widths, innerPerCell) {
 
 function mcqQnNoOoxml(total) {
   const c1 = Math.round(0.95 * CM_TWIPS);
-  return mcqTable(total, [c1, total - c1], [mcqAutonum(), ""]);
+  return mcqTable(total, [c1, total - c1], [[mcqAutonum(), ""]], true);
 }
 
 function mcqQnPicOoxml(total) {
   const c1 = Math.round(0.95 * CM_TWIPS);
-  return mcqTable(total, [c1, total - c1], ["", ""]);
+  return mcqTable(total, [c1, total - c1], [["", ""]], true);
 }
 
 function mcqShortOptionOoxml(total) {
@@ -174,7 +177,42 @@ function mcqShortOptionOoxml(total) {
   return mcqTable(
     total,
     [c0, lab, con, lab, con, lab, con, lab, con],
-    ["", mcqBoldText("A"), "", mcqBoldText("B"), "", mcqBoldText("C"), "", mcqBoldText("D"), ""]
+    [["", mcqBoldText("A"), "", mcqBoldText("B"), "", mcqBoldText("C"), "", mcqBoldText("D"), ""]],
+    true
+  );
+}
+
+/** Medium: 2 rows x 5 columns (A B / C D). No blank paragraph after the table. */
+function mcqMediumOptionOoxml(total) {
+  const c0 = Math.round(0.95 * CM_TWIPS);
+  const lab = Math.round(0.7 * CM_TWIPS);
+  const con = Math.round((total - c0 - 2 * lab) / 2);
+  return mcqTable(
+    total,
+    [c0, lab, con, lab, con],
+    [
+      ["", mcqBoldText("A"), "", mcqBoldText("B"), ""],
+      ["", mcqBoldText("C"), "", mcqBoldText("D"), ""],
+    ],
+    false
+  );
+}
+
+/** Long: 4 rows x 3 columns (A / B / C / D). No blank paragraph after the table. */
+function mcqLongOptionOoxml(total) {
+  const c0 = Math.round(0.95 * CM_TWIPS);
+  const lab = Math.round(0.7 * CM_TWIPS);
+  const con = Math.round(total - c0 - lab);
+  return mcqTable(
+    total,
+    [c0, lab, con],
+    [
+      ["", mcqBoldText("A"), ""],
+      ["", mcqBoldText("B"), ""],
+      ["", mcqBoldText("C"), ""],
+      ["", mcqBoldText("D"), ""],
+    ],
+    false
   );
 }
 
@@ -329,26 +367,35 @@ async function sqStep(name, fixedCm, cellOpts, log) {
 /* 5. Button actions                                                    */
 /* ------------------------------------------------------------------ */
 
+/** Builds mcqQn<Size>Ans, mcqQnPic<Size>Ans, mcqQnPicQn<Size>Ans. */
+function mcqSequences(size, optName, optBuilder) {
+  const qnNo = (log) => mcqStep("Qn No", mcqQnNoOoxml, log);
+  const qnPic = (log) => mcqStep("Qn Pic", mcqQnPicOoxml, log);
+  const opt = (log) => mcqStep(optName, optBuilder, log);
+  return {
+    async ["mcqQn" + size + "Ans"](log) {
+      await qnNo(log); await opt(log); await qnPic(log);
+    },
+    async ["mcqQnPic" + size + "Ans"](log) {
+      await qnNo(log); await qnPic(log); await opt(log); await qnPic(log);
+    },
+    async ["mcqQnPicQn" + size + "Ans"](log) {
+      await qnNo(log); await qnPic(log); await qnPic(log); await opt(log); await qnPic(log);
+    },
+  };
+}
+
 const actions = {
-  // Group: MCQ Short Ans  (sequences copied from MCQ_Short_Option_Tbl.js)
-  async mcqQnShortAns(log) {
-    await mcqStep("Qn No", mcqQnNoOoxml, log);
-    await mcqStep("Short options", mcqShortOptionOoxml, log);
-    await mcqStep("Qn Pic", mcqQnPicOoxml, log);
-  },
-  async mcqQnPicShortAns(log) {
-    await mcqStep("Qn No", mcqQnNoOoxml, log);
-    await mcqStep("Qn Pic", mcqQnPicOoxml, log);
-    await mcqStep("Short options", mcqShortOptionOoxml, log);
-    await mcqStep("Qn Pic", mcqQnPicOoxml, log);
-  },
-  async mcqQnPicQnShortAns(log) {
-    await mcqStep("Qn No", mcqQnNoOoxml, log);
-    await mcqStep("Qn Pic", mcqQnPicOoxml, log);
-    await mcqStep("Qn Pic", mcqQnPicOoxml, log);
-    await mcqStep("Short options", mcqShortOptionOoxml, log);
-    await mcqStep("Qn Pic", mcqQnPicOoxml, log);
-  },
+  // LAYOUT TEST ONLY: placeholder button, does nothing. Remove with the button.
+  async testPlaceholder(log) {},
+
+  // Group 1: Short / Medium / Long  (sequences copied from MCQ_*_Option_Tbl.js)
+  //   Qn        : Qn No, Option, Qn Pic
+  //   Qn Pic    : Qn No, Qn Pic, Option, Qn Pic
+  //   Qn Pic Qn : Qn No, Qn Pic, Qn Pic, Option, Qn Pic
+  ...mcqSequences("Short", "Short options", mcqShortOptionOoxml),
+  ...mcqSequences("Medium", "Medium options", mcqMediumOptionOoxml),
+  ...mcqSequences("Long", "Long options", mcqLongOptionOoxml),
 
   // Group: SQ Q1  (widths/bold flags copied from SQ_Qn.js)
   async sqQ1(log) {
@@ -406,5 +453,5 @@ if (typeof Office !== "undefined" && Office.onReady) {
 
 // Lets the OOXML builders be tested outside Word (node).
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { mcqQnNoOoxml, mcqQnPicOoxml, mcqShortOptionOoxml, sqTableOoxml, CM_PT };
+  module.exports = { mcqQnNoOoxml, mcqQnPicOoxml, mcqShortOptionOoxml, mcqMediumOptionOoxml, mcqLongOptionOoxml, sqTableOoxml, CM_PT };
 }
