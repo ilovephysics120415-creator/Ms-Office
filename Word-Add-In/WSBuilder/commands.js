@@ -134,12 +134,10 @@ const mcqAutonum = () =>
 const mcqCell = (w, inner) =>
   `<w:tc><w:tcPr><w:tcW w:w="${w}" w:type="dxa"/></w:tcPr><w:p>${MCQ_PPR}${inner || ""}</w:p></w:tc>`;
 
-/** rows: array of rows, each an array of per-cell inner XML. trailingPara: add a blank paragraph after the table. */
-function mcqTable(totalTwips, widths, rows, trailingPara) {
+/** rowsXml: array of rows, each an array of finished <w:tc> strings. trailingPara: blank paragraph after the table. */
+function mcqTableRaw(totalTwips, widths, rowsXml, trailingPara) {
   const grid = widths.map((w) => `<w:gridCol w:w="${w}"/>`).join("");
-  const trs = rows
-    .map((inner) => `<w:tr>${widths.map((w, i) => mcqCell(w, inner[i])).join("")}</w:tr>`)
-    .join("");
+  const trs = rowsXml.map((cells) => `<w:tr>${cells.join("")}</w:tr>`).join("");
   return `
       <w:wordDocument xmlns:w="http://schemas.microsoft.com/office/word/2003/wordml">
         <w:body>
@@ -158,6 +156,15 @@ function mcqTable(totalTwips, widths, rows, trailingPara) {
         </w:body>
       </w:wordDocument>
     `;
+}
+
+/** rows: array of rows, each an array of per-cell inner XML (plain, borderless cells). */
+function mcqTable(totalTwips, widths, rows, trailingPara) {
+  return mcqTableRaw(
+    totalTwips, widths,
+    rows.map((inner) => widths.map((w, i) => mcqCell(w, inner[i]))),
+    trailingPara
+  );
 }
 
 function mcqQnNoOoxml(total) {
@@ -214,6 +221,63 @@ function mcqLongOptionOoxml(total) {
     ],
     false
   );
+}
+
+/* ---- Table Two / Table Three (bordered grids, copied from MCQ_Table_Two/Three_Option.js) ---- */
+
+const MCQ_PPR_CENTER = MCQ_PPR.replace('<w:jc w:val="both"/>', '<w:jc w:val="center"/>');
+
+const mcqBdr = (top, left, bottom, right) => {
+  const e = (side, on) =>
+    on ? `<w:${side} w:val="single" w:sz="4" w:space="0" w:color="auto"/>` : `<w:${side} w:val="none"/>`;
+  return e("top", top) + e("left", left) + e("bottom", bottom) + e("right", right);
+};
+const BDR_ALL = mcqBdr(1, 1, 1, 1);
+const BDR_BOTTOM = mcqBdr(0, 0, 1, 0);
+const BDR_VERT = mcqBdr(0, 1, 0, 1);
+const BDR_BOTTOM_VERT = mcqBdr(0, 1, 1, 1);
+const BDR_LEFT = mcqBdr(0, 1, 0, 0);
+
+function mcqBorderedCell(width, center, borders, text) {
+  return `<w:tc><w:tcPr><w:tcW w:w="${width}" w:type="dxa"/>${
+    borders ? `<w:tcBorders>${borders}</w:tcBorders>` : ""
+  }</w:tcPr><w:p>${center ? MCQ_PPR_CENTER : MCQ_PPR}${text ? mcqBoldText(text) : ""}</w:p></w:tc>`;
+}
+
+/** Table Two: 5 rows x 5 columns (0.95 cm, 0.7 cm, 3 equal columns). A-D in column 2, rows 2-5. */
+function mcqTableTwoOoxml(total) {
+  const c0 = Math.round(0.95 * CM_TWIPS);
+  const c1 = Math.round(0.7 * CM_TWIPS);
+  const d = Math.round((total - c0 - c1) / 3);
+  const widths = [c0, c1, d, d, d];
+  const border = (r, c) => {
+    if (r === 0 && c >= 1 && c <= 3) return BDR_ALL;
+    if (r === 4 && c >= 1 && c <= 3) return c === 1 || c === 3 ? BDR_BOTTOM_VERT : BDR_BOTTOM;
+    if (c === 1 || c === 3) return BDR_VERT;
+    return "";
+  };
+  const rows = [0, 1, 2, 3, 4].map((r) =>
+    widths.map((w, c) => mcqBorderedCell(w, c === 2 || c === 3, border(r, c), c === 1 && r >= 1 ? "ABCD"[r - 1] : ""))
+  );
+  return mcqTableRaw(total, widths, rows, false);
+}
+
+/** Table Three: 5 rows x 6 columns (0.95 cm, 0.7 cm, 4 equal columns). A-D in column 2, rows 2-5. */
+function mcqTableThreeOoxml(total) {
+  const c0 = Math.round(0.95 * CM_TWIPS);
+  const c1 = Math.round(0.7 * CM_TWIPS);
+  const d = Math.round((total - c0 - c1) / 4);
+  const widths = [c0, c1, d, d, d, d];
+  const border = (r, c) => {
+    if (r === 0 && c >= 1 && c <= 4) return BDR_ALL;
+    if (r === 4 && c >= 1 && c <= 4) return BDR_BOTTOM_VERT;
+    if (c >= 1 && c <= 5) return BDR_LEFT;
+    return "";
+  };
+  const rows = [0, 1, 2, 3, 4].map((r) =>
+    widths.map((w, c) => mcqBorderedCell(w, c >= 2 && c <= 4, border(r, c), c === 1 && r >= 1 ? "ABCD"[r - 1] : ""))
+  );
+  return mcqTableRaw(total, widths, rows, false);
 }
 
 /** MCQ insert: replace selection, reuse an existing blank paragraph after the table. */
@@ -397,6 +461,10 @@ const actions = {
   ...mcqSequences("Medium", "Medium options", mcqMediumOptionOoxml),
   ...mcqSequences("Long", "Long options", mcqLongOptionOoxml),
 
+  // Group 2 "Table": Table Two / Table Three  (sequences copied from MCQ_Table_*_Option_Tbl.js)
+  ...mcqSequences("TableTwo", "Table two options", mcqTableTwoOoxml),
+  ...mcqSequences("TableThree", "Table three options", mcqTableThreeOoxml),
+
   // Group: SQ Q1  (widths/bold flags copied from SQ_Qn.js)
   async sqQ1(log) {
     await sqStep("Q1", [0.95], [{ bold: true }, {}], log);
@@ -453,5 +521,5 @@ if (typeof Office !== "undefined" && Office.onReady) {
 
 // Lets the OOXML builders be tested outside Word (node).
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { mcqQnNoOoxml, mcqQnPicOoxml, mcqShortOptionOoxml, mcqMediumOptionOoxml, mcqLongOptionOoxml, sqTableOoxml, CM_PT };
+  module.exports = { mcqQnNoOoxml, mcqQnPicOoxml, mcqShortOptionOoxml, mcqMediumOptionOoxml, mcqLongOptionOoxml, mcqTableTwoOoxml, mcqTableThreeOoxml, sqTableOoxml, CM_PT };
 }

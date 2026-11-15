@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+  xsi:type="TaskPaneApp">
+
+  <Id>e998f701-811b-491a-834b-1f2edc016d49</Id>
+  <Version>0.1.0.0</Version>
+  <ProviderName>Custom Addin Provider</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="WS Builder"/>
+  <Description DefaultValue="One-click worksheet table builders (prototype)."/>
+  <IconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-MCQ-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-MCQ-80.png"/>
+  <SupportUrl DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/"/>
+
+  <AppDomains>
+    <AppDomain>https://ilovephysics120415-creator.github.io</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Document"/>
+  </Hosts>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/commands.html"/>
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <FunctionFile resid="Commands.Url"/>
+
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <CustomTab id="WSBuilderTab">
+
+              <Group id="GrpMcqShort">
+                <Label resid="GrpMcqShort.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.MCQ.16"/>
+                  <bt:Image size="32" resid="Icon.MCQ.32"/>
+                  <bt:Image size="80" resid="Icon.MCQ.80"/>
+                </Icon>
+                <Control xsi:type="Button" id="BtnT7">
+                  <Label resid="BtnT7.Label"/>
+                  <Supertip>
+                    <Title resid="BtnT7.Title"/>
+                    <Description resid="BtnT7.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnT7.16"/>
+                    <bt:Image size="32" resid="Icon.BtnT7.32"/>
+                    <bt:Image size="80" resid="Icon.BtnT7.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnShortAns</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="BtnT8">
+                  <Label resid="BtnT8.Label"/>
+                  <Supertip>
+                    <Title resid="BtnT8.Title"/>
+                    <Description resid="BtnT8.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnT8.16"/>
+                    <bt:Image size="32" resid="Icon.BtnT8.32"/>
+                    <bt:Image size="80" resid="Icon.BtnT8.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnPicShortAns</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="BtnT9">
+                  <Label resid="BtnT9.Label"/>
+                  <Supertip>
+                    <Title resid="BtnT9.Title"/>
+                    <Description resid="BtnT9.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnT9.16"/>
+                    <bt:Image size="32" resid="Icon.BtnT9.32"/>
+                    <bt:Image size="80" resid="Icon.BtnT9.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnPicQnShortAns</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="BtnT4">
+                  <Label resid="BtnT4.Label"/>
+                  <Supertip>
+                    <Title resid="BtnT4.Title"/>
+                    <Description resid="BtnT4.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnT4.16"/>
+                    <bt:Image size="32" resid="Icon.BtnT4.32"/>
+                    <bt:Image size="80" resid="Icon.BtnT4.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnMediumAns</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="BtnT5">
+                  <Label resid="BtnT5.Label"/>
+                  <Supertip>
+                    <Title resid="BtnT5.Title"/>
+                    <Description resid="BtnT5.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnT5.16"/>
+                    <bt:Image size="32" resid="Icon.BtnT5.32"/>
+                    <bt:Image size="80" resid="Icon.BtnT5.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnPicMediumAns</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="BtnT6">
+                  <Label resid="BtnT6.Label"/>
+                  <Supertip>
+                    <Title resid="BtnT6.Title"/>
+                    <Description resid="BtnT6.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnT6.16"/>
+                    <bt:Image size="32" resid="Icon.BtnT6.32"/>
+                    <bt:Image size="80" resid="Icon.BtnT6.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnPicQnMediumAns</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="BtnT1">
+                  <Label resid="BtnT1.Label"/>
+                  <Supertip>
+                    <Title resid="BtnT1.Title"/>
+                    <Description resid="BtnT1.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnT1.16"/>
+                    <bt:Image size="32" resid="Icon.BtnT1.32"/>
+                    <bt:Image size="80" resid="Icon.BtnT1.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnLongAns</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="BtnT2">
+                  <Label resid="BtnT2.Label"/>
+                  <Supertip>
+                    <Title resid="BtnT2.Title"/>
+                    <Description resid="BtnT2.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnT2.16"/>
+                    <bt:Image size="32" resid="Icon.BtnT2.32"/>
+                    <bt:Image size="80" resid="Icon.BtnT2.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnPicLongAns</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="BtnT3">
+                  <Label resid="BtnT3.Label"/>
+                  <Supertip>
+                    <Title resid="BtnT3.Title"/>
+                    <Description resid="BtnT3.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnT3.16"/>
+                    <bt:Image size="32" resid="Icon.BtnT3.32"/>
+                    <bt:Image size="80" resid="Icon.BtnT3.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnPicQnLongAns</FunctionName>
+                  </Action>
+                </Control>
+
+              </Group>
+
+              <Group id="GrpTable">
+                <Label resid="GrpTable.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.MCQ.16"/>
+                  <bt:Image size="32" resid="Icon.MCQ.32"/>
+                  <bt:Image size="80" resid="Icon.MCQ.80"/>
+                </Icon>
+                <Control xsi:type="Button" id="BtnTbl1">
+                  <Label resid="BtnTbl1.Label"/>
+                  <Supertip>
+                    <Title resid="BtnTbl1.Title"/>
+                    <Description resid="BtnTbl1.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnTbl1.16"/>
+                    <bt:Image size="32" resid="Icon.BtnTbl1.32"/>
+                    <bt:Image size="80" resid="Icon.BtnTbl1.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnTableTwoAns</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="BtnTbl2">
+                  <Label resid="BtnTbl2.Label"/>
+                  <Supertip>
+                    <Title resid="BtnTbl2.Title"/>
+                    <Description resid="BtnTbl2.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnTbl2.16"/>
+                    <bt:Image size="32" resid="Icon.BtnTbl2.32"/>
+                    <bt:Image size="80" resid="Icon.BtnTbl2.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnPicTableTwoAns</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="BtnTbl3">
+                  <Label resid="BtnTbl3.Label"/>
+                  <Supertip>
+                    <Title resid="BtnTbl3.Title"/>
+                    <Description resid="BtnTbl3.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnTbl3.16"/>
+                    <bt:Image size="32" resid="Icon.BtnTbl3.32"/>
+                    <bt:Image size="80" resid="Icon.BtnTbl3.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnPicQnTableTwoAns</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="BtnTbl4">
+                  <Label resid="BtnTbl4.Label"/>
+                  <Supertip>
+                    <Title resid="BtnTbl4.Title"/>
+                    <Description resid="BtnTbl4.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnTbl4.16"/>
+                    <bt:Image size="32" resid="Icon.BtnTbl4.32"/>
+                    <bt:Image size="80" resid="Icon.BtnTbl4.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnTableThreeAns</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="BtnTbl5">
+                  <Label resid="BtnTbl5.Label"/>
+                  <Supertip>
+                    <Title resid="BtnTbl5.Title"/>
+                    <Description resid="BtnTbl5.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnTbl5.16"/>
+                    <bt:Image size="32" resid="Icon.BtnTbl5.32"/>
+                    <bt:Image size="80" resid="Icon.BtnTbl5.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnPicTableThreeAns</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="BtnTbl6">
+                  <Label resid="BtnTbl6.Label"/>
+                  <Supertip>
+                    <Title resid="BtnTbl6.Title"/>
+                    <Description resid="BtnTbl6.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnTbl6.16"/>
+                    <bt:Image size="32" resid="Icon.BtnTbl6.32"/>
+                    <bt:Image size="80" resid="Icon.BtnTbl6.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>mcqQnPicQnTableThreeAns</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+
+              <Group id="GrpSqQ">
+                <Label resid="GrpSqQ.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.SQ.16"/>
+                  <bt:Image size="32" resid="Icon.SQ.32"/>
+                  <bt:Image size="80" resid="Icon.SQ.80"/>
+                </Icon>
+
+                <Control xsi:type="Button" id="BtnSqQ1">
+                  <Label resid="BtnSqQ1.Label"/>
+                  <Supertip>
+                    <Title resid="BtnSqQ1.Title"/>
+                    <Description resid="BtnSqQ1.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnSqQ1.16"/>
+                    <bt:Image size="32" resid="Icon.BtnSqQ1.32"/>
+                    <bt:Image size="80" resid="Icon.BtnSqQ1.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>sqQ1</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="BtnSqQ1a">
+                  <Label resid="BtnSqQ1a.Label"/>
+                  <Supertip>
+                    <Title resid="BtnSqQ1a.Title"/>
+                    <Description resid="BtnSqQ1a.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnSqQ1a.16"/>
+                    <bt:Image size="32" resid="Icon.BtnSqQ1a.32"/>
+                    <bt:Image size="80" resid="Icon.BtnSqQ1a.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>sqQ1a</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="BtnSqQ1ai">
+                  <Label resid="BtnSqQ1ai.Label"/>
+                  <Supertip>
+                    <Title resid="BtnSqQ1ai.Title"/>
+                    <Description resid="BtnSqQ1ai.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnSqQ1ai.16"/>
+                    <bt:Image size="32" resid="Icon.BtnSqQ1ai.32"/>
+                    <bt:Image size="80" resid="Icon.BtnSqQ1ai.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>sqQ1ai</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="BtnSqQ1ai1">
+                  <Label resid="BtnSqQ1ai1.Label"/>
+                  <Supertip>
+                    <Title resid="BtnSqQ1ai1.Title"/>
+                    <Description resid="BtnSqQ1ai1.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.BtnSqQ1ai1.16"/>
+                    <bt:Image size="32" resid="Icon.BtnSqQ1ai1.32"/>
+                    <bt:Image size="80" resid="Icon.BtnSqQ1ai1.80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>sqQ1ai1</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+
+              <Label resid="Tab.Label"/>
+            </CustomTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.MCQ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-MCQ-16.png"/>
+        <bt:Image id="Icon.MCQ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-MCQ-32.png"/>
+        <bt:Image id="Icon.MCQ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-MCQ-80.png"/>
+        <bt:Image id="Icon.SQ.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-SQ-16.png"/>
+        <bt:Image id="Icon.SQ.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-SQ-32.png"/>
+        <bt:Image id="Icon.SQ.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSTools/assets/icon-SQ-80.png"/>
+        <bt:Image id="Icon.BtnQnShort.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn-16.png"/>
+        <bt:Image id="Icon.BtnQnShort.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn-32.png"/>
+        <bt:Image id="Icon.BtnQnShort.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn-80.png"/>
+        <bt:Image id="Icon.BtnQnPicShort.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn_Pic-16.png"/>
+        <bt:Image id="Icon.BtnQnPicShort.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn_Pic-32.png"/>
+        <bt:Image id="Icon.BtnQnPicShort.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn_Pic-80.png"/>
+        <bt:Image id="Icon.BtnQnPicQnShort.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn_Pic_Qn-16.png"/>
+        <bt:Image id="Icon.BtnQnPicQnShort.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn_Pic_Qn-32.png"/>
+        <bt:Image id="Icon.BtnQnPicQnShort.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn_Pic_Qn-80.png"/>
+        <bt:Image id="Icon.BtnSqQ1.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P2_1_Qn-16.png"/>
+        <bt:Image id="Icon.BtnSqQ1.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P2_1_Qn-32.png"/>
+        <bt:Image id="Icon.BtnSqQ1.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P2_1_Qn-80.png"/>
+        <bt:Image id="Icon.BtnSqQ1a.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P2_1a_Qn-16.png"/>
+        <bt:Image id="Icon.BtnSqQ1a.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P2_1a_Qn-32.png"/>
+        <bt:Image id="Icon.BtnSqQ1a.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P2_1a_Qn-80.png"/>
+        <bt:Image id="Icon.BtnSqQ1ai.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P2_1ai_Qn-16.png"/>
+        <bt:Image id="Icon.BtnSqQ1ai.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P2_1ai_Qn-32.png"/>
+        <bt:Image id="Icon.BtnSqQ1ai.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P2_1ai_Qn-80.png"/>
+        <bt:Image id="Icon.BtnSqQ1ai1.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P2_1ai1_Qn-16.png"/>
+        <bt:Image id="Icon.BtnSqQ1ai1.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P2_1ai1_Qn-32.png"/>
+        <bt:Image id="Icon.BtnSqQ1ai1.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P2_1ai1_Qn-80.png"/>
+        <bt:Image id="Icon.BtnTestPlaceholder.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/Join_Tables-16.png"/>
+        <bt:Image id="Icon.BtnTestPlaceholder.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/Join_Tables-32.png"/>
+        <bt:Image id="Icon.BtnTestPlaceholder.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/Join_Tables-80.png"/>
+        <bt:Image id="Icon.BtnT1.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Long_Ans_Qn-16.png"/>
+        <bt:Image id="Icon.BtnT1.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Long_Ans_Qn-32.png"/>
+        <bt:Image id="Icon.BtnT1.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Long_Ans_Qn-80.png"/>
+        <bt:Image id="Icon.BtnT2.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Long_Ans_Qn_Pic-16.png"/>
+        <bt:Image id="Icon.BtnT2.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Long_Ans_Qn_Pic-32.png"/>
+        <bt:Image id="Icon.BtnT2.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Long_Ans_Qn_Pic-80.png"/>
+        <bt:Image id="Icon.BtnT3.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Long_Ans_Qn_Pic_Qn-16.png"/>
+        <bt:Image id="Icon.BtnT3.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Long_Ans_Qn_Pic_Qn-32.png"/>
+        <bt:Image id="Icon.BtnT3.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Long_Ans_Qn_Pic_Qn-80.png"/>
+        <bt:Image id="Icon.BtnT4.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Med_Ans_Qn-16.png"/>
+        <bt:Image id="Icon.BtnT4.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Med_Ans_Qn-32.png"/>
+        <bt:Image id="Icon.BtnT4.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Med_Ans_Qn-80.png"/>
+        <bt:Image id="Icon.BtnT5.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Med_Ans_Qn_Pic-16.png"/>
+        <bt:Image id="Icon.BtnT5.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Med_Ans_Qn_Pic-32.png"/>
+        <bt:Image id="Icon.BtnT5.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Med_Ans_Qn_Pic-80.png"/>
+        <bt:Image id="Icon.BtnT6.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Med_Ans_Qn_Pic_Qn-16.png"/>
+        <bt:Image id="Icon.BtnT6.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Med_Ans_Qn_Pic_Qn-32.png"/>
+        <bt:Image id="Icon.BtnT6.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Med_Ans_Qn_Pic_Qn-80.png"/>
+        <bt:Image id="Icon.BtnT7.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn-16.png"/>
+        <bt:Image id="Icon.BtnT7.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn-32.png"/>
+        <bt:Image id="Icon.BtnT7.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn-80.png"/>
+        <bt:Image id="Icon.BtnT8.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn_Pic-16.png"/>
+        <bt:Image id="Icon.BtnT8.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn_Pic-32.png"/>
+        <bt:Image id="Icon.BtnT8.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn_Pic-80.png"/>
+        <bt:Image id="Icon.BtnT9.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn_Pic_Qn-16.png"/>
+        <bt:Image id="Icon.BtnT9.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn_Pic_Qn-32.png"/>
+        <bt:Image id="Icon.BtnT9.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Short_Ans_Qn_Pic_Qn-80.png"/>
+        <bt:Image id="Icon.BtnTbl1.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Two_Ans_Qn-16.png"/>
+        <bt:Image id="Icon.BtnTbl1.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Two_Ans_Qn-32.png"/>
+        <bt:Image id="Icon.BtnTbl1.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Two_Ans_Qn-80.png"/>
+        <bt:Image id="Icon.BtnTbl2.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Two_Ans_Qn_Pic-16.png"/>
+        <bt:Image id="Icon.BtnTbl2.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Two_Ans_Qn_Pic-32.png"/>
+        <bt:Image id="Icon.BtnTbl2.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Two_Ans_Qn_Pic-80.png"/>
+        <bt:Image id="Icon.BtnTbl3.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Two_Ans_Qn_Pic_Qn-16.png"/>
+        <bt:Image id="Icon.BtnTbl3.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Two_Ans_Qn_Pic_Qn-32.png"/>
+        <bt:Image id="Icon.BtnTbl3.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Two_Ans_Qn_Pic_Qn-80.png"/>
+        <bt:Image id="Icon.BtnTbl4.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Three_Ans_Qn-16.png"/>
+        <bt:Image id="Icon.BtnTbl4.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Three_Ans_Qn-32.png"/>
+        <bt:Image id="Icon.BtnTbl4.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Three_Ans_Qn-80.png"/>
+        <bt:Image id="Icon.BtnTbl5.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Three_Ans_Qn_Pic-16.png"/>
+        <bt:Image id="Icon.BtnTbl5.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Three_Ans_Qn_Pic-32.png"/>
+        <bt:Image id="Icon.BtnTbl5.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Three_Ans_Qn_Pic-80.png"/>
+        <bt:Image id="Icon.BtnTbl6.16" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Three_Ans_Qn_Pic_Qn-16.png"/>
+        <bt:Image id="Icon.BtnTbl6.32" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Three_Ans_Qn_Pic_Qn-32.png"/>
+        <bt:Image id="Icon.BtnTbl6.80" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/assets/P1_Tabled_Three_Ans_Qn_Pic_Qn-80.png"/>
+      </bt:Images>
+
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="https://ilovephysics120415-creator.github.io/Ms-Office/Word-Add-In/WSBuilder/commands.html"/>
+      </bt:Urls>
+
+      <bt:ShortStrings>
+        <bt:String id="Tab.Label" DefaultValue="WS Builder"/>
+        <bt:String id="GrpMcqShort.Label" DefaultValue="simple"/>
+        <bt:String id="GrpSqQ.Label" DefaultValue="SQ Q1"/>
+        <bt:String id="BtnQnShort.Label" DefaultValue=" "/>
+        <bt:String id="BtnQnShort.Title" DefaultValue="Qn Short Ans"/>
+        <bt:String id="BtnQnPicShort.Label" DefaultValue=" "/>
+        <bt:String id="BtnQnPicShort.Title" DefaultValue="Qn Pic Short Ans"/>
+        <bt:String id="BtnQnPicQnShort.Label" DefaultValue=" "/>
+        <bt:String id="BtnQnPicQnShort.Title" DefaultValue="Qn Pic Qn Short Ans"/>
+        <bt:String id="BtnSqQ1.Label" DefaultValue="qn"/>
+        <bt:String id="BtnSqQ1.Title" DefaultValue="Q1"/>
+        <bt:String id="BtnSqQ1a.Label" DefaultValue=" "/>
+        <bt:String id="BtnSqQ1a.Title" DefaultValue="Q1a"/>
+        <bt:String id="BtnSqQ1ai.Label" DefaultValue=" "/>
+        <bt:String id="BtnSqQ1ai.Title" DefaultValue="Q1ai"/>
+        <bt:String id="BtnSqQ1ai1.Label" DefaultValue=" "/>
+        <bt:String id="BtnSqQ1ai1.Title" DefaultValue="Q1ai1"/>
+        <bt:String id="BtnTestPlaceholder.Label" DefaultValue=" "/>
+        <bt:String id="BtnTestPlaceholder.Title" DefaultValue="Test placeholder"/>
+        <bt:String id="BtnT1.Label" DefaultValue=" "/>
+        <bt:String id="BtnT1.Title" DefaultValue="Qn Long Ans"/>
+        <bt:String id="BtnT2.Label" DefaultValue=" "/>
+        <bt:String id="BtnT2.Title" DefaultValue="Qn Pic Long Ans"/>
+        <bt:String id="BtnT3.Label" DefaultValue=" "/>
+        <bt:String id="BtnT3.Title" DefaultValue="Qn Pic Qn Long Ans"/>
+        <bt:String id="BtnT4.Label" DefaultValue=" "/>
+        <bt:String id="BtnT4.Title" DefaultValue="Qn Medium Ans"/>
+        <bt:String id="BtnT5.Label" DefaultValue=" "/>
+        <bt:String id="BtnT5.Title" DefaultValue="Qn Pic Medium Ans"/>
+        <bt:String id="BtnT6.Label" DefaultValue=" "/>
+        <bt:String id="BtnT6.Title" DefaultValue="Qn Pic Qn Medium Ans"/>
+        <bt:String id="BtnT7.Label" DefaultValue=" "/>
+        <bt:String id="BtnT7.Title" DefaultValue="Qn Short Ans"/>
+        <bt:String id="BtnT8.Label" DefaultValue=" "/>
+        <bt:String id="BtnT8.Title" DefaultValue="Qn Pic Short Ans"/>
+        <bt:String id="BtnT9.Label" DefaultValue=" "/>
+        <bt:String id="BtnT9.Title" DefaultValue="Qn Pic Qn Short Ans"/>
+        <bt:String id="GrpTable.Label" DefaultValue="Table"/>
+        <bt:String id="BtnTbl1.Label" DefaultValue=" "/>
+        <bt:String id="BtnTbl1.Title" DefaultValue="Qn Table Two Ans"/>
+        <bt:String id="BtnTbl2.Label" DefaultValue=" "/>
+        <bt:String id="BtnTbl2.Title" DefaultValue="Qn Pic Table Two Ans"/>
+        <bt:String id="BtnTbl3.Label" DefaultValue=" "/>
+        <bt:String id="BtnTbl3.Title" DefaultValue="Qn Pic Qn Table Two Ans"/>
+        <bt:String id="BtnTbl4.Label" DefaultValue=" "/>
+        <bt:String id="BtnTbl4.Title" DefaultValue="Qn Table Three Ans"/>
+        <bt:String id="BtnTbl5.Label" DefaultValue=" "/>
+        <bt:String id="BtnTbl5.Title" DefaultValue="Qn Pic Table Three Ans"/>
+        <bt:String id="BtnTbl6.Label" DefaultValue=" "/>
+        <bt:String id="BtnTbl6.Title" DefaultValue="Qn Pic Qn Table Three Ans"/>
+      </bt:ShortStrings>
+
+      <bt:LongStrings>
+        <bt:String id="BtnQnShort.Tip" DefaultValue="Inserts Qn No, Short options, Qn Pic tables."/>
+        <bt:String id="BtnQnPicShort.Tip" DefaultValue="Inserts Qn No, Qn Pic, Short options, Qn Pic tables."/>
+        <bt:String id="BtnQnPicQnShort.Tip" DefaultValue="Inserts Qn No, Qn Pic, Qn Pic, Short options, Qn Pic tables."/>
+        <bt:String id="BtnSqQ1.Tip" DefaultValue="Inserts the Q1 table (2 columns)."/>
+        <bt:String id="BtnSqQ1a.Tip" DefaultValue="Inserts the Q1a table (3 columns)."/>
+        <bt:String id="BtnSqQ1ai.Tip" DefaultValue="Inserts the Q1ai table (4 columns)."/>
+        <bt:String id="BtnSqQ1ai1.Tip" DefaultValue="Inserts the Q1ai1 table (5 columns)."/>
+        <bt:String id="BtnTestPlaceholder.Tip" DefaultValue="Layout test only. Does nothing when clicked."/>
+        <bt:String id="BtnT1.Tip" DefaultValue="Inserts: Qn No, Long options, Qn Pic tables."/>
+        <bt:String id="BtnT2.Tip" DefaultValue="Inserts: Qn No, Qn Pic, Long options, Qn Pic tables."/>
+        <bt:String id="BtnT3.Tip" DefaultValue="Inserts: Qn No, Qn Pic, Qn Pic, Long options, Qn Pic tables."/>
+        <bt:String id="BtnT4.Tip" DefaultValue="Inserts: Qn No, Medium options, Qn Pic tables."/>
+        <bt:String id="BtnT5.Tip" DefaultValue="Inserts: Qn No, Qn Pic, Medium options, Qn Pic tables."/>
+        <bt:String id="BtnT6.Tip" DefaultValue="Inserts: Qn No, Qn Pic, Qn Pic, Medium options, Qn Pic tables."/>
+        <bt:String id="BtnT7.Tip" DefaultValue="Inserts: Qn No, Short options, Qn Pic tables."/>
+        <bt:String id="BtnT8.Tip" DefaultValue="Inserts: Qn No, Qn Pic, Short options, Qn Pic tables."/>
+        <bt:String id="BtnT9.Tip" DefaultValue="Inserts: Qn No, Qn Pic, Qn Pic, Short options, Qn Pic tables."/>
+        <bt:String id="BtnTbl1.Tip" DefaultValue="Inserts: Qn No, Table two options, Qn Pic tables."/>
+        <bt:String id="BtnTbl2.Tip" DefaultValue="Inserts: Qn No, Qn Pic, Table two options, Qn Pic tables."/>
+        <bt:String id="BtnTbl3.Tip" DefaultValue="Inserts: Qn No, Qn Pic, Qn Pic, Table two options, Qn Pic tables."/>
+        <bt:String id="BtnTbl4.Tip" DefaultValue="Inserts: Qn No, Table three options, Qn Pic tables."/>
+        <bt:String id="BtnTbl5.Tip" DefaultValue="Inserts: Qn No, Qn Pic, Table three options, Qn Pic tables."/>
+        <bt:String id="BtnTbl6.Tip" DefaultValue="Inserts: Qn No, Qn Pic, Qn Pic, Table three options, Qn Pic tables."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
