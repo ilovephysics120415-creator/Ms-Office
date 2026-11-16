@@ -352,7 +352,7 @@ function sqCell(widthDxa, opts) {
 }
 
 /** Wraps a finished table (grid + cells) in the OOXML package that Word expects. */
-function sqPackage(totalDxa, gridXml, cellsXml) {
+function sqPackage(totalDxa, gridXml, cellsXml, extraTblPr) {
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <?mso-application progid="Word.Document"?>
 <pkg:package xmlns:pkg="http://schemas.microsoft.com/office/2006/xmlPackage">
@@ -377,7 +377,7 @@ function sqPackage(totalDxa, gridXml, cellsXml) {
                                 <w:right w:val="none"/>
                                 <w:insideH w:val="none"/>
                                 <w:insideV w:val="none"/>
-                            </w:tblBorders>
+                            </w:tblBorders>${extraTblPr || ""}
                         </w:tblPr>
                         <w:tblGrid>${gridXml}</w:tblGrid>
                         <w:tr>${cellsXml}</w:tr>
@@ -507,6 +507,83 @@ async function sqLinedStep(name, fixedCm, labelJc, answerJc, log) {
   await Word.run((ctx) => insertSq(ctx, sqLinedTableOoxml(dxa, labelJc, answerJc)));
 }
 
+/* ---- Marks tables (SQ_Lined_Ans_Marks.js and SQ_Qn_Marks.js) ----
+ * Layout: N label columns | one flexible column (takes the remaining width) | one fixed marks column at the right. */
+
+const SQ_SP = `<w:spacing w:before="120" w:after="0" w:line="240" w:lineRule="auto"/>`;
+const SQ_FONT = `<w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>`;
+const sqTc = (w, borders, inner) =>
+  `
+        <w:tc>
+            <w:tcPr>
+                <w:tcW w:w="${w}" w:type="dxa"/>${borders || ""}
+            </w:tcPr>
+            <w:p>${inner}</w:p>
+        </w:tc>`;
+const SQ_DOTTED = `<w:tcBorders><w:bottom w:val="dotted" w:sz="18" w:space="0" w:color="auto"/></w:tcBorders>`;
+
+// Lined answer + marks: no runs inside the cells
+const sqLamLabelCell = (w) =>
+  sqTc(w, "", `<w:pPr>${SQ_SP}<w:jc w:val="left"/><w:rPr>${SQ_FONT}<w:b/><w:sz w:val="24"/></w:rPr></w:pPr>`);
+const sqLamLineCell = (w) =>
+  sqTc(w, SQ_DOTTED, `<w:pPr>${SQ_SP}<w:jc w:val="both"/><w:rPr>${SQ_FONT}<w:sz w:val="32"/></w:rPr></w:pPr>`);
+const sqLamFinalCell = (w) =>
+  sqTc(w, "", `<w:pPr>${SQ_SP}<w:jc w:val="right"/><w:rPr>${SQ_FONT}<w:sz w:val="24"/></w:rPr></w:pPr>`);
+
+// Qn + marks: jc comes first, snapToGrid, and an empty run in every cell
+const sqQmRun = (rpr) => `<w:r><w:rPr>${rpr}</w:rPr><w:t></w:t></w:r>`;
+const sqQmCell = (w, jc, rpr) =>
+  sqTc(w, "", `<w:pPr><w:jc w:val="${jc}"/>${SQ_SP}<w:snapToGrid w:val="0"/><w:rPr>${rpr}</w:rPr></w:pPr>${sqQmRun(rpr)}`);
+const sqQmLabelCell = (w) => sqQmCell(w, "left", `${SQ_FONT}<w:sz w:val="24"/><w:b/>`);
+const sqQmLineCell = (w) => sqQmCell(w, "both", `${SQ_FONT}<w:sz w:val="24"/>`);
+const sqQmFinalCell = (w) => sqQmCell(w, "right", `${SQ_FONT}<w:sz w:val="24"/>`);
+
+const SQ_ZERO_MARGINS = `
+                            <w:tblCellMar>
+                                <w:top w:w="0" w:type="dxa"/>
+                                <w:left w:w="0" w:type="dxa"/>
+                                <w:bottom w:w="0" w:type="dxa"/>
+                                <w:right w:w="0" w:type="dxa"/>
+                            </w:tblCellMar>`;
+
+const SQ_MARKS_KINDS = {
+  linedMarks: { label: sqLamLabelCell, line: sqLamLineCell, final: sqLamFinalCell, extraTblPr: "" },
+  qnMarks: { label: sqQmLabelCell, line: sqQmLineCell, final: sqQmFinalCell, extraTblPr: SQ_ZERO_MARGINS },
+};
+
+function sqMarksTableOoxml(colDxa, kind) {
+  const k = SQ_MARKS_KINDS[kind];
+  const n = colDxa.length;
+  const totalDxa = colDxa.reduce((s, w) => s + w, 0);
+  const grid = colDxa.map((w) => `<w:gridCol w:w="${w}"/>`).join("");
+  const cells = colDxa
+    .map((w, i) => (i === n - 1 ? k.final(w) : i === n - 2 ? k.line(w) : k.label(w)))
+    .join("");
+  return sqPackage(totalDxa, grid, cells, k.extraTblPr);
+}
+
+/** Columns in twips: label columns (cm), a flexible column (remaining width), a fixed marks column (cm) at the right. */
+function sqMarksColumnWidths(labelCm, finalCm, widthPt) {
+  const labels = labelCm.map((cm) => Math.round(cm * CM_PT * 20));
+  const finalDxa = Math.round(finalCm * CM_PT * 20);
+  const usedPt = labelCm.reduce((s, cm) => s + cm * CM_PT, 0) + finalCm * CM_PT;
+  const flexDxa = Math.round((widthPt - usedPt) * 20);
+  if (flexDxa < 200) {
+    throw new Error("Text area is too narrow for this table (flexible column would be " + flexDxa + " twips).");
+  }
+  return [...labels, flexDxa, finalDxa];
+}
+
+async function sqMarksStep(name, labelCm, finalCm, kind, log) {
+  const g = await readGeometry();                       // fresh width, every step
+  log.push(describe(name, g));
+
+  await Word.run((ctx) => formatSelection(ctx, "sq", g.widthPt)); // Arial 12 + spacing, every step
+
+  const dxa = sqMarksColumnWidths(labelCm, finalCm, g.widthPt);
+  await Word.run((ctx) => insertSq(ctx, sqMarksTableOoxml(dxa, kind)));
+}
+
 /* ------------------------------------------------------------------ */
 /* 5. Button actions                                                    */
 /* ------------------------------------------------------------------ */
@@ -599,6 +676,34 @@ const actions = {
   async sqAns1ai1(log) {
     await sqLinedStep("Lined Ans 1ai1", [0.95, 1, 1.1, 0.9], "left", "left", log);
   },
+
+  // Group 6 "marks": lined answer + marks  (widths copied from SQ_Lined_Ans_Marks.js)
+  async sqLinedMarks1(log) {
+    await sqMarksStep("Lined Ans Marks 1", [0.95], 0.85, "linedMarks", log);
+  },
+  async sqLinedMarks1a(log) {
+    await sqMarksStep("Lined Ans Marks 1a", [0.95, 1], 0.85, "linedMarks", log);
+  },
+  async sqLinedMarks1ai(log) {
+    await sqMarksStep("Lined Ans Marks 1ai", [0.95, 1, 1.1], 0.85, "linedMarks", log);
+  },
+  async sqLinedMarks1ai1(log) {
+    await sqMarksStep("Lined Ans Marks 1ai1", [0.95, 1, 1.1, 0.85], 0.85, "linedMarks", log);
+  },
+
+  // Group 7 "qn n mk": question + marks  (widths copied from SQ_Qn_Marks.js)
+  async sqQnMarks1(log) {
+    await sqMarksStep("Q Marks 1", [0.95], 0.85, "qnMarks", log);
+  },
+  async sqQnMarks1a(log) {
+    await sqMarksStep("Q Marks 1a", [0.95, 1], 0.85, "qnMarks", log);
+  },
+  async sqQnMarks1ai(log) {
+    await sqMarksStep("Q Marks 1ai", [0.95, 1, 1.1], 0.85, "qnMarks", log);
+  },
+  async sqQnMarks1ai1(log) {
+    await sqMarksStep("Q Marks 1ai1", [0.95, 1, 1.1, 0.85], 0.85, "qnMarks", log);
+  },
 };
 
 /* ------------------------------------------------------------------ */
@@ -640,5 +745,5 @@ if (typeof Office !== "undefined" && Office.onReady) {
 
 // Lets the OOXML builders be tested outside Word (node).
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { mcqQnNoOoxml, mcqQnPicOoxml, mcqShortOptionOoxml, mcqMediumOptionOoxml, mcqLongOptionOoxml, mcqTableTwoOoxml, mcqTableThreeOoxml, mcqMultiOptionOoxml, sqTableOoxml, sqLinedTableOoxml, CM_PT };
+  module.exports = { mcqQnNoOoxml, mcqQnPicOoxml, mcqShortOptionOoxml, mcqMediumOptionOoxml, mcqLongOptionOoxml, mcqTableTwoOoxml, mcqTableThreeOoxml, mcqMultiOptionOoxml, sqTableOoxml, sqLinedTableOoxml, sqMarksTableOoxml, CM_PT };
 }
