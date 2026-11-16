@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Quick Tools for Word - Function File</title>
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script type="text/javascript">
+
+    Office.onReady(() => {
+      Object.keys(charMap).forEach((functionName) => {
+        Office.actions.associate(functionName, makeCharHandler(functionName));
+      });
+      console.log("Registered", Object.keys(charMap).length, "functions.");
+    });
+
+    // Same character map as the PowerPoint add-in
+    const charMap = {
+      'actionInsertA': '\u{1D434}',
+      'actionInsertB': '\u{1D435}',
+      'actionInsertC': '\u{1D436}',
+      'actionInsertD': '\u{1D437}',
+      'actionInsertE': '\u{1D438}',
+      'actionInsertF': '\u{1D439}',
+      'actionInsertG': '\u{1D43A}',
+      'actionInsertH': '\u{1D43B}',
+      'actionInsertI': '\u{1D43C}',
+      'actionInsertJ': '\u{1D43D}',
+      'actionInsertK': '\u{1D43E}',
+      'actionInsertL': '\u{1D43F}',
+      'actionInsertM': '\u{1D440}',
+      'actionInsertN': '\u{1D441}',
+      'actionInsertO': '\u{1D442}',
+      'actionInsertP': '\u{1D443}',
+      'actionInsertQ': '\u{1D444}',
+      'actionInsertR': '\u{1D445}',
+      'actionInsertS': '\u{1D446}',
+      'actionInsertT': '\u{1D447}',
+      'actionInsertU': '\u{1D448}',
+      'actionInsertV': '\u{1D449}',
+      'actionInsertW': '\u{1D44A}',
+      'actionInsertX': '\u{1D44B}',
+      'actionInsertY': '\u{1D44C}',
+      'actionInsertZ': '\u{1D44D}',
+
+      // Small Mathematical Italic Letters
+      'actionInsertSmallA': '\u{1D44E}',
+      'actionInsertSmallB': '\u{1D44F}',
+      'actionInsertSmallC': '\u{1D450}',
+      'actionInsertSmallD': '\u{1D451}',
+      'actionInsertSmallE': '\u{1D452}',
+      'actionInsertSmallF': '\u{1D453}',
+      'actionInsertSmallG': '\u{1D454}',
+      'actionInsertSmallH': '\u{210E}',   // Special case: Planck constant symbol / Mathematical italic h
+      'actionInsertSmallI': '\u{1D456}',
+      'actionInsertSmallJ': '\u{1D457}',
+      'actionInsertSmallK': '\u{1D458}',
+      'actionInsertSmallL': '\u{1D459}',
+      'actionInsertSmallM': '\u{1D45A}',
+      'actionInsertSmallN': '\u{1D45B}',
+      'actionInsertSmallO': '\u{1D45C}',
+      'actionInsertSmallP': '\u{1D45D}',
+      'actionInsertSmallQ': '\u{1D45E}',
+      'actionInsertSmallR': '\u{1D45F}',
+      'actionInsertSmallS': '\u{1D460}',
+      'actionInsertSmallT': '\u{1D461}',
+      'actionInsertSmallU': '\u{1D462}',
+      'actionInsertSmallV': '\u{1D463}',
+      'actionInsertSmallW': '\u{1D464}',
+      'actionInsertSmallX': '\u{1D465}',
+      'actionInsertSmallY': '\u{1D466}',
+      'actionInsertSmallZ': '\u{1D467}',
+
+      // Greek & Scientific Symbols
+      'actionInsertAlpha': '\u03B1',
+      'actionInsertBeta': '\u03B2',
+      'actionInsertLambda': '\u03BB',
+      'actionInsertDegree': '\u00B0',
+      'actionInsertDegreeCelsius': '\u00B0C',
+      'actionInsertFrequency': '\u{1D453}',
+      'actionInsertGamma': '\u03B3',
+      'actionInsertTheta': '\u03B8',
+      'actionInsertOhm': '\u2126',
+      'actionInsertPi': '\u03C0',
+      'actionInsertRho': '\u03C1',
+      'actionInsertMu': '\u03BC',
+
+      // Math Operators
+      'actionInsertPlus': '\u002B',
+      'actionInsertMinus': '\u2212',
+      'actionInsertTimes': '\u00D7',
+      'actionInsertDivide': '\u00F7',
+      'actionInsertEqual': '\u003D',
+      'actionInsertGreaterThan': '\u003E',
+      'actionInsertLessThan': '\u003C',
+      'actionInsertGreaterEqual': '\u2265',
+      'actionInsertLessEqual': '\u2264',
+      'actionInsertRightArrow': '\u27F6',
+      'actionInsertLeftArrow': '\u27F5',
+      'actionInsertReversibleArrow': '\u21CC'
+    };
+
+    /**
+     * Inserts a character at the cursor (replacing any selection) in Cambria Math,
+     * then a trailing space in the user's original font, and puts the cursor
+     * after that space so typing continues in the normal font.
+     */
+    function insertFormattedLetter(char) {
+      return Word.run(async (context) => {
+        const sel = context.document.getSelection();
+        sel.font.load("name");
+        await context.sync();
+        const originalFont = sel.font.name;   // may be "" if the selection mixes fonts
+
+        const charRange = sel.insertText(char, "Replace");
+        charRange.font.name = "Cambria Math";
+
+        const spaceRange = charRange.insertText(" ", "After");
+        if (originalFont) {
+          spaceRange.font.name = originalFont;
+        }
+
+        spaceRange.select("End");
+        await context.sync();
+      });
+    }
+
+    function makeCharHandler(functionName) {
+      return function (event) {
+        insertFormattedLetter(charMap[functionName])
+          .catch((err) => console.error(functionName + " failed:", err))
+          .finally(() => {
+            if (event && typeof event.completed === "function") event.completed();
+          });
+      };
+    }
+  </script>
+</head>
+<body></body>
+</html>
