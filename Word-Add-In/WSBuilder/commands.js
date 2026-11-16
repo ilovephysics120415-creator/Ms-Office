@@ -680,12 +680,21 @@ async function joinTables(log) {
 
 /* ---- Blanks (SQ_Fill_In_The_Blanks.js) ---- */
 
-/** Inserts a run of dots, lowered by 3 pt, then a normal-height space so typing continues on the baseline. */
-async function insertDots(dotCount) {
+/** Inserts a run of dots lowered by 3 pt, then puts the cursor after a space that is back at the ORIGINAL font position,
+ *  so whatever is typed next sits on the normal baseline again. */
+async function insertDots(dotCount, log) {
   await Word.run(async (context) => {
     const selection = context.document.getSelection();
-    const paragraph = selection.paragraphs.getFirst();
 
+    // Remember the font position the text had before the blanks (0 = normal baseline).
+    // If the selection mixes several positions Word reports no single number, so fall back to 0.
+    selection.font.load("position");
+    await context.sync();
+    const rawPos = selection.font.position;
+    const originalPos = typeof rawPos === "number" && isFinite(rawPos) ? rawPos : 0;
+    if (log) log.push("Blanks: font position before = " + originalPos + " pt");
+
+    const paragraph = selection.paragraphs.getFirst();
     paragraph.spaceBefore = 6;
     paragraph.spaceAfter = 0;
     paragraph.lineSpacing = 12;
@@ -694,17 +703,30 @@ async function insertDots(dotCount) {
     const dotsRange = selection.insertText(".".repeat(dotCount), Word.InsertLocation.replace);
     dotsRange.font.name = "Arial";
     dotsRange.font.size = 12;
-    dotsRange.font.position = -3; // lowered by 3 pt
+    dotsRange.font.position = -3; // dots lowered by 3 pt
 
-    dotsRange.select(Word.SelectionMode.End);
-    const cursorPos = dotsRange.getRange(Word.RangeLocation.end);
-    cursorPos.select();
+    // A space right after the dots, set back to the original position (raised by 3 pt relative to the dots)
     const anchorRange = dotsRange.insertText(" ", Word.InsertLocation.after);
     anchorRange.font.name = "Arial";
     anchorRange.font.size = 12;
-    anchorRange.font.position = 0;
-
+    anchorRange.font.position = originalPos;
     await context.sync();
+
+    // Cursor goes after that space, so new typing starts at the original position
+    anchorRange.select(Word.SelectionMode.end);
+    await context.sync();
+
+    // Word keeps a separate "pending" font for the next typed character, and it can still be the lowered dots.
+    // Set the original position explicitly on the live cursor (a collapsed selection) as well.
+    const cursor = context.document.getSelection();
+    cursor.font.name = "Arial";
+    cursor.font.size = 12;
+    cursor.font.position = originalPos;
+    await context.sync();
+
+    cursor.font.load("position");
+    await context.sync();
+    if (log) log.push("Blanks: font position at the cursor now = " + cursor.font.position + " pt");
   });
 }
 
@@ -892,10 +914,10 @@ const actions = {
   },
 
   // Group 9 "Blanks": 8 / 12 / 16 / 20 dots
-  async blanksShort() { await insertDots(8); },
-  async blanksMedium() { await insertDots(12); },
-  async blanksLong() { await insertDots(16); },
-  async blanksVeryLong() { await insertDots(20); },
+  async blanksShort(log) { await insertDots(8, log); },
+  async blanksMedium(log) { await insertDots(12, log); },
+  async blanksLong(log) { await insertDots(16, log); },
+  async blanksVeryLong(log) { await insertDots(20, log); },
 };
 
 /* ------------------------------------------------------------------ */
