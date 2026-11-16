@@ -280,6 +280,21 @@ function mcqTableThreeOoxml(total) {
   return mcqTableRaw(total, widths, rows, false);
 }
 
+const BDR_NONE = mcqBdr(0, 0, 0, 0);
+
+/** Multi Option: 4 rows x 4 columns (0.95, 0.7, 0.8 cm, rest). I-IV in column 3. (MCQ_Multi_Option.js) */
+function mcqMultiOptionOoxml(total) {
+  const c0 = Math.round(0.95 * CM_TWIPS);
+  const c1 = Math.round(0.7 * CM_TWIPS);
+  const c2 = Math.round(0.8 * CM_TWIPS);
+  const c3 = total - c0 - c1 - c2;
+  const widths = [c0, c1, c2, c3];
+  const rows = ["I", "II", "III", "IV"].map((roman) =>
+    widths.map((w, c) => mcqBorderedCell(w, false, BDR_NONE, c === 2 ? roman : ""))
+  );
+  return mcqTableRaw(total, widths, rows, false);
+}
+
 /** MCQ insert: replace selection, reuse an existing blank paragraph after the table. */
 async function insertMcq(ctx, ooxml) {
   const insertedRange = ctx.document.getSelection().insertOoxml(ooxml, Word.InsertLocation.replace);
@@ -431,20 +446,23 @@ async function sqStep(name, fixedCm, cellOpts, log) {
 /* 5. Button actions                                                    */
 /* ------------------------------------------------------------------ */
 
-/** Builds mcqQn<Size>Ans, mcqQnPic<Size>Ans, mcqQnPicQn<Size>Ans. */
-function mcqSequences(size, optName, optBuilder) {
+/** Builds mcqQn<Size>Ans, mcqQnPic<Size>Ans, mcqQnPicQn<Size>Ans.
+ *  steps: the table(s) that sit between the Qn No / Qn Pic tables and the closing Qn Pic, as [name, builder]. */
+function mcqSequences(size, steps) {
   const qnNo = (log) => mcqStep("Qn No", mcqQnNoOoxml, log);
   const qnPic = (log) => mcqStep("Qn Pic", mcqQnPicOoxml, log);
-  const opt = (log) => mcqStep(optName, optBuilder, log);
+  const mid = async (log) => {
+    for (const [name, builder] of steps) await mcqStep(name, builder, log);
+  };
   return {
     async ["mcqQn" + size + "Ans"](log) {
-      await qnNo(log); await opt(log); await qnPic(log);
+      await qnNo(log); await mid(log); await qnPic(log);
     },
     async ["mcqQnPic" + size + "Ans"](log) {
-      await qnNo(log); await qnPic(log); await opt(log); await qnPic(log);
+      await qnNo(log); await qnPic(log); await mid(log); await qnPic(log);
     },
     async ["mcqQnPicQn" + size + "Ans"](log) {
-      await qnNo(log); await qnPic(log); await qnPic(log); await opt(log); await qnPic(log);
+      await qnNo(log); await qnPic(log); await qnPic(log); await mid(log); await qnPic(log);
     },
   };
 }
@@ -457,9 +475,9 @@ const actions = {
   //   Qn        : Qn No, Option, Qn Pic
   //   Qn Pic    : Qn No, Qn Pic, Option, Qn Pic
   //   Qn Pic Qn : Qn No, Qn Pic, Qn Pic, Option, Qn Pic
-  ...mcqSequences("Short", "Short options", mcqShortOptionOoxml),
-  ...mcqSequences("Medium", "Medium options", mcqMediumOptionOoxml),
-  ...mcqSequences("Long", "Long options", mcqLongOptionOoxml),
+  ...mcqSequences("Short", [["Short options", mcqShortOptionOoxml]]),
+  ...mcqSequences("Medium", [["Medium options", mcqMediumOptionOoxml]]),
+  ...mcqSequences("Long", [["Long options", mcqLongOptionOoxml]]),
 
   // Group 2 "Table", 7th button: Qn Pic  (sequence copied from MCQ_Pic_Option.js: Qn No, Qn Pic, Qn Pic)
   async mcqQnPicAns(log) {
@@ -476,8 +494,15 @@ const actions = {
   },
 
   // Group 2 "Table": Table Two / Table Three  (sequences copied from MCQ_Table_*_Option_Tbl.js)
-  ...mcqSequences("TableTwo", "Table two options", mcqTableTwoOoxml),
-  ...mcqSequences("TableThree", "Table three options", mcqTableThreeOoxml),
+  ...mcqSequences("TableTwo", [["Table two options", mcqTableTwoOoxml]]),
+  ...mcqSequences("TableThree", [["Table three options", mcqTableThreeOoxml]]),
+
+  // Group 3 "Options": Multi Long / Multi Short  (sequences copied from MCQ_Multi_*_Option_Tbl.js)
+  //   Qn        : Qn No, Multi option, Long/Short option, Qn Pic
+  //   Qn Pic    : Qn No, Qn Pic, Multi option, Long/Short option, Qn Pic
+  //   Qn Pic Qn : Qn No, Qn Pic, Qn Pic, Multi option, Long/Short option, Qn Pic
+  ...mcqSequences("MultiLong", [["Multi options", mcqMultiOptionOoxml], ["Long options", mcqLongOptionOoxml]]),
+  ...mcqSequences("MultiShort", [["Multi options", mcqMultiOptionOoxml], ["Short options", mcqShortOptionOoxml]]),
 
   // Group: SQ Q1  (widths/bold flags copied from SQ_Qn.js)
   async sqQ1(log) {
@@ -535,5 +560,5 @@ if (typeof Office !== "undefined" && Office.onReady) {
 
 // Lets the OOXML builders be tested outside Word (node).
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { mcqQnNoOoxml, mcqQnPicOoxml, mcqShortOptionOoxml, mcqMediumOptionOoxml, mcqLongOptionOoxml, mcqTableTwoOoxml, mcqTableThreeOoxml, sqTableOoxml, CM_PT };
+  module.exports = { mcqQnNoOoxml, mcqQnPicOoxml, mcqShortOptionOoxml, mcqMediumOptionOoxml, mcqLongOptionOoxml, mcqTableTwoOoxml, mcqTableThreeOoxml, mcqMultiOptionOoxml, sqTableOoxml, CM_PT };
 }
