@@ -351,10 +351,8 @@ function sqCell(widthDxa, opts) {
         </w:tc>`;
 }
 
-function sqTableOoxml(colDxa, cellOpts) {
-  const totalDxa = colDxa.reduce((s, w) => s + w, 0);
-  const grid = colDxa.map((w) => `<w:gridCol w:w="${w}"/>`).join("");
-  const cells = colDxa.map((w, i) => sqCell(w, cellOpts[i])).join("");
+/** Wraps a finished table (grid + cells) in the OOXML package that Word expects. */
+function sqPackage(totalDxa, gridXml, cellsXml) {
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <?mso-application progid="Word.Document"?>
 <pkg:package xmlns:pkg="http://schemas.microsoft.com/office/2006/xmlPackage">
@@ -381,14 +379,65 @@ function sqTableOoxml(colDxa, cellOpts) {
                                 <w:insideV w:val="none"/>
                             </w:tblBorders>
                         </w:tblPr>
-                        <w:tblGrid>${grid}</w:tblGrid>
-                        <w:tr>${cells}</w:tr>
+                        <w:tblGrid>${gridXml}</w:tblGrid>
+                        <w:tr>${cellsXml}</w:tr>
                     </w:tbl>
                 </w:body>
             </w:document>
         </pkg:xmlData>
     </pkg:part>
 </pkg:package>`;
+}
+
+function sqTableOoxml(colDxa, cellOpts) {
+  const totalDxa = colDxa.reduce((s, w) => s + w, 0);
+  const grid = colDxa.map((w) => `<w:gridCol w:w="${w}"/>`).join("");
+  const cells = colDxa.map((w, i) => sqCell(w, cellOpts[i])).join("");
+  return sqPackage(totalDxa, grid, cells);
+}
+
+/** Lined-answer cell (SQ_Lined_Ans.js): the last cell is the answer cell - 16 pt, not bold, dotted bottom border. */
+function sqLinedCell(widthDxa, isAnswerCell, jc) {
+  const sz = isAnswerCell ? 32 : 24;
+  const boldTag = isAnswerCell ? "" : "<w:b/>";
+  const borders = isAnswerCell
+    ? `<w:tcBorders><w:bottom w:val="dotted" w:sz="18" w:space="0" w:color="auto"/></w:tcBorders>`
+    : "";
+  return `
+        <w:tc>
+            <w:tcPr>
+                <w:tcW w:w="${widthDxa}" w:type="dxa"/>
+                ${borders}
+            </w:tcPr>
+            <w:p>
+                <w:pPr>
+                    <w:spacing w:before="120" w:after="0" w:line="240" w:lineRule="auto"/>
+                    <w:jc w:val="${jc}"/>
+                    <w:snapToGrid w:val="0"/>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                        ${boldTag}
+                        <w:sz w:val="${sz}"/>
+                    </w:rPr>
+                </w:pPr>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                        ${boldTag}
+                        <w:sz w:val="${sz}"/>
+                    </w:rPr>
+                    <w:t></w:t>
+                </w:r>
+            </w:p>
+        </w:tc>`;
+}
+
+function sqLinedTableOoxml(colDxa, labelJc, answerJc) {
+  const totalDxa = colDxa.reduce((s, w) => s + w, 0);
+  const grid = colDxa.map((w) => `<w:gridCol w:w="${w}"/>`).join("");
+  const last = colDxa.length - 1;
+  const cells = colDxa.map((w, i) => sqLinedCell(w, i === last, i === last ? answerJc : labelJc)).join("");
+  return sqPackage(totalDxa, grid, cells);
 }
 
 /** SQ insert: insert after selection, make sure two blank lines follow, cursor on the last. */
@@ -424,6 +473,18 @@ async function insertSq(ctx, ooxml) {
   await ctx.sync();
 }
 
+/** Column widths in twips: the fixed columns (cm) plus a last column that takes the remaining width. */
+function sqColumnWidths(fixedCm, widthPt) {
+  const dxa = fixedCm.map((cm) => Math.round(cm * CM_PT * 20));
+  const usedPt = fixedCm.reduce((s, cm) => s + cm * CM_PT, 0);
+  const lastDxa = Math.round((widthPt - usedPt) * 20);
+  if (lastDxa < 200) {
+    throw new Error("Text area is too narrow for this table (last column would be " + lastDxa + " twips).");
+  }
+  dxa.push(lastDxa);
+  return dxa;
+}
+
 /** fixedCm: widths (cm) of the fixed columns. The last column takes the remaining width. */
 async function sqStep(name, fixedCm, cellOpts, log) {
   const g = await readGeometry();                       // fresh width, every step
@@ -431,15 +492,19 @@ async function sqStep(name, fixedCm, cellOpts, log) {
 
   await Word.run((ctx) => formatSelection(ctx, "sq", g.widthPt)); // Arial 12 + spacing, every step
 
-  const dxa = fixedCm.map((cm) => Math.round(cm * CM_PT * 20));
-  const usedPt = fixedCm.reduce((s, cm) => s + cm * CM_PT, 0);
-  const lastDxa = Math.round((g.widthPt - usedPt) * 20);
-  if (lastDxa < 200) {
-    throw new Error("Text area is too narrow for this table (last column would be " + lastDxa + " twips).");
-  }
-  dxa.push(lastDxa);
-
+  const dxa = sqColumnWidths(fixedCm, g.widthPt);
   await Word.run((ctx) => insertSq(ctx, sqTableOoxml(dxa, cellOpts)));
+}
+
+/** Lined-answer table: same flow as sqStep, different cell markup (SQ_Lined_Ans.js). */
+async function sqLinedStep(name, fixedCm, labelJc, answerJc, log) {
+  const g = await readGeometry();                       // fresh width, every step
+  log.push(describe(name, g));
+
+  await Word.run((ctx) => formatSelection(ctx, "sq", g.widthPt)); // Arial 12 + spacing, every step
+
+  const dxa = sqColumnWidths(fixedCm, g.widthPt);
+  await Word.run((ctx) => insertSq(ctx, sqLinedTableOoxml(dxa, labelJc, answerJc)));
 }
 
 /* ------------------------------------------------------------------ */
@@ -519,6 +584,21 @@ const actions = {
     await sqStep("Q1ai1", [0.95, 1, 1.1, 0.85],
       [{ bold: true }, { bold: true }, { bold: true }, { bold: true }, {}], log);
   },
+
+  // Group 5 "lined ans"  (widths and alignments copied from SQ_Lined_Ans.js)
+  async sqAns1(log) {
+    await sqLinedStep("Lined Ans 1", [0.95], "both", "both", log);
+  },
+  async sqAns1a(log) {
+    await sqLinedStep("Lined Ans 1a", [0.95, 1], "left", "left", log);
+  },
+  async sqAns1ai(log) {
+    // answer column is "both" here, as in the original file (every other variant uses "left")
+    await sqLinedStep("Lined Ans 1ai", [0.95, 1, 1.1], "left", "both", log);
+  },
+  async sqAns1ai1(log) {
+    await sqLinedStep("Lined Ans 1ai1", [0.95, 1, 1.1, 0.9], "left", "left", log);
+  },
 };
 
 /* ------------------------------------------------------------------ */
@@ -560,5 +640,5 @@ if (typeof Office !== "undefined" && Office.onReady) {
 
 // Lets the OOXML builders be tested outside Word (node).
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { mcqQnNoOoxml, mcqQnPicOoxml, mcqShortOptionOoxml, mcqMediumOptionOoxml, mcqLongOptionOoxml, mcqTableTwoOoxml, mcqTableThreeOoxml, mcqMultiOptionOoxml, sqTableOoxml, CM_PT };
+  module.exports = { mcqQnNoOoxml, mcqQnPicOoxml, mcqShortOptionOoxml, mcqMediumOptionOoxml, mcqLongOptionOoxml, mcqTableTwoOoxml, mcqTableThreeOoxml, mcqMultiOptionOoxml, sqTableOoxml, sqLinedTableOoxml, CM_PT };
 }
