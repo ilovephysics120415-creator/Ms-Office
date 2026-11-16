@@ -131,8 +131,11 @@ const mcqAutonum = () =>
   mcqRun(`<w:fldChar w:fldCharType="separate"/>`) +
   mcqRun(`<w:fldChar w:fldCharType="end"/>`);
 
-const mcqCell = (w, inner) =>
-  `<w:tc><w:tcPr><w:tcW w:w="${w}" w:type="dxa"/></w:tcPr><w:p>${MCQ_PPR}${inner || ""}</w:p></w:tc>`;
+const mcqCell = (w, inner, center) =>
+  `<w:tc><w:tcPr><w:tcW w:w="${w}" w:type="dxa"/></w:tcPr><w:p>${center ? MCQ_PPR_CENTER : MCQ_PPR}${inner || ""}</w:p></w:tc>`;
+
+/** A bold option letter / numeral cell: the text, centred horizontally in its cell. */
+const mcqLetter = (t) => ({ xml: mcqBoldText(t), center: true });
 
 /** rowsXml: array of rows, each an array of finished <w:tc> strings. trailingPara: blank paragraph after the table. */
 function mcqTableRaw(totalTwips, widths, rowsXml, trailingPara) {
@@ -162,7 +165,12 @@ function mcqTableRaw(totalTwips, widths, rowsXml, trailingPara) {
 function mcqTable(totalTwips, widths, rows, trailingPara) {
   return mcqTableRaw(
     totalTwips, widths,
-    rows.map((inner) => widths.map((w, i) => mcqCell(w, inner[i]))),
+    rows.map((inner) =>
+      widths.map((w, i) => {
+        const c = inner[i];
+        return c && typeof c === "object" ? mcqCell(w, c.xml, c.center) : mcqCell(w, c);
+      })
+    ),
     trailingPara
   );
 }
@@ -184,7 +192,7 @@ function mcqShortOptionOoxml(total) {
   return mcqTable(
     total,
     [c0, lab, con, lab, con, lab, con, lab, con],
-    [["", mcqBoldText("A"), "", mcqBoldText("B"), "", mcqBoldText("C"), "", mcqBoldText("D"), ""]],
+    [["", mcqLetter("A"), "", mcqLetter("B"), "", mcqLetter("C"), "", mcqLetter("D"), ""]],
     true
   );
 }
@@ -198,8 +206,8 @@ function mcqMediumOptionOoxml(total) {
     total,
     [c0, lab, con, lab, con],
     [
-      ["", mcqBoldText("A"), "", mcqBoldText("B"), ""],
-      ["", mcqBoldText("C"), "", mcqBoldText("D"), ""],
+      ["", mcqLetter("A"), "", mcqLetter("B"), ""],
+      ["", mcqLetter("C"), "", mcqLetter("D"), ""],
     ],
     false
   );
@@ -214,10 +222,10 @@ function mcqLongOptionOoxml(total) {
     total,
     [c0, lab, con],
     [
-      ["", mcqBoldText("A"), ""],
-      ["", mcqBoldText("B"), ""],
-      ["", mcqBoldText("C"), ""],
-      ["", mcqBoldText("D"), ""],
+      ["", mcqLetter("A"), ""],
+      ["", mcqLetter("B"), ""],
+      ["", mcqLetter("C"), ""],
+      ["", mcqLetter("D"), ""],
     ],
     false
   );
@@ -241,7 +249,7 @@ const BDR_LEFT = mcqBdr(0, 1, 0, 0);
 function mcqBorderedCell(width, center, borders, text) {
   return `<w:tc><w:tcPr><w:tcW w:w="${width}" w:type="dxa"/>${
     borders ? `<w:tcBorders>${borders}</w:tcBorders>` : ""
-  }</w:tcPr><w:p>${center ? MCQ_PPR_CENTER : MCQ_PPR}${text ? mcqBoldText(text) : ""}</w:p></w:tc>`;
+  }</w:tcPr><w:p>${center || text ? MCQ_PPR_CENTER : MCQ_PPR}${text ? mcqBoldText(text) : ""}</w:p></w:tc>`;
 }
 
 /** Table Two: 5 rows x 5 columns (0.95 cm, 0.7 cm, 3 equal columns). A-D in column 2, rows 2-5. */
