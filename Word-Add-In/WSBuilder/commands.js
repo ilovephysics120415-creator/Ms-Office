@@ -352,7 +352,16 @@ function sqCell(widthDxa, opts) {
 }
 
 /** Wraps a finished table (grid + cells) in the OOXML package that Word expects. */
-function sqPackage(totalDxa, gridXml, cellsXml, extraTblPr) {
+const SQ_BORDERS_NONE = `
+                                <w:top w:val="none"/>
+                                <w:left w:val="none"/>
+                                <w:bottom w:val="none"/>
+                                <w:right w:val="none"/>
+                                <w:insideH w:val="none"/>
+                                <w:insideV w:val="none"/>
+                            `;
+
+function sqPackage(totalDxa, gridXml, cellsXml, extraTblPr, bordersXml) {
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <?mso-application progid="Word.Document"?>
 <pkg:package xmlns:pkg="http://schemas.microsoft.com/office/2006/xmlPackage">
@@ -370,14 +379,7 @@ function sqPackage(totalDxa, gridXml, cellsXml, extraTblPr) {
                     <w:tbl>
                         <w:tblPr>
                             <w:tblW w:w="${totalDxa}" w:type="dxa"/>
-                            <w:tblBorders>
-                                <w:top w:val="none"/>
-                                <w:left w:val="none"/>
-                                <w:bottom w:val="none"/>
-                                <w:right w:val="none"/>
-                                <w:insideH w:val="none"/>
-                                <w:insideV w:val="none"/>
-                            </w:tblBorders>${extraTblPr || ""}
+                            <w:tblBorders>${bordersXml || SQ_BORDERS_NONE}</w:tblBorders>${extraTblPr || ""}
                         </w:tblPr>
                         <w:tblGrid>${gridXml}</w:tblGrid>
                         <w:tr>${cellsXml}</w:tr>
@@ -584,6 +586,176 @@ async function sqMarksStep(name, labelCm, finalCm, kind, log) {
   await Word.run((ctx) => insertSq(ctx, sqMarksTableOoxml(dxa, kind)));
 }
 
+/* ---- Cal Ans / Cal Ans Unit (SQ_Cal_Ans.js) ----
+ * Layout: one flexible column on the left (takes the remaining width), then fixed columns (cm). */
+
+// Cal Ans: jc, spacing, snapToGrid and an empty run in every cell; zero cell margins
+const sqCalCell = (w, jc, sz, borders) => {
+  const rpr = `${SQ_FONT}<w:sz w:val="${sz}"/>`;
+  return sqTc(w, borders, `<w:pPr><w:jc w:val="${jc}"/>${SQ_SP}<w:snapToGrid w:val="0"/><w:rPr>${rpr}</w:rPr></w:pPr>${sqQmRun(rpr)}`);
+};
+function sqCalAnsOoxml(colDxa) {
+  const [c1, c2, c3] = colDxa;
+  const cells = sqCalCell(c1, "right", 24, "") + sqCalCell(c2, "both", 32, SQ_DOTTED) + sqCalCell(c3, "right", 24, "");
+  const grid = colDxa.map((w) => `<w:gridCol w:w="${w}"/>`).join("");
+  return sqPackage(c1 + c2 + c3, grid, cells, SQ_ZERO_MARGINS);
+}
+
+// Cal Ans Unit: spacing then jc, no runs, no cell margins, only four table borders
+const sqCalUnitCell = (w, jc, sz, borders) =>
+  sqTc(w, borders, `<w:pPr>${SQ_SP}<w:jc w:val="${jc}"/><w:rPr>${SQ_FONT}<w:sz w:val="${sz}"/></w:rPr></w:pPr>`);
+const SQ_BORDERS_FOUR = `
+                                            <w:top w:val="none"/>
+                                            <w:bottom w:val="none"/>
+                                            <w:right w:val="none"/>
+                                            <w:left w:val="none"/>
+                                        `;
+function sqCalAnsUnitOoxml(colDxa) {
+  const [c1, c2, c3, c4] = colDxa;
+  const cells =
+    sqCalUnitCell(c1, "right", 24, "") + sqCalUnitCell(c2, "both", 32, SQ_DOTTED) +
+    sqCalUnitCell(c3, "left", 24, "") + sqCalUnitCell(c4, "right", 24, "");
+  const grid = colDxa.map((w) => `<w:gridCol w:w="${w}"/>`).join("");
+  return sqPackage(c1 + c2 + c3 + c4, grid, cells, "", SQ_BORDERS_FOUR);
+}
+
+/** Columns in twips: a flexible first column (remaining width, subtracted one by one as in the original), then fixed columns (cm). */
+function sqCalColumnWidths(fixedCm, widthPt) {
+  let rest = widthPt;
+  fixedCm.forEach((cm) => { rest -= cm * CM_PT; });
+  const first = Math.round(rest * 20);
+  if (first < 200) {
+    throw new Error("Text area is too narrow for this table (first column would be " + first + " twips).");
+  }
+  return [first, ...fixedCm.map((cm) => Math.round(cm * CM_PT * 20))];
+}
+
+async function sqCalStep(name, fixedCm, builder, log) {
+  const g = await readGeometry();                       // fresh width, every step
+  log.push(describe(name, g));
+
+  await Word.run((ctx) => formatSelection(ctx, "sq", g.widthPt)); // Arial 12 + spacing, every step
+
+  const dxa = sqCalColumnWidths(fixedCm, g.widthPt);
+  await Word.run((ctx) => insertSq(ctx, builder(dxa)));
+}
+
+/* ---- Join Tables (MergeAllTable.js) ---- */
+
+/** Merges adjacent tables that are separated only by an empty paragraph. Works on the whole document. */
+async function joinTables(log) {
+  await Word.run(async (context) => {
+    const tables = context.document.body.tables;
+    tables.load("items");
+    await context.sync();
+
+    if (tables.items.length < 2) {
+      log.push("Fewer than 2 tables found in document.");
+      return;
+    }
+
+    let mergedCount = 0;
+    // Loop backwards so indices stay stable as paragraphs are deleted
+    for (let i = tables.items.length - 1; i > 0; i--) {
+      const prevTable = tables.items[i - 1];
+      const gapParagraph = prevTable.getRange(Word.RangeLocation.after).paragraphs.getFirst();
+      gapParagraph.load("text");
+      await context.sync();
+
+      // Only merge when the paragraph between the tables is genuinely empty
+      if (gapParagraph.text.trim() === "") {
+        gapParagraph.delete();
+        await context.sync();
+        mergedCount++;
+      }
+    }
+
+    log.push(
+      mergedCount > 0
+        ? "Successfully merged " + mergedCount + " table(s)!"
+        : "No adjacent tables (separated only by an empty paragraph) found to merge."
+    );
+  });
+}
+
+/* ---- Blanks (SQ_Fill_In_The_Blanks.js) ---- */
+
+/** Inserts a run of dots, lowered by 3 pt, then a normal-height space so typing continues on the baseline. */
+async function insertDots(dotCount) {
+  await Word.run(async (context) => {
+    const selection = context.document.getSelection();
+    const paragraph = selection.paragraphs.getFirst();
+
+    paragraph.spaceBefore = 6;
+    paragraph.spaceAfter = 0;
+    paragraph.lineSpacing = 12;
+    paragraph.alignment = Word.Alignment.justified;
+
+    const dotsRange = selection.insertText(".".repeat(dotCount), Word.InsertLocation.replace);
+    dotsRange.font.name = "Arial";
+    dotsRange.font.size = 12;
+    dotsRange.font.position = -3; // lowered by 3 pt
+
+    dotsRange.select(Word.SelectionMode.End);
+    const cursorPos = dotsRange.getRange(Word.RangeLocation.end);
+    cursorPos.select();
+    const anchorRange = dotsRange.insertText(" ", Word.InsertLocation.after);
+    anchorRange.font.name = "Arial";
+    anchorRange.font.size = 12;
+    anchorRange.font.position = 0;
+
+    await context.sync();
+  });
+}
+
+/* ---- Total Marks (Sum_Bracketed_Numbers.js, extended) ----
+ * Total 1: cells whose whole content is [n]            e.g. [2]
+ * Total 2: cells whose whole content is [n marks]      e.g. [2 marks]  (lowercase, plural only)
+ * No [n marks] cells  -> Total 1 only.   Totals equal -> that total.   Totals differ -> both are shown. */
+
+const SUM_PLAIN = /^\[(\d{1,2})\]$/;
+const SUM_MARKS = /^\[(\d{1,2})\s+marks\]$/;
+
+/** Pure helper, also used by the tests. cellTexts: flat array of cell strings. */
+function computeMarksText(cellTexts) {
+  let total1 = 0;
+  let total2 = 0;
+  let found2 = 0;
+  for (const raw of cellTexts) {
+    const text = String(raw).trim();
+    const m1 = SUM_PLAIN.exec(text);
+    if (m1) total1 += parseInt(m1[1], 10);
+    const m2 = SUM_MARKS.exec(text);
+    if (m2) {
+      total2 += parseInt(m2[1], 10);
+      found2++;
+    }
+  }
+  if (found2 === 0 || total1 === total2) return String(total1);
+  return "[n] = " + total1 + ", [n marks] = " + total2;
+}
+
+async function sumMarks(log) {
+  await Word.run(async (context) => {
+    // Capture the cursor first, so the result goes exactly where the user clicked
+    const selection = context.document.getSelection();
+
+    const tables = context.document.body.tables;
+    tables.load("items");
+    await context.sync();
+    tables.items.forEach((t) => t.load("values"));
+    await context.sync();
+
+    const cells = [];
+    tables.items.forEach((t) => t.values.forEach((row) => row.forEach((c) => cells.push(c))));
+
+    const result = computeMarksText(cells);
+    selection.insertText(result, Word.InsertLocation.replace);
+    await context.sync();
+    log.push("Total marks: " + result);
+  });
+}
+
 /* ------------------------------------------------------------------ */
 /* 5. Button actions                                                    */
 /* ------------------------------------------------------------------ */
@@ -704,6 +876,26 @@ const actions = {
   async sqQnMarks1ai1(log) {
     await sqMarksStep("Q Marks 1ai1", [0.95, 1, 1.1, 0.85], 0.85, "qnMarks", log);
   },
+
+  // Group 8 "Cal n Mks"
+  async sqCalAns(log) {
+    await sqCalStep("Cal Ans", [3.2, 0.85], sqCalAnsOoxml, log);
+  },
+  async sqCalAnsUnit(log) {
+    await sqCalStep("Cal Ans Unit", [3.2, 1.5, 0.85], sqCalAnsUnitOoxml, log);
+  },
+  async joinTables(log) {
+    await joinTables(log);
+  },
+  async sumMarks(log) {
+    await sumMarks(log);
+  },
+
+  // Group 9 "Blanks": 8 / 12 / 16 / 20 dots
+  async blanksShort() { await insertDots(8); },
+  async blanksMedium() { await insertDots(12); },
+  async blanksLong() { await insertDots(16); },
+  async blanksVeryLong() { await insertDots(20); },
 };
 
 /* ------------------------------------------------------------------ */
@@ -745,5 +937,5 @@ if (typeof Office !== "undefined" && Office.onReady) {
 
 // Lets the OOXML builders be tested outside Word (node).
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { mcqQnNoOoxml, mcqQnPicOoxml, mcqShortOptionOoxml, mcqMediumOptionOoxml, mcqLongOptionOoxml, mcqTableTwoOoxml, mcqTableThreeOoxml, mcqMultiOptionOoxml, sqTableOoxml, sqLinedTableOoxml, sqMarksTableOoxml, CM_PT };
+  module.exports = { mcqQnNoOoxml, mcqQnPicOoxml, mcqShortOptionOoxml, mcqMediumOptionOoxml, mcqLongOptionOoxml, mcqTableTwoOoxml, mcqTableThreeOoxml, mcqMultiOptionOoxml, sqTableOoxml, sqLinedTableOoxml, sqMarksTableOoxml, sqCalAnsOoxml, sqCalAnsUnitOoxml, sqCalColumnWidths, computeMarksText, CM_PT };
 }
